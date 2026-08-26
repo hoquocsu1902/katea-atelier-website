@@ -402,7 +402,7 @@ function renderPolicyView(type) {
     <div class="section">
       <div class="container-narrow" style="font-size: 0.95rem; line-height: 1.8;">
         <p style="margin-bottom: 20px;">
-          At <strong>KATÉA Atelier</strong> (katea.studio), every creation is presented with careful attention to detail and supported through our private client service.
+          At <strong>KATÉA Atelier</strong>, every creation is presented with careful attention to detail and supported through our private client service.
         </p>
         <p style="margin-bottom: 20px;">
           • <strong>Orders:</strong> Product availability, preparation time, delivery and payment details are confirmed directly with our team through WhatsApp before an order proceeds.
@@ -411,7 +411,7 @@ function renderPolicyView(type) {
           • <strong>Returns:</strong> Standard non-customized pieces can be exchanged or returned within 14 days of delivery in pristine, unworn condition with original packaging.
         </p>
         <p style="margin-bottom: 20px;">
-          • <strong>Contact:</strong> For any inquiries or order assistance, contact us directly on WhatsApp at <strong>+65 93971166</strong> or email <strong>contact@katea.studio</strong>.
+          • <strong>Contact:</strong> For any inquiries or order assistance, contact us directly on WhatsApp at <strong>+65 93971166</strong>.
         </p>
       </div>
     </div>

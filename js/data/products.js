@@ -1,9 +1,9 @@
 const PRODUCTS_DATA = [
   {
     "id": 10339370434907,
-    "title": "Clutch Mini Bag",
-    "handle": "clutch-mini-champagne",
-    "category": "clutches",
+    "title": "Card HolderMini Bag",
+    "handle": "card-holder-mini-champagne",
+    "category": "card-holders",
     "price": 549.0,
     "compare_price": null,
     "images": [
@@ -72,7 +72,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<p>The Clutch Mini is a high-quality artisanal creation with a handcrafted crystal body and brass frame. Each piece is meticulously handcrafted over 12 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: Size: W9cm x H9cm x D5cm<br>Chain shoulder strap: 80cm</p>\n<p>Fit Notes:<br>Perfect for refined evening essentials.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
+    "description": "<p>The Card HolderMini is a high-quality artisanal creation with a handcrafted crystal body and brass frame. Each piece is meticulously handcrafted over 12 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: Size: W9cm x H9cm x D5cm<br>Chain shoulder strap: 80cm</p>\n<p>Fit Notes:<br>Perfect for refined evening essentials.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -311,9 +311,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 9589992849755,
-    "title": "Clutch Micro Bag",
-    "handle": "clutch-micro-bag",
-    "category": "clutches",
+    "title": "Card HolderMicro Bag",
+    "handle": "card-holder-micro-bag",
+    "category": "card-holders",
     "price": 539.0,
     "compare_price": null,
     "images": [
@@ -380,7 +380,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<div class=\"ewa-rteLine\">\n<div class=\"ewa-rteLine\">The Clutch Micro Bag is a high-quality artisanal creation with a structure made of a highly custom brass frame and then entirely handcrafted crystal body. Each piece is meticulously handcrafted over a period of over 10 hours. Every detail reflects the excellence of its craftsmanship and attention to design.</div>\n<div class=\"ewa-rteLine\"><br></div>\n<ul>\n<li class=\"ewa-rteLine\">Exterior: Crystal, Crystal in a setting and Brass</li>\n<li class=\"ewa-rteLine\">Lining: Crystal</li>\n<li class=\"ewa-rteLine\">Gold or Silver -toned hardware</li>\n<li class=\"ewa-rteLine\">\n</li>\n<li class=\"ewa-rteLine\">Size: W9cm x H9cm x D6.5cm<br>\n</li>\n<li class=\"ewa-rteLine\">Chain shoulder strap : 80 cm</li>\n</ul>\n<div class=\"ewa-rteLine\"><br></div>\n<div class=\"ewa-rteLine\">Fit Notes:</div>\n<div class=\"ewa-rteLine\">It's the perfect size to carry your cash, cards, keys, earphones, and more</div>\n<div class=\"ewa-rteLine\"><br></div>\n<div class=\"ewa-rteLine\">Customize your look by choosing any of the Six available colors: Black, transparent white, Azure, Camelot, Green and Champagne.</div>\n<div class=\"ewa-rteLine\">And the hardware between Silver or Gold</div>\n<div class=\"ewa-rteLine\"><br></div>\n<div class=\"ewa-rteLine\">KATÉA Atelier — Crafted with crystal, created with love.</div>\n</div>",
+    "description": "<div class=\"ewa-rteLine\">\n<div class=\"ewa-rteLine\">The Card HolderMicro Bag is a high-quality artisanal creation with a structure made of a highly custom brass frame and then entirely handcrafted crystal body. Each piece is meticulously handcrafted over a period of over 10 hours. Every detail reflects the excellence of its craftsmanship and attention to design.</div>\n<div class=\"ewa-rteLine\"><br></div>\n<ul>\n<li class=\"ewa-rteLine\">Exterior: Crystal, Crystal in a setting and Brass</li>\n<li class=\"ewa-rteLine\">Lining: Crystal</li>\n<li class=\"ewa-rteLine\">Gold or Silver -toned hardware</li>\n<li class=\"ewa-rteLine\">\n</li>\n<li class=\"ewa-rteLine\">Size: W9cm x H9cm x D6.5cm<br>\n</li>\n<li class=\"ewa-rteLine\">Chain shoulder strap : 80 cm</li>\n</ul>\n<div class=\"ewa-rteLine\"><br></div>\n<div class=\"ewa-rteLine\">Fit Notes:</div>\n<div class=\"ewa-rteLine\">It's the perfect size to carry your cash, cards, keys, earphones, and more</div>\n<div class=\"ewa-rteLine\"><br></div>\n<div class=\"ewa-rteLine\">Customize your look by choosing any of the Six available colors: Black, transparent white, Azure, Camelot, Green and Champagne.</div>\n<div class=\"ewa-rteLine\">And the hardware between Silver or Gold</div>\n<div class=\"ewa-rteLine\"><br></div>\n<div class=\"ewa-rteLine\">KATÉA Atelier — Crafted with crystal, created with love.</div>\n</div>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -390,9 +390,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 10611617038683,
-    "title": "Clutch Edge - Short",
-    "handle": "clutch-edge-short-copy",
-    "category": "clutches",
+    "title": "Card HolderEdge - Short",
+    "handle": "card-holder-edge-short-copy",
+    "category": "card-holders",
     "price": 949.0,
     "compare_price": null,
     "images": [
@@ -428,7 +428,7 @@ const PRODUCTS_DATA = [
     "is_new": true,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<p>The Clutch Edge Short is a high-quality artisanal creation with a custom brass octagonal frame and handcrafted crystal body. Each piece is meticulously handcrafted over 16 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold e Silver hardware<br>Size: W18cm x H10cm x D6cm<br>Chain shoulder strap: 100cm</p>\n<p>Fit Notes:<br>Comfortably fits phone, keys, and small evening essentials.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
+    "description": "<p>The Card HolderEdge Short is a high-quality artisanal creation with a custom brass octagonal frame and handcrafted crystal body. Each piece is meticulously handcrafted over 16 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold e Silver hardware<br>Size: W18cm x H10cm x D6cm<br>Chain shoulder strap: 100cm</p>\n<p>Fit Notes:<br>Comfortably fits phone, keys, and small evening essentials.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -438,9 +438,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 10611593347419,
-    "title": "Clutch Edge - Airpod - Wood - Crystal",
-    "handle": "clutch-edge-airpod-wood-crystal",
-    "category": "clutches",
+    "title": "Card HolderEdge - Airpod - Wood - Crystal",
+    "handle": "card-holder-edge-airpod-wood-crystal",
+    "category": "card-holders",
     "price": 399.0,
     "compare_price": null,
     "images": [
@@ -477,7 +477,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<div class=\"ewa-rteLine\">\n<p>The Clutch Edge Airpod Wood is a high-quality artisanal creation featuring a highly custom brass octagonal shape frame and an entirely handcrafted crystal and natural wood body. Each piece is meticulously handcrafted over a period of 8 hours, reflecting the excellence of atelier craftsmanship and attention to detail.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: W8.1cm x H4cm x D6cm</p>\n<p>Fit Notes:<br>Designed to perfectly hold AirPods and small essentials like mini makeup or lipstick</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>\n</div>",
+    "description": "<div class=\"ewa-rteLine\">\n<p>The Card HolderEdge Airpod Wood is a high-quality artisanal creation featuring a highly custom brass octagonal shape frame and an entirely handcrafted crystal and natural wood body. Each piece is meticulously handcrafted over a period of 8 hours, reflecting the excellence of atelier craftsmanship and attention to detail.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: W8.1cm x H4cm x D6cm</p>\n<p>Fit Notes:<br>Designed to perfectly hold AirPods and small essentials like mini makeup or lipstick</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>\n</div>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -487,9 +487,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 10611571130715,
-    "title": "Clutch Edge - Airpod",
-    "handle": "clutch-edge-airpod",
-    "category": "clutches",
+    "title": "Card HolderEdge - Airpod",
+    "handle": "card-holder-edge-airpod",
+    "category": "card-holders",
     "price": 349.0,
     "compare_price": null,
     "images": [
@@ -524,7 +524,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<div class=\"ewa-rteLine\">\n<p>The Clutch Edge Airpod is a high-quality artisanal creation featuring a custom brass octagonal frame and handcrafted crystal body. Each piece is meticulously handcrafted over 8 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: W8.1cm x H4cm x D6cm</p>\n<p>Fit Notes:<br>Designed to perfectly hold AirPods and small essentials like mini makeup or lipstick</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>\n</div>",
+    "description": "<div class=\"ewa-rteLine\">\n<p>The Card HolderEdge Airpod is a high-quality artisanal creation featuring a custom brass octagonal frame and handcrafted crystal body. Each piece is meticulously handcrafted over 8 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: W8.1cm x H4cm x D6cm</p>\n<p>Fit Notes:<br>Designed to perfectly hold AirPods and small essentials like mini makeup or lipstick</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>\n</div>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -733,9 +733,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 10339371090267,
-    "title": "Clutch Mini  - Brass - Crystal",
-    "handle": "clutch-mini-brass-silve-blue",
-    "category": "clutches",
+    "title": "Card HolderMini  - Brass - Crystal",
+    "handle": "card-holder-mini-brass-silve-blue",
+    "category": "card-holders",
     "price": 659.0,
     "compare_price": 395.0,
     "images": [
@@ -761,7 +761,7 @@ const PRODUCTS_DATA = [
     "is_new": true,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<p>The Clutch Mini Brass is a high-quality artisanal creation featuring a handcrafted crystal body and custom brass frame. Each piece is meticulously handcrafted over 14 hours.</p>\n<p>Exterior: Crystal, Brass and Leather<br>Silver and Gold hardware<br>Size: W9cm x H9cm x D5cm<br>Chain shoulder strap: 80cm</p>\n<p>Fit Notes:<br>Ideal for compact essentials and evening elegance.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
+    "description": "<p>The Card HolderMini Brass is a high-quality artisanal creation featuring a handcrafted crystal body and custom brass frame. Each piece is meticulously handcrafted over 14 hours.</p>\n<p>Exterior: Crystal, Brass and Leather<br>Silver and Gold hardware<br>Size: W9cm x H9cm x D5cm<br>Chain shoulder strap: 80cm</p>\n<p>Fit Notes:<br>Ideal for compact essentials and evening elegance.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -809,9 +809,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 10339357655387,
-    "title": "Clutch Edge - Short - Brass - Crystal",
-    "handle": "clutch-edge-short-brass-champagne",
-    "category": "clutches",
+    "title": "Card HolderEdge - Short - Brass - Crystal",
+    "handle": "card-holder-edge-short-brass-champagne",
+    "category": "card-holders",
     "price": 1149.0,
     "compare_price": null,
     "images": [
@@ -848,7 +848,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<p>The Clutch Edge Short Brass is a high-quality artisanal creation featuring a custom brass octagonal frame and handcrafted crystal structure. Each piece is meticulously handcrafted over 24 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: W18cm x H10cm x D6cm<br>Chain shoulder strap: 100cm</p>\n<p>Fit Notes:<br>Ideal for refined evening styling and essential accessories.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
+    "description": "<p>The Card HolderEdge Short Brass is a high-quality artisanal creation featuring a custom brass octagonal frame and handcrafted crystal structure. Each piece is meticulously handcrafted over 24 hours.</p>\n<p>Exterior: Crystal and Brass<br>Gold and Silver hardware<br>Size: W18cm x H10cm x D6cm<br>Chain shoulder strap: 100cm</p>\n<p>Fit Notes:<br>Ideal for refined evening styling and essential accessories.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -1090,8 +1090,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 10344349237595,
-    "title": "Diamond Roma Belt-U",
-    "handle": "diamond-roma-belt-u",
+    "title": "Diamond Éclat-U",
+    "handle": "diamond-eclat-u",
     "category": "fits-a-phone",
     "price": 1299.0,
     "compare_price": null,
@@ -1118,7 +1118,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": true,
-    "description": "<div class=\"ewa-rteLine\">\n<div class=\"ewa-rteLine\">\n<p>The Diamond Roma Belt-U is a high-quality artisanal creation featuring a handcrafted crystal body and custom brass structure designed to be worn as a belt bag. Each piece is meticulously handcrafted over a period of 15 hours.</p>\n<p>Exterior: Crystal and Brass <br>Lining: Nappa Vitello Leather<br>Gold hardware<br>Size: W21cm x H12cm x D6cm<br>Chain shoulder strap: 100cm</p>\n<p>Fit Notes:<br>Designed to comfortably hold phone, cards, keys, and small essentials while maintaining a refined silhouette.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>\n</div>\n</div>",
+    "description": "<div class=\"ewa-rteLine\">\n<div class=\"ewa-rteLine\">\n<p>The Diamond Éclat-U is a high-quality artisanal creation featuring a handcrafted crystal body and custom brass structure designed to be worn as a belt bag. Each piece is meticulously handcrafted over a period of 15 hours.</p>\n<p>Exterior: Crystal and Brass <br>Lining: Nappa Vitello Leather<br>Gold hardware<br>Size: W21cm x H12cm x D6cm<br>Chain shoulder strap: 100cm</p>\n<p>Fit Notes:<br>Designed to comfortably hold phone, cards, keys, and small essentials while maintaining a refined silhouette.</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>\n</div>\n</div>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -1398,9 +1398,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 10083433808219,
-    "title": "Clutch Mini Wood - Crystal",
-    "handle": "clutch-mini-wood-crystal-silver-blue",
-    "category": "clutches",
+    "title": "Card HolderMini Wood - Crystal",
+    "handle": "card-holder-mini-wood-crystal-silver-blue",
+    "category": "card-holders",
     "price": 599.0,
     "compare_price": null,
     "images": [
@@ -1425,7 +1425,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<p>The Clutch Mini Bag is a high-quality  artisanal creation with a structure  made of a highly custom brass frame and then entirely handcrafted crystal &amp; wood body. Each piece is meticulously handcrafted over a period of over 10 hours. The bag is completed with an Vitello Liscio leather sides interior, adding a distinctive touch of luxury. Every detail reflects the excellence of its craftsmanship and  attention to design.</p>\n<ul>\n<li>Exterior: Crystal, Crystal in a setting and Brass</li>\n<li>\n<img>Lining: Leather and Crystal</li>\n<li>Gold or Silver -toned hardware</li>\n<li></li>\n<li>Size: W9cm x H9cm x D5cm</li>\n<li>Chain shoulder strap : 100 cm</li>\n</ul>\n<p>Fit Notes:<br>It's the perfect size to carry your cash, cards, keys, earphones, and more</p>\n<p>Customize your look by choosing any of the Six available colors: Black, transparent white, Azure, Camelot, Green and Champagne.<br>And the hardware between Silver or Gold</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
+    "description": "<p>The Card HolderMini Bag is a high-quality  artisanal creation with a structure  made of a highly custom brass frame and then entirely handcrafted crystal &amp; wood body. Each piece is meticulously handcrafted over a period of over 10 hours. The bag is completed with an Vitello Liscio leather sides interior, adding a distinctive touch of luxury. Every detail reflects the excellence of its craftsmanship and  attention to design.</p>\n<ul>\n<li>Exterior: Crystal, Crystal in a setting and Brass</li>\n<li>\n<img>Lining: Leather and Crystal</li>\n<li>Gold or Silver -toned hardware</li>\n<li></li>\n<li>Size: W9cm x H9cm x D5cm</li>\n<li>Chain shoulder strap : 100 cm</li>\n</ul>\n<p>Fit Notes:<br>It's the perfect size to carry your cash, cards, keys, earphones, and more</p>\n<p>Customize your look by choosing any of the Six available colors: Black, transparent white, Azure, Camelot, Green and Champagne.<br>And the hardware between Silver or Gold</p>\n<p>KATÉA Atelier — Crafted with crystal, created with love.</p>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",
@@ -1661,9 +1661,9 @@ const PRODUCTS_DATA = [
   },
   {
     "id": 9826805252443,
-    "title": "Clutch Wood-Crystal",
-    "handle": "clutch-wood-crystal-sylver-blue",
-    "category": "clutches",
+    "title": "Card HolderWood-Crystal",
+    "handle": "card-holder-wood-crystal-sylver-blue",
+    "category": "card-holders",
     "price": 899.0,
     "compare_price": null,
     "images": [
@@ -1691,7 +1691,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_rose": false,
     "fits_phone": false,
-    "description": "<p>Clutch Wood -Crystal  is a high-quality artisanal creation with a structure made of a brass frame and handcrafted crystal and wood body. Each piece is meticulously handcrafted over a period of 20 hours, reflecting the excellence of atelier craftsmanship and attention to design.</p>\n<ul>\n<li>Exterior: Crystal, Wood, and Brass</li>\n<li>Lining: Soft Nappa Leather</li>\n<li>Gold or Silver-toned hardware</li>\n<li></li>\n<li>Size: W17.5cm x H10.5cm x D6cm</li>\n<li>Chain shoulder strap: 100cm Nickel-free</li>\n</ul>\n<p>Fit Notes:<br>Perfect for carrying your evening essentials including lipstick, cards, keys, and small accessories.</p>\n<p><br>KATÉA Atelier — Crafted with crystal, created with love.</p>",
+    "description": "<p>Card HolderWood -Crystal  is a high-quality artisanal creation with a structure made of a brass frame and handcrafted crystal and wood body. Each piece is meticulously handcrafted over a period of 20 hours, reflecting the excellence of atelier craftsmanship and attention to design.</p>\n<ul>\n<li>Exterior: Crystal, Wood, and Brass</li>\n<li>Lining: Soft Nappa Leather</li>\n<li>Gold or Silver-toned hardware</li>\n<li></li>\n<li>Size: W17.5cm x H10.5cm x D6cm</li>\n<li>Chain shoulder strap: 100cm Nickel-free</li>\n</ul>\n<p>Fit Notes:<br>Perfect for carrying your evening essentials including lipstick, cards, keys, and small accessories.</p>\n<p><br>KATÉA Atelier — Crafted with crystal, created with love.</p>",
     "details": {
       "materials": "Premium grade crystal beads, high-tensile woven threading, hypoallergenic gold / silver tone hardware.",
       "dimensions": "Approx. 19cm (L) x 12cm (H) x 6cm (W) — Fits iPhone Pro Max and daily essentials.",

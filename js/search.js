@@ -69,7 +69,7 @@ class SearchManager {
       this.resultsContainer.innerHTML = `
         <div style="text-align: center; color: var(--color-text-muted); padding: 40px;">
           <p>No crystal pieces found matching "<strong>${query}</strong>".</p>
-          <p style="font-size: 0.85rem; margin-top: 8px;">Try searching for "Clutch", "Mini", "Pouch", "Pink", "Gold" or "Roma".</p>
+          <p style="font-size: 0.85rem; margin-top: 8px;">Try searching for "Card Holder", "Mini", "Pouch", "Pink", "Gold" or "Éclat".</p>
         </div>
       `;
       return;
