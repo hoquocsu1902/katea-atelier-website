@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KATÉA Atelier — Handcrafted Crystal Bags & Accessories</title>
+  <meta name="description" content="Discover KATÉA Atelier handcrafted crystal bags and accessories. Explore each creation and contact our atelier directly on WhatsApp for private ordering assistance." />
+  
+  <meta property="og:title" content="KATÉA Atelier — Handcrafted Crystal Bags & Accessories" />
+  <meta property="og:description" content="Crafted with crystal, created with love. Discover KATÉA Atelier creations and enquire directly through WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://katea.studio/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Tenor+Sans&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/products.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/modals.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/brand-refresh.css" />
+  <link rel="stylesheet" href="css/hero-upgrade.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-slider">
+      <div class="announcement-item active">
+        <span>KATÉA Atelier — Crafted with crystal, created with love</span>
+      </div>
+      <div class="announcement-item">
+        <span>Private client service for handcrafted crystal creations</span>
+      </div>
+      <div class="announcement-item">
+        <span>Direct WhatsApp enquiries & private ordering · +65 93971166</span>
+      </div>
+    </div>
+    <div class="announcement-controls">
+      <button class="announcement-btn" onclick="window.WhatsApp.open()" title="Contact KATÉA Atelier">Private Enquiry</button>
+    </div>
+  </div>
+
+  <!-- Sticky Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      
+      <button class="mobile-menu-toggle" aria-label="Open Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#/" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#collections/identity" class="nav-link">Identity</a></li>
+          <li class="nav-item">
+            <a href="#collections/all-handbags" class="nav-link">
+              Collections
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#collections/all-handbags" class="dropdown-link">All Handbags</a>
+              <a href="#collections/mini-bags" class="dropdown-link">Mini Bags</a>
+              <a href="#collections/fits-a-phone" class="dropdown-link">Fits A Phone</a>
+              <a href="#collections/clutches" class="dropdown-link">Clutches & Pouches</a>
+              <a href="#collections/la-vie-en-rose" class="dropdown-link">La Vie En Rose</a>
+              <a href="#collections/jewelry-accessories" class="dropdown-link">Jewelry & Accessories</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="#about-us" class="nav-link">Our Story</a></li>
+          <li class="nav-item"><a href="#care-guide" class="nav-link">Care Guide</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-logo">
+        <a href="#/" style="display: inline-block;">
+          <span class="logo-text">KATÉA</span>
+          <span class="logo-tagline">ATELIER</span>
+        </a>
+      </div>
+
+      <div class="header-actions">
+        <div class="currency-select-wrap">
+          <select class="currency-select" onchange="window.Currency.setCurrency(this.value)" aria-label="Select currency">
+            <option value="VND">VND (₫)</option>
+            <option value="SGD" selected>SGD (S$)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="AUD">AUD (A$)</option>
+          </select>
+        </div>
+
+        <button class="action-btn" onclick="window.Search.open()" title="Search creations" aria-label="Search creations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="header-whatsapp-cta" onclick="window.WhatsApp.open('Hello KATÉA Atelier, I would like assistance choosing a crystal piece.')">
+          WhatsApp Enquiry
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Master Dynamic Container for SPA -->
+  <main id="mainContent"></main>
+
+  <!-- HOME VIEW TEMPLATE -->
+  <template id="homeViewTemplate">
+    <section class="hero-slider-section" aria-label="KATÉA Atelier featured collections" tabindex="0">
+      <div class="hero-slides-wrapper">
+        <div class="hero-slide active" data-tone="warm">
+          <img src="assets/images/hero-identity.jpg" alt="Identity" class="hero-bg-image" />
+          <div class="hero-overlay"></div>
+          <div class="hero-light" aria-hidden="true"></div>
+          <div class="hero-content">
+            <span class="hero-caption">KATÉA Atelier · Handcrafted Crystal Bags</span>
+            <h1 class="hero-title">IDENTITY</h1>
+            <p class="hero-subtitle">Handcrafted with countless shimmering crystal beads, turning delicate details into timeless elegance.</p>
+            <div class="hero-actions">
+              <a href="#collections/all-handbags" class="btn hero-btn-primary">Explore The Collection</a>
+              <a href="#collections/clutches" class="btn hero-btn-ghost">View New Clutches</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-slide" data-tone="rose">
+          <img src="assets/images/hero-la-vie-en-rose.jpg" alt="La Vie En Rose" class="hero-bg-image" />
+          <div class="hero-overlay"></div>
+          <div class="hero-light" aria-hidden="true"></div>
+          <div class="hero-content">
+            <span class="hero-caption">Romantic Rose Crystal Capsule</span>
+            <h1 class="hero-title">LA VIE EN ROSE</h1>
+            <p class="hero-subtitle">Rare pink crystal beads woven with luminous gold hardware. Designed to be cherished and enjoyed.</p>
+            <div class="hero-actions">
+              <a href="#collections/la-vie-en-rose" class="btn hero-btn-primary">Explore The Capsule</a>
+              <button class="btn hero-btn-ghost" onclick="window.WhatsApp.open()">Speak With The Atelier</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-frame" aria-hidden="true"></div>
+
+      <button class="hero-nav-btn hero-prev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="hero-nav-btn hero-next" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <div class="hero-footer-ui">
+        <div class="hero-counter" aria-live="polite">
+          <span class="hero-counter-current">01</span>
+          <span class="hero-counter-line"></span>
+          <span class="hero-counter-total">02</span>
+        </div>
+        <div class="hero-dots" aria-label="Choose hero slide">
+          <button class="hero-dot active" aria-label="Show slide 1"></button>
+          <button class="hero-dot" aria-label="Show slide 2"></button>
+        </div>
+        <a href="#featured-creations" class="hero-scroll-cue">
+          <span>Discover</span>
+          <span class="hero-scroll-line" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Product Showcase Tabs -->
+    <section class="section" id="featured-creations">
+      <div class="container">
+        <div class="tab-navigation">
+          <button class="tab-btn active" data-tab="bestsellers">Best Sellers</button>
+          <button class="tab-btn" data-tab="new">New Collection</button>
+        </div>
+
+        <div class="products-grid" id="tabProductsGrid"></div>
+
+        <div class="text-center mt-40">
+          <a href="#collections/all-handbags" class="btn btn-secondary">
+            View All Handbags
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-Column Category Showcases -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="category-columns-grid">
+          <div class="category-card" onclick="window.location.hash='#collections/fits-a-phone'">
+            <img src="assets/images/category-fits-a-phone.jpg" alt="Fits A Phone" class="category-card-bg" />
+            <div class="category-card-overlay"></div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">FITS A PHONE</h3>
+              <span class="category-card-btn">VIEW THE COLLECTION</span>
+            </div>
+          </div>
+
+          <div class="category-card" onclick="window.location.hash='#collections/all-handbags'">
+            <img src="assets/images/category-all-handbags.jpg" alt="All Handbags" class="category-card-bg" />
+            <div class="category-card-overlay"></div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">All Handbags</h3>
+              <span class="category-card-btn">VIEW THE COLLECTION</span>
+            </div>
+          </div>
+
+          <div class="category-card" onclick="window.location.hash='#collections/clutches'">
+            <img src="assets/images/category-clutch-bags.jpg" alt="Clutch Bags" class="category-card-bg" />
+            <div class="category-card-overlay"></div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">CLUTCH BAGS</h3>
+              <span class="category-card-btn">VIEW THE COLLECTION</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spotlight Capsule: LA VIE EN ROSE -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Romantic Capsule</span>
+          <h2 class="section-title">LA VIE EN ROSE</h2>
+          <p class="section-desc">Immerse in the poetic glow of blush pink crystal beads and warm golden accents.</p>
+        </div>
+
+        <div class="products-grid">
+          <div class="product-card" onclick="window.location.hash='#product/crystal-pouch-brass-rare-pink'">
+            <div class="product-image-wrap">
+              <span class="badge badge-rose" style="position: absolute; top: 12px; left: 12px; z-index: 2;">Rose Capsule</span>
+              <img src="https://paleramilano.com/cdn/shop/files/Crystal-Brass-Pouch-Rare-Pink-Gold_d09c8238-3e90-4604-b717-2c8be6024d6d.jpg?v=1784817958&width=600" class="product-img" alt="Crystal Pouch Brass" />
+            </div>
+            <div class="product-info">
+              <span class="product-category">Pouches</span>
+              <div class="product-title">Crystal Pouch — Rare Pink & Gold</div>
+              <div class="product-price">S$489</div>
+            </div>
+          </div>
+
+          <div class="product-card" onclick="window.location.hash='#product/capri-baby-brown'">
+            <div class="product-image-wrap">
+              <span class="badge badge-rose" style="position: absolute; top: 12px; left: 12px; z-index: 2;">Rose Capsule</span>
+              <img src="https://paleramilano.com/cdn/shop/files/Capri-Baby-Pink-Gold_12b71cc8-eb78-4b76-a837-612bd2baa30e.jpg?v=1785745017&width=600" class="product-img" alt="Capri Baby Pink" />
+            </div>
+            <div class="product-info">
+              <span class="product-category">Mini Bags</span>
+              <div class="product-title">Capri Baby — Shimmering Pink</div>
+              <div class="product-price">S$519</div>
+            </div>
+          </div>
+
+          <div class="product-card" onclick="window.location.hash='#product/diamond-maxi-roma-1'">
+            <div class="product-image-wrap">
+              <span class="badge badge-rose" style="position: absolute; top: 12px; left: 12px; z-index: 2;">Rose Capsule</span>
+              <img src="https://paleramilano.com/cdn/shop/files/Diamond-Maxi-Roma-Rare-Pink-Gold_0e2d7b34-7652-420e-aa13-ff4c1d683064.jpg?v=1784823126&width=600" class="product-img" alt="Diamond Maxi Roma" />
+            </div>
+            <div class="product-info">
+              <span class="product-category">Fits A Phone</span>
+              <div class="product-title">Diamond Maxi Roma — Pink Gold</div>
+              <div class="product-price">S$629</div>
+            </div>
+          </div>
+
+          <div class="product-card" onclick="window.location.hash='#product/crystal-wallet-rare-pink'">
+            <div class="product-image-wrap">
+              <span class="badge badge-rose" style="position: absolute; top: 12px; left: 12px; z-index: 2;">Accessories</span>
+              <img src="https://paleramilano.com/cdn/shop/files/Crystal-Pouch-Rare-Pink-Silver_00c37b17-19d8-442e-8c3c-5927b7aa6017.jpg?v=1784816492&width=600" class="product-img" alt="Crystal Pouch" />
+            </div>
+            <div class="product-info">
+              <span class="product-category">Accessories</span>
+              <div class="product-title">Crystal Wallet — Rare Pink</div>
+              <div class="product-price">S$389</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secondary Story Banner -->
+    <section class="spotlight-banner-section">
+      <img src="assets/images/spotlight-diamond-roma-belt.jpg" alt="Diamond Roma Belt" class="spotlight-banner-bg" />
+      <div class="spotlight-banner-overlay"></div>
+      <div class="container">
+        <div class="spotlight-banner-content">
+          <span class="section-subtitle">Crystal Jewelry & Accents</span>
+          <h2 class="spotlight-banner-title">Diamond Roma Belt</h2>
+          <p class="spotlight-banner-desc">Sculptural crystal accessories designed to accentuate your evening silhouette and everyday couture style.</p>
+          <a href="#collections/jewelry-accessories" class="btn btn-white">EXPLORE ACCESSORIES</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-Step Private Ordering Guide -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Private Ordering</span>
+          <h2 class="section-title">From discovery to private assistance</h2>
+          <p class="section-desc">KATÉA Atelier is designed as a private catalogue experience. Explore at your own pace, then speak directly with the atelier when you are ready.</p>
+        </div>
+
+        <div class="guide-steps-grid guide-steps-minimal">
+          <div class="guide-step-card">
+            <span class="guide-step-number">01</span>
+            <h3 class="guide-step-title">Explore The Collection</h3>
+            <p class="guide-step-text">Discover silhouettes, crystal tones and finishes, then open any creation to view its details, dimensions and available variations.</p>
+          </div>
+
+          <div class="guide-step-card">
+            <span class="guide-step-number">02</span>
+            <h3 class="guide-step-title">Contact The Atelier</h3>
+            <p class="guide-step-text">Use the WhatsApp enquiry button on the product page. The selected piece and finish are included automatically so your conversation starts with the right details.</p>
+          </div>
+
+          <div class="guide-step-card">
+            <span class="guide-step-number">03</span>
+            <h3 class="guide-step-title">Confirm Your Piece</h3>
+            <p class="guide-step-text">Our private client service will assist with availability, personalization, delivery details and the next steps for your order directly through WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Private Client Service -->
+    <section class="section atelier-concierge-section" id="conciergeSection">
+      <div class="container">
+        <div class="atelier-concierge-card">
+          <div class="atelier-concierge-copy">
+            <span class="section-subtitle">Private Client Service</span>
+            <h2>Personal assistance from KATÉA Atelier</h2>
+            <p>For availability, colour selection, bespoke requests or delivery enquiries, contact the atelier directly. We will guide you personally and help you choose the piece that best suits your occasion.</p>
+          </div>
+          <button class="btn btn-whatsapp btn-lg" onclick="window.WhatsApp.open('Hello KATÉA Atelier, I would like private assistance with choosing and ordering a crystal piece.')">
+            Contact The Atelier On WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Client Experiences</span>
+          <h2 class="section-title">Loved by Women Around the World</h2>
+        </div>
+
+        <div class="testimonials-slider">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">
+              "The craftsmanship of my KATÉA Crystal Pouch is breathtaking. Every single bead catches the light beautifully, and it fits my phone effortlessly. An absolute masterpiece."
+            </p>
+            <div class="testimonial-author">Sophia L.</div>
+            <div class="testimonial-location">Verified Client</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <!-- Luxury Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid footer-top-grid-refined">
+        <div class="footer-col footer-brand-col">
+          <span class="footer-logo">KATÉA</span>
+          <span class="footer-brand-subtitle">ATELIER</span>
+          <p class="footer-about-text">
+            KATÉA Atelier creates crystal pieces with a quiet sense of ceremony — considered silhouettes, luminous detail and a dedication to craftsmanship. Explore the collection online and contact our private client service directly for personal assistance.
+          </p>
+          <div class="footer-contact-info footer-contact-clean">
+            <a href="javascript:void(0)" onclick="window.WhatsApp.open()">WhatsApp · +65 93971166</a>
+            <a href="mailto:contact@katea.studio">contact@katea.studio</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Collections</h4>
+          <div class="footer-links">
+            <a href="#collections/all-handbags" class="footer-link">All Handbags</a>
+            <a href="#collections/identity" class="footer-link">Identity</a>
+            <a href="#collections/mini-bags" class="footer-link">Mini Bags</a>
+            <a href="#collections/clutches" class="footer-link">Clutches</a>
+            <a href="#collections/jewelry-accessories" class="footer-link">Jewelry & Accessories</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Client Care</h4>
+          <div class="footer-links">
+            <a href="#about-us" class="footer-link">Our Story</a>
+            <a href="#care-guide" class="footer-link">Care Guide</a>
+            <a href="#faqs" class="footer-link">FAQs</a>
+            <a href="#policies/shipping" class="footer-link">Shipping Policy</a>
+            <a href="#policies/refund" class="footer-link">Returns & Refunds</a>
+            <a href="#policies/privacy" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-col footer-concierge-col">
+          <h4 class="footer-title">Private Client Service</h4>
+          <p class="footer-about-text">Seen a piece you love? Send us the product name or open its detail page and enquire directly through WhatsApp for availability and ordering assistance.</p>
+          <button class="btn btn-whatsapp btn-block" onclick="window.WhatsApp.open('Hello KATÉA Atelier, I would like assistance with a crystal piece I saw on your website.')">WhatsApp Enquiry</button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 <strong>KATÉA Atelier</strong> · katea.studio. All rights reserved.</div>
+        <div class="footer-signature">Crafted with crystal, created with love.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals & Drawers -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+
+
+  <!-- Quick View Modal -->
+  <div class="quickview-modal" id="quickViewModal"></div>
+
+  <!-- Live Predictive Search Modal -->
+  <div class="search-modal" id="searchModal">
+    <div class="container">
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
+        <button class="close-btn" onclick="window.Search.close()">✕</button>
+      </div>
+      <div class="search-input-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search handcrafted crystal bags, pouches, clutches..." autocomplete="off" />
+      </div>
+      <div class="search-results-wrap" id="searchResults">
+        <div style="text-align: center; color: var(--color-text-light); padding: 30px;">
+          Type to instantly search KATÉA creations...
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="logo-text" style="font-size: 1.3rem;">KATÉA</span>
+      <button class="close-btn" id="mobileDrawerClose">✕</button>
+    </div>
+    <div class="mobile-drawer-body">
+      <ul class="mobile-nav-list">
+        <li><a href="#/" class="mobile-nav-link">Home</a></li>
+        <li><a href="#collections/identity" class="mobile-nav-link">Identity</a></li>
+        <li>
+          <a href="#collections/all-handbags" class="mobile-nav-link">Collections</a>
+          <div class="mobile-sub-list">
+            <a href="#collections/all-handbags" class="mobile-sub-link">All Handbags</a>
+            <a href="#collections/mini-bags" class="mobile-sub-link">Mini Bags</a>
+            <a href="#collections/fits-a-phone" class="mobile-sub-link">Fits A Phone</a>
+            <a href="#collections/clutches" class="mobile-sub-link">Clutches & Pouches</a>
+            <a href="#collections/la-vie-en-rose" class="mobile-sub-link">La Vie En Rose</a>
+            <a href="#collections/jewelry-accessories" class="mobile-sub-link">Jewelry & Accessories</a>
+          </div>
+        </li>
+        <li><a href="#about-us" class="mobile-nav-link">Our Story</a></li>
+        <li><a href="#care-guide" class="mobile-nav-link">Care Guide</a></li>
+        <li><a href="#faqs" class="mobile-nav-link">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-whatsapp btn-block" onclick="window.WhatsApp.open()">
+        Private WhatsApp Enquiry
+      </button>
+    </div>
+  </div>
+
+  <!-- WhatsApp Widget -->
+  <div class="whatsapp-floating-wrap">
+    <div class="whatsapp-chat-popup" id="whatsappChatPopup">
+      <div class="whatsapp-popup-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 10px; height: 10px; background: #4CAF50; border-radius: 50%; border: 2px solid white;"></div>
+          <div>
+            <div style="font-weight: 600; font-size: 0.95rem;">KATÉA Atelier</div>
+            <div style="font-size: 0.72rem; opacity: 0.9;">Typically replies in minutes</div>
+          </div>
+        </div>
+        <button class="close-btn" style="color: white; font-size: 1rem;" onclick="document.getElementById('whatsappChatPopup').classList.remove('active')">✕</button>
+      </div>
+      <div class="whatsapp-popup-body whatsapp-popup-body-clean">
+        <img src="assets/images/katea-our-story-logo.png" alt="KATÉA Atelier" class="whatsapp-popup-logo">
+      </div>
+      <div class="whatsapp-popup-footer">
+        <button class="btn btn-whatsapp btn-block btn-sm" onclick="window.WhatsApp.open()">
+          Start Private Enquiry
+        </button>
+      </div>
+    </div>
+
+    <div class="whatsapp-floating-btn" onclick="
+      const popup = document.getElementById('whatsappChatPopup');
+      if (popup.classList.contains('active')) {
+        window.WhatsApp.open();
+      } else {
+        popup.classList.add('active');
+      }
+    " title="Contact KATÉA Atelier on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.044-1.808-.432-1.396-.566-2.316-1.99-2.386-2.084-.07-.093-.57-.758-.57-1.445 0-.688.355-1.027.481-1.167.126-.14.275-.175.367-.175.091 0 .183.001.263.005.084.004.197-.032.308.234.113.27.387.944.421 1.014.034.07.057.151.009.245-.047.094-.07.152-.14.233-.07.082-.148.182-.211.245-.07.07-.143.146-.062.285.082.139.363.598.779.969.536.478.988.626 1.127.696.14.07.221.058.303-.035.082-.093.35-.407.444-.547.093-.14.187-.117.315-.07.128.047.813.383.953.453.14.07.233.105.268.163.035.058.035.337-.109.742z"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/data/products.js"></script>
+  <script src="js/data/collections.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/whatsapp.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
