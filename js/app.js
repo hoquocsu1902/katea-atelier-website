@@ -65,12 +65,24 @@ function handleRouting() {
  * 1. Home Page View
  */
 function renderHomeView() {
-  const homeView = document.getElementById("homeViewTemplate");
-  const mainContent = document.getElementById("mainContent");
-  if (homeView && mainContent) {
+  try {
+    const homeView = document.getElementById("homeViewTemplate");
+    const mainContent = document.getElementById("mainContent");
+    if (!homeView) {
+      console.error("homeViewTemplate not found");
+      return;
+    }
+    if (!mainContent) {
+      console.error("mainContent element not found in renderHomeView");
+      return;
+    }
+
     mainContent.innerHTML = homeView.innerHTML;
     initProductTabs();
     if (window.UI) window.UI.initHeroSlider();
+  } catch (error) {
+    console.error("renderHomeView error:", error);
+    alert("Lỗi tải trang chủ: " + error.message);
   }
 }
 
