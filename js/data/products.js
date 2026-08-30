@@ -17,10 +17,7 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 15 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788063365/hinh1.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788063365/hinh1.png"
     ],
     "variants": [
       {
@@ -59,9 +56,6 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 18 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png"
     ],
     "variants": [
@@ -87,7 +81,7 @@ const PRODUCTS_DATA = [
     "id": 10339370434909,
     "title": "Glacière Mini",
     "handle": "product-3",
-    "category": "mini-bags",
+    "category": "handbags",
     "price": 890.0,
     "compare_price": null,
     "is_new": true,
@@ -101,9 +95,6 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 12 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png"
     ],
     "variants": [
@@ -135,9 +126,6 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 20 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png"
     ],
     "variants": [
