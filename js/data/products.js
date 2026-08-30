@@ -6,7 +6,12 @@ const PRODUCTS_DATA = [
     "category": "handbags",
     "price": 0.0,
     "compare_price": null,
-    "images": [],
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064194/BELLA_1.heic",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064194/Glaciere_1.heic",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064195/Glaciere.heic",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064194/BELLA_1.heic"
+    ],
     "variants": []
   },
   {
