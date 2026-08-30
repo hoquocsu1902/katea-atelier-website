@@ -13,13 +13,18 @@ const CURRENCIES = {
 
 class CurrencyManager {
   constructor() {
-    this.current = localStorage.getItem("katea_currency") || "SGD";
+    try {
+      this.current = (typeof localStorage !== "undefined" && localStorage.getItem("katea_currency")) || "SGD";
+    } catch (_) {
+      this.current = "SGD";
+    }
+    if (!CURRENCIES[this.current]) this.current = "SGD";
   }
 
   setCurrency(code) {
     if (!CURRENCIES[code]) return;
     this.current = code;
-    localStorage.setItem("katea_currency", code);
+    try { if (typeof localStorage !== "undefined") localStorage.setItem("katea_currency", code); } catch (_) {}
     this.updateDOM();
   }
 

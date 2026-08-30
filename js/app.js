@@ -115,6 +115,16 @@ function renderCollectionView(handle) {
     const filteredProducts = PRODUCTS_DATA.filter(p => collection.filter(p));
     console.log("Rendering collection:", handle, "with", filteredProducts.length, "products");
 
+    const isEmpty = filteredProducts.length === 0;
+    const gridHtml = isEmpty
+      ? `<div class="collection-empty" style="text-align:center;padding:48px 0;color:var(--color-text-muted);">
+           <p style="font-size:1.05rem;margin-bottom:12px;">No creations in this collection yet.</p>
+           <p style="font-size:0.9rem;margin-bottom:20px;">All 4 handcrafted pieces are currently curated in All Handbags. Discover the full collection.</p>
+           <a href="#collections/all-handbags" class="btn btn-primary">View All Handbags</a>
+         </div>`
+      : filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("");
+
+    // Preserve All Handbags invariant: COLLECTIONS_DATA[0] filter is () => true so it always shows 4
     mainContent.innerHTML = `
       <div class="section-alt page-hero collection-hero">
         <div class="container text-center">
@@ -133,7 +143,7 @@ function renderCollectionView(handle) {
             </div>
             <div class="collection-sort">
               <label class="collection-sort-label">Sort by:</label>
-              <select class="form-control collection-sort-select" onchange="sortCollection(this.value, '${handle}')">
+              <select class="form-control collection-sort-select" onchange="sortCollection(this.value, '${collection.handle}')">
                 <option value="featured">Featured</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
@@ -143,7 +153,7 @@ function renderCollectionView(handle) {
           </div>
 
           <div class="products-grid" id="collectionProductsGrid">
-            ${filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("")}
+            ${gridHtml}
           </div>
         </div>
       </div>
@@ -155,8 +165,13 @@ function renderCollectionView(handle) {
 }
 
 function sortCollection(criteria, handle) {
-  const collection = COLLECTIONS_DATA.find(c => c.handle === handle) || COLLECTIONS_DATA[0];
-  let items = PRODUCTS_DATA.filter(p => collection.filter(p));
+  try {
+    if (typeof COLLECTIONS_DATA === "undefined" || typeof PRODUCTS_DATA === "undefined") return;
+    const collection = COLLECTIONS_DATA.find(c => c.handle === handle) || COLLECTIONS_DATA[0];
+    if (!collection || typeof collection.filter !== "function") return;
+    let items = PRODUCTS_DATA.filter(p => {
+      try { return collection.filter(p); } catch (_) { return false; }
+    });
 
   if (criteria === "price-low") {
     items.sort((a, b) => a.price - b.price);
@@ -168,9 +183,14 @@ function sortCollection(criteria, handle) {
 
   const grid = document.getElementById("collectionProductsGrid");
   if (grid) {
-    grid.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("");
+    if (items.length === 0) {
+      grid.innerHTML = `<div class="collection-empty" style="text-align:center;padding:32px 0;color:var(--color-text-muted);">No creations to sort in this collection.</div>`;
+    } else {
+      grid.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("");
+    }
       if (window.Currency) window.Currency.updateDOM();
   }
+  } catch (e) { console.error("sortCollection error:", e); }
 }
 
 /**
@@ -212,8 +232,7 @@ function renderProductDetailView(handle) {
             </div>
             <div class="pdp-thumbnails">
               ${product.images.map((img, i) => `
-                <img src="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" 
-                     onclick="document.getElementById('pdpMainImg').src='${img}'; document.querySelectorAll('.pdp-thumb').forEach(t=>t.style.borderColor='transparent'); this.style.borderColor='var(--color-primary)';" />
+                <img src="${img}" data-src="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" />
               `).join("")}
             </div>
           </div>
@@ -236,22 +255,18 @@ function renderProductDetailView(handle) {
               <label class="form-label" style="margin-bottom: 10px; display: block;">Select Finish & Color Tone:</label>
               <div class="pdp-variants">
                 ${product.variants.map((v, i) => `
-                  <button class="btn btn-sm ${i === 0 ? "btn-primary" : "btn-secondary"} pdp-variant-btn" 
-                          onclick="document.querySelectorAll('.pdp-variant-btn').forEach(b => b.className='btn btn-sm btn-secondary pdp-variant-btn'); this.className='btn btn-sm btn-primary pdp-variant-btn'; document.getElementById('pdpSelectedVariant').value='${v.title}';">
+                  <button class="btn btn-sm ${i === 0 ? "btn-primary" : "btn-secondary"} pdp-variant-btn" data-variant="${v.title.replace(/"/g, '&quot;')}">
                     ${v.title}
                   </button>
                 `).join("")}
               </div>
-              <input type="hidden" id="pdpSelectedVariant" value="${product.variants[0]?.title || "Standard"}" />
+              <input type="hidden" id="pdpSelectedVariant" value="${(product.variants[0]?.title || "Standard").replace(/"/g, '&quot;')}" />
             </div>
 
             <!-- Primary Private Ordering Action -->
             <div class="pdp-private-order">
               <p class="pdp-private-order-note">Interested in this piece? Contact KATÉA Atelier directly for availability, finish guidance and private ordering assistance.</p>
-              <button class="btn btn-whatsapp btn-block pdp-whatsapp-btn" onclick="
-                const variant = document.getElementById('pdpSelectedVariant').value;
-                window.WhatsApp.orderProduct(${product.id}, variant, 1);
-              ">
+              <button class="btn btn-whatsapp btn-block pdp-whatsapp-btn" data-product-id="${product.id}">
                 Enquire & Order On WhatsApp
               </button>
             </div>
@@ -276,6 +291,36 @@ function renderProductDetailView(handle) {
       </div>
     </div>
   `;
+
+  // Bind PDP gallery and variant interactions without inline handlers (preserves quality, avoids single-quote breakage)
+  requestAnimationFrame(() => {
+    const pdpMainImg = document.getElementById("pdpMainImg");
+    const pdpThumbs = document.querySelectorAll(".pdp-thumb");
+    pdpThumbs.forEach(thumb => {
+      thumb.addEventListener("click", () => {
+        if (pdpMainImg && thumb.dataset.src) pdpMainImg.src = thumb.dataset.src;
+        pdpThumbs.forEach(t => t.style.borderColor = "transparent");
+        thumb.style.borderColor = "var(--color-primary)";
+      });
+    });
+    pdpMainImg?.addEventListener("click", () => window.UI?.showToast("High Resolution Atelier Zoom"));
+
+    const variantBtns = document.querySelectorAll(".pdp-variant-btn");
+    const variantInput = document.getElementById("pdpSelectedVariant");
+    variantBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
+        btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
+        if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
+      });
+    });
+
+    const waBtn = document.querySelector(".pdp-whatsapp-btn");
+    if (waBtn) waBtn.addEventListener("click", () => {
+      const variant = document.getElementById("pdpSelectedVariant")?.value || "Standard";
+      window.WhatsApp?.orderProduct(product.id, variant, 1);
+    });
+  });
 }
 
 /**
@@ -476,7 +521,7 @@ function initProductTabs() {
     if (tabName === "bestsellers") {
       items = PRODUCTS_DATA.filter(p => p.is_best_seller).slice(0, 8);
     } else {
-      items = PRODUCTS_DATA.filter(p => p.is_new || !p.is_best_seller).slice(0, 8);
+      items = PRODUCTS_DATA.filter(p => p.is_new).slice(0, 8);
     }
 
     container.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("");

@@ -24,12 +24,19 @@ class UIManager {
   initAnnouncementBar() {
     const items = document.querySelectorAll(".announcement-item");
     if (items.length <= 1) return;
+    if (this.announcementInterval) clearInterval(this.announcementInterval);
 
     this.announcementInterval = setInterval(() => {
+      if (document.hidden) return;
       items[this.currentAnnouncement].classList.remove("active");
       this.currentAnnouncement = (this.currentAnnouncement + 1) % items.length;
       items[this.currentAnnouncement].classList.add("active");
     }, 4000);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) return;
+      // ensure visible item stays in sync after tab switch
+    });
   }
 
   // ==========================================
@@ -337,20 +344,16 @@ class UIManager {
           <label class="form-label" style="margin-bottom: 8px; display: block;">Finish & Color:</label>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             ${product.variants.map((v, i) => `
-              <button class="btn btn-sm ${i === 0 ? "btn-primary" : "btn-secondary"} qv-variant-btn" 
-                      onclick="document.querySelectorAll('.qv-variant-btn').forEach(b => b.className='btn btn-sm btn-secondary qv-variant-btn'); this.className='btn btn-sm btn-primary qv-variant-btn'; document.getElementById('qvSelectedVariant').value='${v.title}';">
+              <button class="btn btn-sm ${i === 0 ? "btn-primary" : "btn-secondary"} qv-variant-btn" data-variant="${v.title.replace(/"/g, '&quot;')}">
                 ${v.title}
               </button>
             `).join("")}
           </div>
-          <input type="hidden" id="qvSelectedVariant" value="${product.variants[0]?.title || "Standard"}" />
+          <input type="hidden" id="qvSelectedVariant" value="${(product.variants[0]?.title || "Standard").replace(/"/g, '&quot;')}" />
         </div>
 
         <div class="quickview-private-note">For availability and ordering, contact KATÉA Atelier directly with your selected finish.</div>
-        <button class="btn btn-whatsapp btn-block" onclick="
-          const variant = document.getElementById('qvSelectedVariant').value;
-          window.WhatsApp.orderProduct(${product.id}, variant, 1);
-        ">
+        <button class="btn btn-whatsapp btn-block qv-whatsapp-btn" data-product-id="${product.id}">
           Enquire & Order On WhatsApp
         </button>
 
@@ -362,6 +365,24 @@ class UIManager {
 
     modal.classList.add("active");
     if (overlay) overlay.classList.add("active");
+
+    requestAnimationFrame(() => {
+      const qvVariantBtns = modal.querySelectorAll(".qv-variant-btn");
+      const qvVariantInput = modal.querySelector("#qvSelectedVariant");
+      qvVariantBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          qvVariantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
+          btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
+          if (qvVariantInput) qvVariantInput.value = btn.dataset.variant || "Standard";
+        });
+      });
+      const qvWaBtn = modal.querySelector(".qv-whatsapp-btn");
+      if (qvWaBtn) qvWaBtn.addEventListener("click", () => {
+        const variant = modal.querySelector("#qvSelectedVariant")?.value || "Standard";
+        const pid = qvWaBtn.dataset.productId;
+        window.WhatsApp?.orderProduct(pid, variant, 1);
+      });
+    });
   }
 
   closeQuickView() {

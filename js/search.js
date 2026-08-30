@@ -15,7 +15,11 @@ class SearchManager {
     this.resultsContainer = document.getElementById("searchResults");
 
     if (this.input) {
-      this.input.addEventListener("input", (e) => this.handleSearch(e.target.value));
+      let debounceTimer = null;
+      this.input.addEventListener("input", (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => this.handleSearch(e.target.value), 180);
+      });
       this.input.addEventListener("keydown", (e) => {
         if (e.key === "Escape") this.close();
       });
@@ -57,12 +61,16 @@ class SearchManager {
       return;
     }
 
+    if (typeof PRODUCTS_DATA === "undefined") return;
     const matches = PRODUCTS_DATA.filter(p => {
-      const matchTitle = p.title.toLowerCase().includes(cleanQuery);
-      const matchHandle = p.handle.toLowerCase().includes(cleanQuery);
-      const matchCategory = p.category.toLowerCase().includes(cleanQuery);
-      const matchTags = p.tags && p.tags.some(t => t.toLowerCase().includes(cleanQuery));
-      return matchTitle || matchHandle || matchCategory || matchTags;
+      try {
+        const matchTitle = p.title && p.title.toLowerCase().includes(cleanQuery);
+        const matchHandle = p.handle && p.handle.toLowerCase().includes(cleanQuery);
+        const matchCategory = p.category && p.category.toLowerCase().includes(cleanQuery);
+        const matchTags = Array.isArray(p.tags) && p.tags.some(t => t && t.toLowerCase().includes(cleanQuery));
+        const matchDesc = p.description && p.description.toLowerCase().includes(cleanQuery);
+        return matchTitle || matchHandle || matchCategory || matchTags || matchDesc;
+      } catch (_) { return false; }
     });
 
     if (matches.length === 0) {
