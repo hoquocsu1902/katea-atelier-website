@@ -21,7 +21,12 @@ const PRODUCTS_DATA = [
     "category": "handbags",
     "price": 0.0,
     "compare_price": null,
-    "images": [],
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh2.png"
+    ]
     "variants": []
   },
   {
@@ -31,7 +36,12 @@ const PRODUCTS_DATA = [
     "category": "handbags",
     "price": 0.0,
     "compare_price": null,
-    "images": [],
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh3.png"
+    ]
     "variants": []
   },
   {
@@ -41,7 +51,12 @@ const PRODUCTS_DATA = [
     "category": "handbags",
     "price": 0.0,
     "compare_price": null,
-    "images": [],
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788065699/hinh4.png"
+    ]
     "variants": []
   }
 ];
