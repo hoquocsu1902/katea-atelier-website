@@ -23,32 +23,42 @@ document.addEventListener("DOMContentLoaded", () => {
  * SPA Hash Router
  */
 function handleRouting() {
-  const hash = window.location.hash || "#/";
-  const mainContent = document.getElementById("mainContent");
-  if (!mainContent) return;
+  try {
+    const hash = window.location.hash || "#/";
+    const mainContent = document.getElementById("mainContent");
+    if (!mainContent) {
+      console.error("mainContent element not found");
+      return;
+    }
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
-  if (hash === "#/" || hash === "") {
-    renderHomeView();
-  } else if (hash.startsWith("#collections")) {
-    const handle = hash.replace("#collections/", "").replace("#collections", "") || "all-handbags";
-    renderCollectionView(handle);
-  } else if (hash.startsWith("#product/")) {
-    const handle = hash.replace("#product/", "");
-    renderProductDetailView(handle);
-  } else if (hash === "#about-us") {
-    renderAboutUsView();
-  } else if (hash === "#care-guide") {
-    renderCareGuideView();
-  } else if (hash === "#faqs") {
-    renderFAQsView();
-  } else if (hash.startsWith("#policies/")) {
-    const policyType = hash.replace("#policies/", "");
-    renderPolicyView(policyType);
+    if (hash === "#/" || hash === "") {
+      renderHomeView();
+    } else if (hash.startsWith("#collections")) {
+      const handle = hash.replace("#collections/", "").replace("#collections", "") || "all-handbags";
+      console.log("Routing to collection:", handle);
+      renderCollectionView(handle);
+    } else if (hash.startsWith("#product/")) {
+      const handle = hash.replace("#product/", "");
+      console.log("Routing to product:", handle);
+      renderProductDetailView(handle);
+    } else if (hash === "#about-us") {
+      renderAboutUsView();
+    } else if (hash === "#care-guide") {
+      renderCareGuideView();
+    } else if (hash === "#faqs") {
+      renderFAQsView();
+    } else if (hash.startsWith("#policies/")) {
+      const policyType = hash.replace("#policies/", "");
+      renderPolicyView(policyType);
+    }
+
+    if (window.Currency) window.Currency.updateDOM();
+  } catch (error) {
+    console.error("Routing error:", error);
+    alert("Lỗi điều hướng: " + error.message);
   }
-
-  if (window.Currency) window.Currency.updateDOM();
 }
 
 /**
@@ -68,45 +78,68 @@ function renderHomeView() {
  * 2. Collection Page View
  */
 function renderCollectionView(handle) {
-  const mainContent = document.getElementById("mainContent");
-  if (!mainContent) return;
+  try {
+    const mainContent = document.getElementById("mainContent");
+    if (!mainContent) {
+      console.error("mainContent element not found in renderCollectionView");
+      return;
+    }
 
-  const collection = COLLECTIONS_DATA.find(c => c.handle === handle) || COLLECTIONS_DATA[0];
-  const filteredProducts = PRODUCTS_DATA.filter(p => collection.filter(p));
+    if (typeof COLLECTIONS_DATA === "undefined") {
+      console.error("COLLECTIONS_DATA is not defined");
+      return;
+    }
+    if (typeof PRODUCTS_DATA === "undefined") {
+      console.error("PRODUCTS_DATA is not defined");
+      return;
+    }
 
-  mainContent.innerHTML = `
-    <div class="section-alt page-hero collection-hero">
-      <div class="container text-center">
-        <span class="section-subtitle">KATÉA Atelier</span>
-        <h1 class="page-hero-title">${collection.title}</h1>
-        <p class="section-desc">${collection.description}</p>
-      </div>
-    </div>
+    const collection = COLLECTIONS_DATA.find(c => c.handle === handle) || COLLECTIONS_DATA[0];
+    if (!collection) {
+      console.error("Collection not found:", handle);
+      return;
+    }
 
-    <div class="section">
-      <div class="container">
-        <!-- Filter & Sorting Header -->
-        <div class="collection-toolbar">
-          <div class="collection-count">
-            Showing <strong>${filteredProducts.length}</strong> handcrafted creations
-          </div>
-          <div class="collection-sort">
-            <label class="collection-sort-label">Sort by:</label>
-            <select class="form-control collection-sort-select" onchange="sortCollection(this.value, '${handle}')">
-              <option value="featured">Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="title">Alphabetical (A-Z)</option>
-            </select>
-          </div>
-        </div>
+    const filteredProducts = PRODUCTS_DATA.filter(p => collection.filter(p));
+    console.log("Rendering collection:", handle, "with", filteredProducts.length, "products");
 
-        <div class="products-grid" id="collectionProductsGrid">
-          ${filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("")}
+    mainContent.innerHTML = `
+      <div class="section-alt page-hero collection-hero">
+        <div class="container text-center">
+          <span class="section-subtitle">KATÉA Atelier</span>
+          <h1 class="page-hero-title">${collection.title}</h1>
+          <p class="section-desc">${collection.description}</p>
         </div>
       </div>
-    </div>
-  `;
+
+      <div class="section">
+        <div class="container">
+          <!-- Filter & Sorting Header -->
+          <div class="collection-toolbar">
+            <div class="collection-count">
+              Showing <strong>${filteredProducts.length}</strong> handcrafted creations
+            </div>
+            <div class="collection-sort">
+              <label class="collection-sort-label">Sort by:</label>
+              <select class="form-control collection-sort-select" onchange="sortCollection(this.value, '${handle}')">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="title">Alphabetical (A-Z)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="products-grid" id="collectionProductsGrid">
+            ${filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("")}
+          </div>
+        </div>
+      </div>
+    `;
+  } catch (error) {
+    console.error("renderCollectionView error:", error);
+    alert("Lỗi hiển thị collection: " + error.message);
+  }
 }
 
 function sortCollection(criteria, handle) {
