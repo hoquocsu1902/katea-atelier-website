@@ -7,10 +7,10 @@ const PRODUCTS_DATA = [
     "price": 0.0,
     "compare_price": null,
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064194/BELLA_1.heic",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064194/Glaciere_1.heic",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064195/Glaciere.heic",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788064194/BELLA_1.heic"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/f_auto,q_auto/v1788064194/BELLA_1.jpg",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/f_auto,q_auto/v1788064194/Glaciere_1.jpg",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/f_auto,q_auto/v1788064195/Glaciere.jpg",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/f_auto,q_auto/v1788064194/BELLA_1.jpg"
     ],
     "variants": []
   },
