@@ -45,15 +45,6 @@ const COLLECTIONS_DATA = [
     filter: (p) => p.category === "card-holders" || p.handle.includes("card-holder") || p.handle.includes("pouch")
   },
   {
-    id: "jewelry-accessories",
-    handle: "jewelry-accessories",
-    title: "Jewelry & Accessories",
-    subtitle: "Belts, Chains, Necklaces & Small Crystal Adornments",
-    description: "Lustrous crystal belts, custom wallet chains, and bespoke jewelry designed to elevate your personal style.",
-    image: "https://paleramilano.com/cdn/shop/files/Diamond_Roma_Belt_Silver_Blue_Gold.jpg?v=1771513805&width=1600",
-    filter: (p) => p.category === "jewelry-accessories" || p.handle.includes("belt") || p.handle.includes("necklace") || p.handle.includes("wallet") || p.handle.includes("chain")
-  },
-  {
     id: "best-sellers",
     handle: "best-sellers",
     title: "Best Sellers",
