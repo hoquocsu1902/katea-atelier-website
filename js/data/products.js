@@ -9,7 +9,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_best_seller": true,
     "is_rose": false,
-    "fits_phone": true,
+    "fits_phone": false,
     "tags": ["diamond", "eclat", "handbags", "crystal"],
     "description": "The Diamond Éclat collection embodies the perfect fusion of crystalline brilliance and architectural elegance. Each piece is meticulously handcrafted with premium crystal beads, creating a luminous masterpiece that captures light from every angle.",
     "details": {
@@ -49,7 +49,7 @@ const PRODUCTS_DATA = [
     "is_new": false,
     "is_best_seller": true,
     "is_rose": false,
-    "fits_phone": true,
+    "fits_phone": false,
     "tags": ["glaciere", "crystal", "handbags"],
     "description": "The Glacière collection captures the ethereal beauty of frozen crystal. Each bag features a unique gradient of crystalline tones, handwoven with precision to create a mesmerizing play of light.",
     "details": {
@@ -121,7 +121,7 @@ const PRODUCTS_DATA = [
     "is_new": true,
     "is_best_seller": false,
     "is_rose": true,
-    "fits_phone": true,
+    "fits_phone": false,
     "tags": ["glaciere", "rose", "handbags", "crystal"],
     "description": "The Glacière Rosé edition captures the delicate blush of dawn. A romantic interpretation of the Glacière collection, featuring soft rose-gold crystalline tones.",
     "details": {
