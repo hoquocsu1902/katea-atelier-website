@@ -91,8 +91,8 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 20 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165618/BELLA.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165617/BELLA-2.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165617/BELLA-2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165618/BELLA.png"
     ],
     "variants": [
       {
