@@ -271,12 +271,12 @@ class UIManager {
     const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
     const comparePrice = product.compare_price ? (window.Currency ? window.Currency.format(product.compare_price) : `$${product.compare_price}`) : "";
 
-    // Badges
+    // Badges — unified to NEW ARRIVAL per request (preserve gold/dark styling for visual variety)
     let badgeHtml = "";
     if (product.is_new) {
-      badgeHtml = `<span class="badge badge-gold">New Atelier</span>`;
+      badgeHtml = `<span class="badge badge-gold">NEW ARRIVAL</span>`;
     } else if (product.is_best_seller) {
-      badgeHtml = `<span class="badge badge-dark">Bestseller</span>`;
+      badgeHtml = `<span class="badge badge-dark">NEW ARRIVAL</span>`;
     } else if (product.is_rose) {
       badgeHtml = `<span class="badge badge-rose">Rose Edition</span>`;
     }
