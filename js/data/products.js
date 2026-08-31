@@ -51,7 +51,7 @@ const PRODUCTS_DATA = [
     },
     "images": [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788147843/Glac%C3%A9.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788147843/Glac%C3%A9-2.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165618/Glac%C3%A9-2.png"
     ],
     "variants": [
       {
@@ -91,8 +91,8 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 20 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788147842/BELLA.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788147842/BELLA-2.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165618/BELLA.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165617/BELLA-2.png"
     ],
     "variants": [
       {
