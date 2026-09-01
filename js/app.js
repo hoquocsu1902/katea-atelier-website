@@ -298,9 +298,10 @@ function renderProductDetailView(handle) {
     </div>
   `;
 
-  // Bind PDP gallery and variant interactions without inline handlers (preserves quality, avoids single-quote breakage)
+  // Bind PDP gallery and variant interactions — single-tap instant (pointerdown, no 300ms delay)
   requestAnimationFrame(() => {
     const pdpMainImg = document.getElementById("pdpMainImg");
+    if (pdpMainImg) { pdpMainImg.style.willChange = "opacity"; pdpMainImg.style.transition = "opacity 0.12s ease"; }
     const pdpMainMedia = document.querySelector(".pdp-main-media");
     const pdpThumbs = document.querySelectorAll(".pdp-thumb");
     let currentIdx = 0;
@@ -340,12 +341,12 @@ function renderProductDetailView(handle) {
       product.images.forEach((_,i) => {
         const dot = document.createElement("button");
         dot.className = "pdp-dot" + (i===0 ? " active" : "");
-        dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.2s;touch-action:manipulation;";
+        dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.12s;touch-action:manipulation;";
         dot.setAttribute("aria-label", `View image ${i+1}`);
-        const dotHandler = (e)=>{ e.preventDefault(); updateIdx(i); };
+        let lastDotTap=0;
+        const dotHandler = (e)=>{ const now=Date.now(); if(now-lastDotTap<350) return; lastDotTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(i); };
         dot.addEventListener("pointerdown", dotHandler, {passive:false});
-        dot.addEventListener("touchend", dotHandler, {passive:false});
-        dot.addEventListener("click", () => updateIdx(i));
+        dot.addEventListener("click", dotHandler, {passive:true});
         dots.appendChild(dot);
       });
       pdpMainMedia.insertAdjacentElement("afterend", dots);
@@ -362,13 +363,13 @@ function renderProductDetailView(handle) {
         if (Math.abs(dx)>48 && Math.abs(dx) > Math.abs(dy)*1.2) { dx<0 ? updateIdx(currentIdx+1) : updateIdx(currentIdx-1); }
       }, {passive:true});
     }
+    let lastThumbTap = 0;
     pdpThumbs.forEach((thumb, idx) => {
-      const h = (e)=>{ if(e.cancelable) e.preventDefault(); updateIdx(idx); };
+      const h = (e)=>{ const now=Date.now(); if(now-lastThumbTap<350) return; lastThumbTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(idx); };
       thumb.style.touchAction = "manipulation";
       thumb.style.cursor = "pointer";
       thumb.addEventListener("pointerdown", h, {passive:false});
-      thumb.addEventListener("touchend", h, {passive:false});
-      thumb.addEventListener("click", () => updateIdx(idx));
+      thumb.addEventListener("click", h, {passive:true});
     });
     // also make main image swipable via pointer
     if (pdpMainImg) {
@@ -388,24 +389,24 @@ function renderProductDetailView(handle) {
 
     const variantBtns = document.querySelectorAll(".pdp-variant-btn");
     const variantInput = document.getElementById("pdpSelectedVariant");
+    let lastVariantTap = 0;
     variantBtns.forEach((btn, vi) => {
       const vHandler = (e)=> {
+        const now = Date.now();
+        if (now - lastVariantTap < 350) return; // prevent double fire from pointerdown+click
+        lastVariantTap = now;
         if(e && e.cancelable) e.preventDefault();
-        // instant visual feedback — no transition delay
+        // instant visual feedback — single tap
         variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
         btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
         if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
-        // map variant index directly to image index for instant main-image sync
         if (typeof updateIdx === "function" && total>0) {
-          const targetIdx = vi % total;
-          // immediate src swap (preloaded) + force repaint
-          updateIdx(targetIdx);
-          if (pdpMainImg) { pdpMainImg.style.opacity = "0.92"; requestAnimationFrame(()=> pdpMainImg.style.opacity = "1"); }
+          updateIdx(vi % total);
         }
       };
       btn.style.touchAction = "manipulation";
+      // single-tap: pointerdown is instant (no 300ms click delay), click as fallback for mouse
       btn.addEventListener("pointerdown", vHandler, {passive:false});
-      btn.addEventListener("touchend", vHandler, {passive:false});
       btn.addEventListener("click", vHandler, {passive:true});
     });
 
