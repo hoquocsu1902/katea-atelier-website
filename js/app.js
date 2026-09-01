@@ -307,10 +307,30 @@ function renderProductDetailView(handle) {
     const total = pdpThumbs.length;
     const updateIdx = (idx) => {
       currentIdx = (idx + total) % total;
-      const src = pdpThumbs[currentIdx]?.dataset.src;
-      if (pdpMainImg && src) pdpMainImg.src = src;
+      const thumb = pdpThumbs[currentIdx];
+      const raw = thumb?.dataset.raw;
+      const src = thumb?.dataset.src;
+      if (pdpMainImg && src) {
+        // update both src and srcset to ensure main image actually changes (was stuck on white due to srcset)
+        pdpMainImg.src = src;
+        if (raw) {
+          const s600 = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_600/") : raw;
+          const s900 = src;
+          const s1200 = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_1200/") : raw;
+          pdpMainImg.srcset = `${s600} 600w, ${s900} 900w, ${s1200} 1200w`;
+        }
+        pdpMainImg.style.opacity = "0.85";
+        requestAnimationFrame(() => pdpMainImg.style.opacity = "1");
+      }
       pdpThumbs.forEach((t,i) => t.style.borderColor = i===currentIdx ? "var(--color-primary)" : "transparent");
       document.querySelectorAll(".pdp-dot").forEach((d,i) => d.classList.toggle("active", i===currentIdx));
+      // sync variant buttons to match image index
+      const vBtns = document.querySelectorAll(".pdp-variant-btn");
+      if (vBtns.length === total) {
+        vBtns.forEach((b,i) => { b.classList.toggle("btn-primary", i===currentIdx); b.classList.toggle("btn-secondary", i!==currentIdx); });
+        const vInput = document.getElementById("pdpSelectedVariant");
+        if (vInput && vBtns[currentIdx]) vInput.value = vBtns[currentIdx].dataset.variant || "Standard";
+      }
     };
     // Dots for mobile swipe indication
     if (total > 1 && pdpMainMedia && !document.querySelector(".pdp-dots")) {
@@ -320,9 +340,10 @@ function renderProductDetailView(handle) {
       product.images.forEach((_,i) => {
         const dot = document.createElement("button");
         dot.className = "pdp-dot" + (i===0 ? " active" : "");
-        dot.style.cssText = "width:6px;height:6px;border-radius:50%;background:var(--color-border);border:0;transition:all 0.2s;";
+        // enlarge hit area to 44px for thumb-friendly tap
+        dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.2s;";
         dot.setAttribute("aria-label", `View image ${i+1}`);
-        dot.addEventListener("click", () => updateIdx(i));
+        dot.addEventListener("click", () => updateIdx(i), {passive:true});
         dots.appendChild(dot);
       });
       pdpMainMedia.insertAdjacentElement("afterend", dots);
