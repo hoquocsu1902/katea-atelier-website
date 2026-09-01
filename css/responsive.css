@@ -842,6 +842,15 @@ textarea {
     width: min(100%, 230px);
   }
 
+  /* Prevent iOS auto-zoom on variant tap: all interactive must be >=16px */
+  .pdp-variant-btn, .qv-variant-btn, .btn, .form-control, .search-input, .currency-select {
+    font-size: 16px !important;
+  }
+  .pdp-variant-btn {
+    min-height: 44px;
+    padding: 12px 16px !important;
+  }
+
   .pdp-section {
     padding-top: 24px;
   }
