@@ -340,10 +340,12 @@ function renderProductDetailView(handle) {
       product.images.forEach((_,i) => {
         const dot = document.createElement("button");
         dot.className = "pdp-dot" + (i===0 ? " active" : "");
-        // enlarge hit area to 44px for thumb-friendly tap
-        dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.2s;";
+        dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.2s;touch-action:manipulation;";
         dot.setAttribute("aria-label", `View image ${i+1}`);
-        dot.addEventListener("click", () => updateIdx(i), {passive:true});
+        const dotHandler = (e)=>{ e.preventDefault(); updateIdx(i); };
+        dot.addEventListener("pointerdown", dotHandler, {passive:false});
+        dot.addEventListener("touchend", dotHandler, {passive:false});
+        dot.addEventListener("click", () => updateIdx(i));
         dots.appendChild(dot);
       });
       pdpMainMedia.insertAdjacentElement("afterend", dots);
@@ -361,9 +363,19 @@ function renderProductDetailView(handle) {
       }, {passive:true});
     }
     pdpThumbs.forEach((thumb, idx) => {
+      const h = (e)=>{ if(e.cancelable) e.preventDefault(); updateIdx(idx); };
+      thumb.style.touchAction = "manipulation";
+      thumb.style.cursor = "pointer";
+      thumb.addEventListener("pointerdown", h, {passive:false});
+      thumb.addEventListener("touchend", h, {passive:false});
       thumb.addEventListener("click", () => updateIdx(idx));
     });
-    pdpMainImg?.addEventListener("click", () => window.UI?.showToast("High Resolution Atelier Zoom"));
+    // also make main image swipable via pointer
+    if (pdpMainImg) {
+      pdpMainImg.style.touchAction = "pan-y";
+      pdpMainImg.style.cursor = "zoom-in";
+      pdpMainImg.addEventListener("click", () => window.UI?.showToast("High Resolution Atelier Zoom"));
+    }
 
     // Preload variant images for instant swap on mobile (remove perceived delay)
     product.images.forEach(src => {
@@ -377,7 +389,8 @@ function renderProductDetailView(handle) {
     const variantBtns = document.querySelectorAll(".pdp-variant-btn");
     const variantInput = document.getElementById("pdpSelectedVariant");
     variantBtns.forEach((btn, vi) => {
-      btn.addEventListener("click", () => {
+      const vHandler = (e)=> {
+        if(e && e.cancelable) e.preventDefault();
         // instant visual feedback — no transition delay
         variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
         btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
@@ -389,7 +402,11 @@ function renderProductDetailView(handle) {
           updateIdx(targetIdx);
           if (pdpMainImg) { pdpMainImg.style.opacity = "0.92"; requestAnimationFrame(()=> pdpMainImg.style.opacity = "1"); }
         }
-      }, {passive: true});
+      };
+      btn.style.touchAction = "manipulation";
+      btn.addEventListener("pointerdown", vHandler, {passive:false});
+      btn.addEventListener("touchend", vHandler, {passive:false});
+      btn.addEventListener("click", vHandler, {passive:true});
     });
 
     const waBtn = document.querySelector(".pdp-whatsapp-btn");
