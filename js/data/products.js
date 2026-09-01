@@ -105,11 +105,11 @@ const PRODUCTS_DATA = [
       },
       {
         "id": 3002,
-        "title": "BELLA — Champagne Gold",
+        "title": "BELLA — TEAL BLUE",
         "price": 1390.0,
         "compare_at_price": null,
         "available": true,
-        "sku": "BE-003-CG"
+        "sku": "BE-003-TB"
       }
     ]
   },

@@ -351,7 +351,7 @@ class UIManager {
 
         <!-- Variants Selection -->
         <div style="margin-top: 8px;">
-          <label class="form-label" style="margin-bottom: 8px; display: block;">Finish & Color:</label>
+          <label class="form-label" style="margin-bottom: 8px; display: block;">Select Color Tone:</label>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             ${product.variants.map((v, i) => `
               <button class="btn btn-sm ${i === 0 ? "btn-primary" : "btn-secondary"} qv-variant-btn" data-variant="${v.title.replace(/"/g, '&quot;')}">

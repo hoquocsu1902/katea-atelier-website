@@ -258,7 +258,7 @@ function renderProductDetailView(handle) {
 
             <!-- Color Variants Selection -->
             <div>
-              <label class="form-label" style="margin-bottom: 10px; display: block;">Select Finish & Color Tone:</label>
+              <label class="form-label" style="margin-bottom: 10px; display: block;">Select Color Tone:</label>
               <div class="pdp-variants">
                 ${product.variants.map((v, i) => `
                   <button class="btn btn-sm ${i === 0 ? "btn-primary" : "btn-secondary"} pdp-variant-btn" data-variant="${v.title.replace(/"/g, '&quot;')}">
