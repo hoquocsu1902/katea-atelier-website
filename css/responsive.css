@@ -995,12 +995,13 @@ textarea {
 
   .pdp-whatsapp-btn {
     white-space: nowrap;
-    font-size: 0.65rem !important;
+    font-size: 0.68rem !important;
     font-weight: 400;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
     line-height: 1.35;
-    padding: 14px 20px !important;
+    padding: 14px 16px !important;
     text-align: center;
+    border-radius: 999px;
   }
 
   .about-story-copy {

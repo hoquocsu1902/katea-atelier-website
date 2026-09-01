@@ -193,6 +193,9 @@ body {
   padding: 22px;
   border: 1px solid var(--color-border);
   background: linear-gradient(135deg, #FBF6EF, #F2E8DA);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(26, 18, 11, .06);
 }
 
 .pdp-private-order-note,
