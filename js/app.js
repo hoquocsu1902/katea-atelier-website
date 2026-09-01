@@ -395,23 +395,24 @@ function renderProductDetailView(handle) {
     const variantInput = document.getElementById("pdpSelectedVariant");
     let lastVariantTap = 0;
     variantBtns.forEach((btn, vi) => {
+      btn.setAttribute("tabindex", "-1");
       const vHandler = (e)=> {
         const now = Date.now();
-        if (now - lastVariantTap < 350) return; // prevent double fire from pointerdown+click
+        if (now - lastVariantTap < 350) return;
         lastVariantTap = now;
-        if(e && e.cancelable) e.preventDefault();
-        // instant visual feedback — single tap
+        if(e && e.cancelable) { e.preventDefault(); e.stopPropagation(); }
+        // prevent focus scroll that causes viewport jump on mobile
+        if (document.activeElement === btn) btn.blur();
+        document.documentElement.style.scrollBehavior = "auto";
         variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
         btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
         if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
-        if (typeof updateIdx === "function" && total>0) {
-          updateIdx(vi % total);
-        }
+        if (typeof updateIdx === "function" && total>0) updateIdx(vi % total);
+        setTimeout(()=> document.documentElement.style.scrollBehavior = "", 300);
       };
       btn.style.touchAction = "manipulation";
-      // single-tap: pointerdown is instant (no 300ms click delay), click as fallback for mouse
       btn.addEventListener("pointerdown", vHandler, {passive:false});
-      btn.addEventListener("click", vHandler, {passive:true});
+      btn.addEventListener("click", vHandler, {passive:false});
     });
 
     const waBtn = document.querySelector(".pdp-whatsapp-btn");
