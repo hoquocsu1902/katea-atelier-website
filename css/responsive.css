@@ -994,8 +994,12 @@ textarea {
   }
 
   .pdp-whatsapp-btn {
-    white-space: normal;
-    line-height: 1.35;
+    white-space: nowrap;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    padding: 14px 16px !important;
+    text-align: center;
   }
 
   .about-story-copy {
