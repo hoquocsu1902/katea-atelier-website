@@ -1,0 +1,17 @@
+{
+  "name": "KATÉA Atelier — Handcrafted Crystal Bags",
+  "short_name": "KATÉA",
+  "description": "Crafted with crystal, created with love. Discover KATÉA Atelier handcrafted crystal bags.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#7A5A3A",
+  "icons": [
+    {
+      "src": "assets/images/katea-our-story-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

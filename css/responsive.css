@@ -707,7 +707,23 @@ textarea {
   }
 
   .product-card-actions {
-    display: none;
+    display: flex;
+    position: static;
+    transform: none;
+    opacity: 1;
+    background: none;
+    padding: 10px 0 0;
+    gap: 8px;
+  }
+  .product-card-actions .product-action-btn {
+    flex: 1;
+    min-height: 38px;
+    font-size: 0.68rem;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border-light);
+  }
+  .product-card-actions .product-action-whatsapp {
+    flex: 1;
   }
 
   .product-info {
@@ -1066,6 +1082,46 @@ textarea {
     width: 100%;
     border-radius: 10px;
     padding: 12px 16px;
+  }
+
+  .mobile-bottom-bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--color-border-light);
+    padding: 6px 8px max(6px, env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+  .mobile-bottom-bar .mbb-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 52px;
+    border-radius: 10px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    background: transparent;
+    text-decoration: none;
+  }
+  .mobile-bottom-bar .mbb-whatsapp {
+    background: var(--color-primary);
+    color: white;
+  }
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+  .whatsapp-floating-wrap {
+    bottom: calc(72px + env(safe-area-inset-bottom));
   }
 }
 

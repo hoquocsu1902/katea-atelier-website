@@ -48,14 +48,31 @@ class SearchManager {
     }
   }
 
+  saveRecent(query) {
+    try {
+      const key = "katea_recent_search";
+      let arr = JSON.parse(localStorage.getItem(key) || "[]");
+      const q = query.trim();
+      if (!q || q.length < 2) return;
+      arr = [q, ...arr.filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 5);
+      localStorage.setItem(key, JSON.stringify(arr));
+    } catch (_) {}
+  }
+  getRecent() {
+    try { return JSON.parse(localStorage.getItem("katea_recent_search") || "[]"); } catch (_) { return []; }
+  }
+
   handleSearch(query) {
     if (!this.resultsContainer) return;
     const cleanQuery = query.trim().toLowerCase();
 
     if (!cleanQuery) {
+      const recent = this.getRecent();
+      const recentHtml = recent.length ? `<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">${recent.map(r=>`<button onclick="document.getElementById('searchInput').value='${r.replace(/'/g,"&#39;")}';window.Search.handleSearch('${r.replace(/'/g,"\\'")}')" style="padding:6px 12px;border:1px solid var(--color-border-light);border-radius:999px;font-size:0.82rem;background:white;">${r}</button>`).join("")}</div>` : "";
       this.resultsContainer.innerHTML = `
         <div style="text-align: center; color: var(--color-text-light); padding: 30px;">
           <p>Type the name of a handbag, color, or style to search...</p>
+          ${recentHtml ? `<p style="margin-top:16px;font-size:0.82rem;color:var(--color-text-muted);">Recent searches</p>${recentHtml}` : ""}
         </div>
       `;
       return;
@@ -77,11 +94,12 @@ class SearchManager {
       this.resultsContainer.innerHTML = `
         <div style="text-align: center; color: var(--color-text-muted); padding: 40px;">
           <p>No crystal pieces found matching "<strong>${query}</strong>".</p>
-          <p style="font-size: 0.85rem; margin-top: 8px;">Try searching for "Card Holder", "Mini", "Pouch", "Pink", "Gold" or "Éclat".</p>
+          <p style="font-size: 0.85rem; margin-top: 8px;">Try searching for "Scarlet", "Glacé", "BELLA", "Celeste" or "handbags".</p>
         </div>
       `;
       return;
     }
+    this.saveRecent(query);
 
     this.resultsContainer.innerHTML = `
       <div style="margin-bottom: 16px; font-size: 0.85rem; color: var(--color-text-muted);">

@@ -2,6 +2,12 @@
  * KATÉA Atelier — Master Application Controller & SPA Router
  */
 
+function optimizeCloudinary(url, width = 800) {
+  if (!url || !url.includes("res.cloudinary.com")) return url;
+  if (url.includes("f_auto")) return url;
+  return url.replace("/image/upload/", `/image/upload/f_auto,q_auto,w_${width}/`);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize Core Systems
   if (window.UI) window.UI.init();
@@ -228,11 +234,11 @@ function renderProductDetailView(handle) {
           <!-- Gallery -->
           <div class="pdp-gallery">
             <div class="pdp-main-media">
-              <img src="${product.images[0]}" id="pdpMainImg" alt="${product.title}" class="pdp-main-image" onclick="window.UI.showToast('High Resolution Atelier Zoom')" />
+              <img src="${optimizeCloudinary(product.images[0], 900)}" srcset="${optimizeCloudinary(product.images[0], 600)} 600w, ${optimizeCloudinary(product.images[0], 900)} 900w, ${optimizeCloudinary(product.images[0], 1200)} 1200w" sizes="(max-width: 900px) 100vw, 50vw" id="pdpMainImg" alt="${product.title}" class="pdp-main-image" loading="eager" decoding="async" fetchpriority="high" />
             </div>
             <div class="pdp-thumbnails">
               ${product.images.map((img, i) => `
-                <img src="${img}" data-src="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" />
+                <img src="${optimizeCloudinary(img, 200)}" data-src="${optimizeCloudinary(img, 900)}" data-raw="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" loading="lazy" decoding="async" />
               `).join("")}
             </div>
           </div>
@@ -295,24 +301,60 @@ function renderProductDetailView(handle) {
   // Bind PDP gallery and variant interactions without inline handlers (preserves quality, avoids single-quote breakage)
   requestAnimationFrame(() => {
     const pdpMainImg = document.getElementById("pdpMainImg");
+    const pdpMainMedia = document.querySelector(".pdp-main-media");
     const pdpThumbs = document.querySelectorAll(".pdp-thumb");
-    pdpThumbs.forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        if (pdpMainImg && thumb.dataset.src) pdpMainImg.src = thumb.dataset.src;
-        pdpThumbs.forEach(t => t.style.borderColor = "transparent");
-        thumb.style.borderColor = "var(--color-primary)";
+    let currentIdx = 0;
+    const total = pdpThumbs.length;
+    const updateIdx = (idx) => {
+      currentIdx = (idx + total) % total;
+      const src = pdpThumbs[currentIdx]?.dataset.src;
+      if (pdpMainImg && src) pdpMainImg.src = src;
+      pdpThumbs.forEach((t,i) => t.style.borderColor = i===currentIdx ? "var(--color-primary)" : "transparent");
+      document.querySelectorAll(".pdp-dot").forEach((d,i) => d.classList.toggle("active", i===currentIdx));
+    };
+    // Dots for mobile swipe indication
+    if (total > 1 && pdpMainMedia && !document.querySelector(".pdp-dots")) {
+      const dots = document.createElement("div");
+      dots.className = "pdp-dots";
+      dots.style.cssText = "display:flex;gap:6px;justify-content:center;margin-top:10px;";
+      product.images.forEach((_,i) => {
+        const dot = document.createElement("button");
+        dot.className = "pdp-dot" + (i===0 ? " active" : "");
+        dot.style.cssText = "width:6px;height:6px;border-radius:50%;background:var(--color-border);border:0;transition:all 0.2s;";
+        dot.setAttribute("aria-label", `View image ${i+1}`);
+        dot.addEventListener("click", () => updateIdx(i));
+        dots.appendChild(dot);
       });
+      pdpMainMedia.insertAdjacentElement("afterend", dots);
+      // style active
+      const style = document.createElement("style");
+      style.textContent = ".pdp-dot.active{background:var(--color-primary)!important;width:18px!important;border-radius:999px!important;}";
+      document.head.appendChild(style);
+      // swipe
+      let sx=0, sy=0;
+      pdpMainMedia.addEventListener("touchstart", e=>{ sx=e.changedTouches[0].clientX; sy=e.changedTouches[0].clientY; }, {passive:true});
+      pdpMainMedia.addEventListener("touchend", e=>{
+        const dx=e.changedTouches[0].clientX - sx;
+        const dy=e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx)>48 && Math.abs(dx) > Math.abs(dy)*1.2) { dx<0 ? updateIdx(currentIdx+1) : updateIdx(currentIdx-1); }
+      }, {passive:true});
+    }
+    pdpThumbs.forEach((thumb, idx) => {
+      thumb.addEventListener("click", () => updateIdx(idx));
     });
     pdpMainImg?.addEventListener("click", () => window.UI?.showToast("High Resolution Atelier Zoom"));
 
     const variantBtns = document.querySelectorAll(".pdp-variant-btn");
     const variantInput = document.getElementById("pdpSelectedVariant");
-    variantBtns.forEach(btn => {
+    variantBtns.forEach((btn, vi) => {
       btn.addEventListener("click", () => {
         variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
         btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
         if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
+        if (typeof updateIdx === "function" && total>1) updateIdx(vi % total);
       });
+      // swatch hint for mobile: small dot
+      if (vi===0) btn.style.position = "relative";
     });
 
     const waBtn = document.querySelector(".pdp-whatsapp-btn");

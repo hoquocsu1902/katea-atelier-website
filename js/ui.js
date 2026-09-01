@@ -2,6 +2,13 @@
  * KATÉA Atelier — UI Components & Interaction Engine
  */
 
+// Optimize Cloudinary URLs for mobile performance (f_auto, q_auto, w)
+function optimizeCloudinary(url, width = 600) {
+  if (!url || !url.includes("res.cloudinary.com")) return url;
+  if (url.includes("f_auto")) return url;
+  return url.replace("/image/upload/", `/image/upload/f_auto,q_auto,w_${width}/`);
+}
+
 class UIManager {
   constructor() {
     this.currentHeroSlide = 0;
@@ -266,8 +273,11 @@ class UIManager {
   // Product Card Template
   // ==========================================
   renderProductCard(product) {
-    const primaryImg = product.images && product.images.length > 0 ? product.images[0] : "";
-    const secondaryImg = product.images && product.images.length > 1 ? product.images[1] : primaryImg;
+    const rawPrimary = product.images && product.images.length > 0 ? product.images[0] : "";
+    const rawSecondary = product.images && product.images.length > 1 ? product.images[1] : rawPrimary;
+    const primaryImg = optimizeCloudinary(rawPrimary, 600);
+    const secondaryImg = optimizeCloudinary(rawSecondary, 600);
+    const primarySrcSet = rawPrimary ? `${optimizeCloudinary(rawPrimary, 400)} 400w, ${primaryImg} 600w, ${optimizeCloudinary(rawPrimary, 800)} 800w` : "";
     const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
     const comparePrice = product.compare_price ? (window.Currency ? window.Currency.format(product.compare_price) : `$${product.compare_price}`) : "";
 
@@ -286,8 +296,8 @@ class UIManager {
         <div class="product-image-wrap">
           <div class="product-badges">${badgeHtml}</div>
           <a href="#product/${product.handle}" style="display: block; width: 100%; height: 100%;">
-            <img src="${primaryImg}" alt="${product.title}" class="product-img" loading="lazy" />
-            <img src="${secondaryImg}" alt="${product.title}" class="product-img product-img-secondary" loading="lazy" />
+            <img src="${primaryImg}" srcset="${primarySrcSet}" sizes="(max-width: 767px) 50vw, (max-width: 1100px) 33vw, 25vw" alt="${product.title}" class="product-img" loading="lazy" decoding="async" fetchpriority="low" />
+            <img src="${secondaryImg}" alt="${product.title}" class="product-img product-img-secondary" loading="lazy" decoding="async" />
           </a>
           <div class="product-card-actions">
             <button class="product-action-btn" onclick="window.UI.openQuickView(${product.id})">
