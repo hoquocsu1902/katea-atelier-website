@@ -120,10 +120,12 @@ textarea {
 
 .pdp-main-media {
   aspect-ratio: 1 / 1.1;
-  background: var(--color-bg-soft);
-  border-radius: 4px;
+  background: #F9F6F2;
+  border-radius: 16px;
   overflow: hidden;
   margin-bottom: 16px;
+  border: 1px solid rgba(26, 18, 11, .06);
+  box-shadow: 0 12px 40px rgba(26, 18, 11, .07);
 }
 
 .pdp-main-image {
@@ -132,7 +134,9 @@ textarea {
   object-fit: contain;
   object-position: center;
   cursor: zoom-in;
-  background: var(--color-bg-soft);
+  background: #F9F6F2;
+  will-change: opacity;
+  transition: opacity .12s ease;
 }
 
 .pdp-thumbnails {
@@ -149,19 +153,23 @@ textarea {
   width: 76px;
   height: 90px;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 8px;
   cursor: pointer;
   border: 1.5px solid transparent;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  transition: border-color .18s ease, transform .18s ease;
 }
 
 .pdp-buybox {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
 }
 
 .pdp-title {
   font-size: clamp(1.65rem, 2.3vw, 2rem);
+  font-weight: 300;
+  letter-spacing: .04em;
   margin-bottom: 8px;
   overflow-wrap: anywhere;
 }
@@ -169,13 +177,15 @@ textarea {
 .pdp-price {
   font-size: clamp(1.25rem, 2vw, 1.5rem) !important;
   color: var(--color-primary) !important;
-  font-weight: 500 !important;
+  font-weight: 300 !important;
+  letter-spacing: .04em;
 }
 
 .pdp-description {
   font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--color-text);
+  line-height: 1.8;
+  font-weight: 300;
+  color: #6B5A4A;
   overflow-wrap: anywhere;
 }
 
@@ -205,6 +215,10 @@ textarea {
   min-height: 42px;
   white-space: normal;
   text-align: center;
+  font-weight: 300;
+  letter-spacing: .10em;
+  border-width: 1px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
 }
 
 .pdp-action-row {
