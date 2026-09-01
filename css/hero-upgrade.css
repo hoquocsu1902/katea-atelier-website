@@ -664,17 +664,19 @@
 
   .hero-actions .btn {
     width: auto;
-    min-width: 260px;
-    max-width: 300px;
+    min-width: 300px;
+    max-width: 340px;
     min-height: 42px;
-    padding: 12px 16px;
-    font-size: .58rem;
+    padding: 12px 20px;
+    font-family: var(--font-heading);
+    font-size: .52rem;
     font-weight: 300;
-    letter-spacing: .10em;
+    letter-spacing: .14em;
     line-height: 1.4;
-    white-space: normal;
+    white-space: nowrap;
     text-align: center;
     overflow: hidden;
+    text-overflow: ellipsis;
     border-width: 1px;
     box-shadow: 0 6px 20px rgba(27, 18, 10, .08);
   }
