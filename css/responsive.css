@@ -867,13 +867,29 @@ textarea {
 
   .pdp-main-media {
     aspect-ratio: 4 / 3;
-    max-height: 52vh;
+    max-height: 42vh;
     margin-left: calc(-1 * var(--container-padding));
     margin-right: calc(-1 * var(--container-padding));
     border-radius: 0;
   }
   .pdp-main-media .pdp-main-image {
     object-fit: contain;
+  }
+  /* keep variant always above fold and above WhatsApp floating */
+  .pdp-buybox {
+    position: relative;
+    z-index: 2;
+  }
+  .pdp-variants {
+    position: relative;
+    z-index: 3;
+  }
+  .pdp-variant-btn {
+    position: relative;
+    z-index: 3;
+  }
+  .whatsapp-floating-wrap {
+    z-index: 1 !important;
   }
 
   .pdp-thumbnails {
