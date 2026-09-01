@@ -307,12 +307,13 @@ function renderProductDetailView(handle) {
     let currentIdx = 0;
     const total = pdpThumbs.length;
     const updateIdx = (idx) => {
+      // lock scroll to prevent auto-zoom/scroll down after variant tap (keep full view like ảnh 1)
+      const lockY = window.scrollY;
       currentIdx = (idx + total) % total;
       const thumb = pdpThumbs[currentIdx];
       const raw = thumb?.dataset.raw;
       const src = thumb?.dataset.src;
       if (pdpMainImg && src) {
-        // update both src and srcset to ensure main image actually changes (was stuck on white due to srcset)
         pdpMainImg.src = src;
         if (raw) {
           const s600 = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_600/") : raw;
@@ -320,18 +321,21 @@ function renderProductDetailView(handle) {
           const s1200 = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_1200/") : raw;
           pdpMainImg.srcset = `${s600} 600w, ${s900} 900w, ${s1200} 1200w`;
         }
-        pdpMainImg.style.opacity = "0.85";
+        // instant without zoom — contain keeps full bag visible
+        pdpMainImg.style.opacity = "0.98";
         requestAnimationFrame(() => pdpMainImg.style.opacity = "1");
       }
       pdpThumbs.forEach((t,i) => t.style.borderColor = i===currentIdx ? "var(--color-primary)" : "transparent");
       document.querySelectorAll(".pdp-dot").forEach((d,i) => d.classList.toggle("active", i===currentIdx));
-      // sync variant buttons to match image index
       const vBtns = document.querySelectorAll(".pdp-variant-btn");
       if (vBtns.length === total) {
         vBtns.forEach((b,i) => { b.classList.toggle("btn-primary", i===currentIdx); b.classList.toggle("btn-secondary", i!==currentIdx); });
         const vInput = document.getElementById("pdpSelectedVariant");
         if (vInput && vBtns[currentIdx]) vInput.value = vBtns[currentIdx].dataset.variant || "Standard";
       }
+      // restore scroll to keep toàn cảnh như ảnh 1, không trượt xuống
+      requestAnimationFrame(() => window.scrollTo({top: lockY, behavior: "auto"}));
+      setTimeout(() => window.scrollTo({top: lockY, behavior: "auto"}), 80);
     };
     // Dots for mobile swipe indication
     if (total > 1 && pdpMainMedia && !document.querySelector(".pdp-dots")) {
