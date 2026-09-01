@@ -651,7 +651,7 @@
     max-width: 520px;
     font-size: .94rem;
     line-height: 1.62;
-    margin-bottom: 26px;
+    margin-bottom: 32px;
   }
 
   .hero-actions {
@@ -659,19 +659,21 @@
     margin: 0 auto;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
   }
 
   .hero-actions .btn {
     width: auto;
     min-width: 300px;
     max-width: 340px;
-    min-height: 42px;
-    padding: 12px 20px;
+    min-height: 44px;
+    padding: 13px 24px;
     font-family: var(--font-heading);
     font-size: .52rem;
     font-weight: 300;
     letter-spacing: .14em;
+    border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(26, 18, 11, .12), 0 2px 8px rgba(26, 18, 11, .06);
     line-height: 1.4;
     white-space: nowrap;
     text-align: center;

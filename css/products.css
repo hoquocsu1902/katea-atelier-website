@@ -77,9 +77,11 @@
   width: 100%;
   aspect-ratio: 1 / 1.18;
   background-color: #FAF8F5;
-  border-radius: var(--radius-xs);
+  border-radius: 14px;
   overflow: hidden;
   margin-bottom: 16px;
+  box-shadow: 0 8px 28px rgba(26, 18, 11, .08), 0 2px 8px rgba(26, 18, 11, .04);
+  border: 1px solid rgba(26, 18, 11, .04);
 }
 
 .product-img {
