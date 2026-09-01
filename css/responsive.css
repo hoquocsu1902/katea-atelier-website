@@ -1176,10 +1176,27 @@ textarea {
 
   .whatsapp-floating-wrap {
     bottom: max(16px, env(safe-area-inset-bottom));
+    pointer-events: none;
+  }
+  .whatsapp-floating-wrap .whatsapp-floating-btn,
+  .whatsapp-floating-wrap .whatsapp-chat-popup {
+    pointer-events: auto;
+  }
+  /* Fix iPhone Safari: VIEW ALL near bottom bar + WhatsApp overlap blocks tap until scrolled 50% */
+  #featured-creations {
+    padding-bottom: 28px;
+  }
+  #featured-creations .text-center {
+    position: relative;
+    z-index: 3;
+    padding-bottom: 24px;
+  }
+  #featured-creations .btn {
+    position: relative;
+    z-index: 4;
+    touch-action: manipulation;
   }
 }
-
-/* Small phones */
 @media (max-width: 560px) {
   /* Keep the header usable at 320–430px: search + bag remain; wishlist and
      WhatsApp are still available through product cards / floating WhatsApp. */
