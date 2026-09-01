@@ -344,17 +344,31 @@ function renderProductDetailView(handle) {
     });
     pdpMainImg?.addEventListener("click", () => window.UI?.showToast("High Resolution Atelier Zoom"));
 
+    // Preload variant images for instant swap on mobile (remove perceived delay)
+    product.images.forEach(src => {
+      const raw = src;
+      const opt = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_900/") : raw;
+      const img = new Image();
+      img.decoding = "async";
+      img.src = opt;
+    });
+
     const variantBtns = document.querySelectorAll(".pdp-variant-btn");
     const variantInput = document.getElementById("pdpSelectedVariant");
     variantBtns.forEach((btn, vi) => {
       btn.addEventListener("click", () => {
+        // instant visual feedback — no transition delay
         variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
         btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
         if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
-        if (typeof updateIdx === "function" && total>1) updateIdx(vi % total);
-      });
-      // swatch hint for mobile: small dot
-      if (vi===0) btn.style.position = "relative";
+        // map variant index directly to image index for instant main-image sync
+        if (typeof updateIdx === "function" && total>0) {
+          const targetIdx = vi % total;
+          // immediate src swap (preloaded) + force repaint
+          updateIdx(targetIdx);
+          if (pdpMainImg) { pdpMainImg.style.opacity = "0.92"; requestAnimationFrame(()=> pdpMainImg.style.opacity = "1"); }
+        }
+      }, {passive: true});
     });
 
     const waBtn = document.querySelector(".pdp-whatsapp-btn");

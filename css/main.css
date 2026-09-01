@@ -9,6 +9,20 @@
   margin: 0;
   padding: 0;
 }
+button, a, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+.btn, .product-action-btn, .pdp-variant-btn, .qv-variant-btn, .pdp-thumb {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease, transform 0.12s ease;
+}
+.btn:active, .product-action-btn:active, .pdp-variant-btn:active {
+  transform: scale(0.97);
+}
+.pdp-variant-btn:active, .qv-variant-btn:active {
+  transform: scale(0.96);
+}
 
 html {
   font-size: 16px;
@@ -374,11 +388,6 @@ ul, ol {
 
 .slide-up {
   animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Mobile Bottom Bar — hidden on desktop */
-.mobile-bottom-bar {
-  display: none;
 }
 
 /* Utility */
