@@ -665,22 +665,21 @@
   .hero-actions .btn {
     width: auto;
     min-width: 300px;
-    max-width: 340px;
+    max-width: 360px;
     min-height: 44px;
-    padding: 13px 24px;
+    padding: 13px 28px;
     font-family: var(--font-heading);
-    font-size: .52rem;
+    font-size: .48rem;
     font-weight: 300;
-    letter-spacing: .14em;
-    border-radius: 999px;
-    box-shadow: 0 8px 28px rgba(26, 18, 11, .12), 0 2px 8px rgba(26, 18, 11, .06);
+    letter-spacing: .10em;
     line-height: 1.4;
     white-space: nowrap;
     text-align: center;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     border-width: 1px;
-    box-shadow: 0 6px 20px rgba(27, 18, 10, .08);
+    border-radius: 999px;
+    box-shadow: 0 12px 32px rgba(26, 18, 11, .16), 0 4px 14px rgba(26, 18, 11, .10);
   }
   .hero-actions .hero-btn-primary {
     background: rgba(255, 250, 242, .92);

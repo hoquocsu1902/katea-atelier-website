@@ -339,7 +339,21 @@ body {
   .about-story-refined .about-story-title,
   .about-story-refined .about-story-copy p { text-align: left; }
   .atelier-concierge-card { padding: 32px 22px; }
-  .atelier-concierge-card .btn { width: 100%; }
+  .atelier-concierge-card .btn {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 18px;
+    font-size: .58rem;
+    font-weight: 400;
+    letter-spacing: .08em;
+    line-height: 1.45;
+    white-space: normal;
+    text-align: center;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(26, 18, 11, .12);
+  }
   .footer-top-grid-refined { grid-template-columns: 1fr; }
   .footer-signature { width: 100%; }
 }
