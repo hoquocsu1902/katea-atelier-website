@@ -235,6 +235,70 @@ const PRODUCTS_DATA = [
         "sku": "BV-006-MS"
       }
     ]
+  },
+  {
+    "id": 10339370434913,
+    "title": "Celestial",
+    "handle": "celestial",
+    "category": "handbags",
+    "price": 1490.0,
+    "compare_price": null,
+    "is_new": true,
+    "is_best_seller": false,
+    "is_rose": false,
+    "fits_phone": false,
+    "tags": ["celestial", "handbags", "crystal"],
+    "description": "Celestial radiates astral brilliance — a handcrafted crystal creation designed to capture starlight with modern sophistication.",
+    "details": {
+      "materials": "Premium crystal beads, brass hardware, nappa leather lining",
+      "dimensions": "W24cm x H14cm x D8cm",
+      "craftsmanship": "Handcrafted by master artisans over 20 hours"
+    },
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788328335/Celestial.png"
+    ],
+    "variants": [
+      {
+        "id": 7001,
+        "title": "Celestial — Starlight",
+        "price": 1490.0,
+        "compare_at_price": null,
+        "available": true,
+        "sku": "CE-007-ST"
+      }
+    ]
+  },
+  {
+    "id": 10339370434914,
+    "title": "Celestial Mini",
+    "handle": "celestial-mini",
+    "category": "handbags",
+    "price": 1190.0,
+    "compare_price": null,
+    "is_new": true,
+    "is_best_seller": false,
+    "is_rose": false,
+    "fits_phone": false,
+    "tags": ["celestial", "mini", "handbags", "crystal"],
+    "description": "Celestial Mini distills celestial elegance into a petite silhouette — perfect for evening occasions with luminous presence.",
+    "details": {
+      "materials": "Premium crystal beads, brass hardware, nappa leather lining",
+      "dimensions": "W18cm x H10cm x D6cm",
+      "craftsmanship": "Handcrafted by master artisans over 14 hours"
+    },
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788328334/Celestial_Mini.png"
+    ],
+    "variants": [
+      {
+        "id": 8001,
+        "title": "Celestial Mini — Starlight",
+        "price": 1190.0,
+        "compare_at_price": null,
+        "available": true,
+        "sku": "CM-008-ST"
+      }
+    ]
   }
 ];
 
