@@ -228,8 +228,12 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 18 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788326582/Butterfly_Vera.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788326582/Butterfly_Rosa-2.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337244/Butterfly_Vera.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337241/Butterfly_Vera-3.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337237/Butterfly_Vera-2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337248/Butterfly_Rosa-4.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337235/Butterfly_Rosa-6.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337232/Butterfly_Rosa-5.png"
     ],
     "variants": [
       {
