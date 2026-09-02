@@ -307,7 +307,9 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 14 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788328334/Celestial_Mini.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788339818/Celestial_Mini.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788339817/Celestial_Mini-2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788339815/Celestial_Mini-3.png"
     ],
     "variants": [
       {
