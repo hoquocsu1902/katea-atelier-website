@@ -18,16 +18,25 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 15 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788147843/Scarlet.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788327502/Scarlet_Allure.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788327501/Scarlet_Ros%C3%A9.png"
     ],
     "variants": [
       {
         "id": 1001,
-        "title": "Scarlet — Classic",
+        "title": "Scarlet — Allure",
         "price": 1290.0,
         "compare_at_price": null,
         "available": true,
-        "sku": "SC-001-CL"
+        "sku": "SC-001-AL"
+      },
+      {
+        "id": 1002,
+        "title": "Scarlet — Rosé",
+        "price": 1290.0,
+        "compare_at_price": null,
+        "available": true,
+        "sku": "SC-001-RO"
       }
     ]
   },
