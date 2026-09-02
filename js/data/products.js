@@ -181,7 +181,7 @@ const PRODUCTS_DATA = [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331336/SELENA_3.jpg",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331334/SELENA_4.jpg",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331333/SELENA-2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331332/SELENA_6.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788333850/SELENA_6.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331330/SELENA_5.png"
     ],
     "variants": [
