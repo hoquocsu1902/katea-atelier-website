@@ -144,6 +144,88 @@ const PRODUCTS_DATA = [
         "sku": "CE-004-SS"
       }
     ]
+  },
+  {
+    "id": 10339370434911,
+    "title": "SELENA",
+    "handle": "selena",
+    "category": "handbags",
+    "price": 1290.0,
+    "compare_price": null,
+    "is_new": true,
+    "is_best_seller": false,
+    "is_rose": false,
+    "fits_phone": false,
+    "tags": ["selena", "handbags", "crystal"],
+    "description": "SELENA radiates timeless glamour — a handcrafted crystal silhouette available in two refined tones. Select your color to reflect your personal style.",
+    "details": {
+      "materials": "Premium crystal beads, brass hardware, nappa leather lining",
+      "dimensions": "W21cm x H12cm x D6cm",
+      "craftsmanship": "Handcrafted by master artisans over 16 hours"
+    },
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788325933/SELENA.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788325933/SELENA-2.png"
+    ],
+    "variants": [
+      {
+        "id": 5001,
+        "title": "SELENA — Classic",
+        "price": 1290.0,
+        "compare_at_price": null,
+        "available": true,
+        "sku": "SE-005-CL"
+      },
+      {
+        "id": 5002,
+        "title": "SELENA — Noir",
+        "price": 1290.0,
+        "compare_at_price": null,
+        "available": true,
+        "sku": "SE-005-NR"
+      }
+    ]
+  },
+  {
+    "id": 10339370434912,
+    "title": "Butterfly Vera",
+    "handle": "butterfly-vera",
+    "category": "handbags",
+    "price": 1390.0,
+    "compare_price": null,
+    "is_new": true,
+    "is_best_seller": false,
+    "is_rose": false,
+    "fits_phone": false,
+    "tags": ["butterfly", "vera", "handbags", "crystal"],
+    "description": "Butterfly Vera captures fluttering elegance — a luminous crystal creation in two delicate tones, handwoven for a soft, modern brilliance.",
+    "details": {
+      "materials": "Premium crystal beads, brass hardware, nappa leather lining",
+      "dimensions": "W22cm x H13cm x D8cm",
+      "craftsmanship": "Handcrafted by master artisans over 18 hours"
+    },
+    "images": [
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788325932/Butterfly_Vera.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788325933/Butterfly_Vera-2.png"
+    ],
+    "variants": [
+      {
+        "id": 6001,
+        "title": "Butterfly Vera — Garden",
+        "price": 1390.0,
+        "compare_at_price": null,
+        "available": true,
+        "sku": "BV-006-GD"
+      },
+      {
+        "id": 6002,
+        "title": "Butterfly Vera — Muse",
+        "price": 1390.0,
+        "compare_at_price": null,
+        "available": true,
+        "sku": "BV-006-MS"
+      }
+    ]
   }
 ];
 
