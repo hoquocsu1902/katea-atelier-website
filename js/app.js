@@ -335,6 +335,8 @@ function renderProductDetailView(handle) {
           vIdx = currentIdx < 3 ? 0 : 1;
         } else if (product.handle === "bella" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 1 : 0; // 0-2 Teal Blue, 3-5 Pearl White
+        } else if (product.handle === "glace" && vBtns.length === 2 && total === 6) {
+          vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Ice Clear, 3-5 Frost Blue
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -420,6 +422,7 @@ function renderProductDetailView(handle) {
           let targetIdx = vi % total;
           if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
           else if (product.handle === "bella" && total === 6) targetIdx = vi === 0 ? 3 : 0; // Pearl White -> #4, Teal Blue -> #1
+          else if (product.handle === "glace" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Ice Clear -> #1, Frost Blue -> #4
           updateIdx(targetIdx);
         }
         setTimeout(()=> document.documentElement.style.scrollBehavior = "", 300);

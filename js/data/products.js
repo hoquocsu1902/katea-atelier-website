@@ -63,12 +63,12 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 18 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788335683/Glac%C3%A9-3.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788335682/Glac%C3%A9-4.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788335682/Glac%C3%A9-5.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788335683/Glac%C3%A9-6.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788165618/Glac%C3%A9-2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788147843/Glac%C3%A9.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409601/Glac%C3%A9.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409596/Glac%C3%A9-2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409597/Glac%C3%A9-3.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409603/Glac%C3%A9-4.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409598/Glac%C3%A9-5.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409599/Glac%C3%A9-6.png"
     ],
     "variants": [
       {
