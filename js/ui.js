@@ -274,7 +274,8 @@ class UIManager {
   // ==========================================
   renderProductCard(product) {
     const rawPrimary = product.images && product.images.length > 0 ? product.images[0] : "";
-    const rawSecondary = product.images && product.images.length > 1 ? product.images[1] : rawPrimary;
+    // Rule for All Handbags: primary #1, hover #4 if exists else #2
+    const rawSecondary = product.images && product.images.length > 3 ? product.images[3] : (product.images.length > 1 ? product.images[1] : rawPrimary);
     const primaryImg = optimizeCloudinary(rawPrimary, 600);
     const secondaryImg = optimizeCloudinary(rawSecondary, 600);
     const primarySrcSet = rawPrimary ? `${optimizeCloudinary(rawPrimary, 400)} 400w, ${primaryImg} 600w, ${optimizeCloudinary(rawPrimary, 800)} 800w` : "";

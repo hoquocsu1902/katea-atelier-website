@@ -187,12 +187,12 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 16 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331331/SELENA.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331336/SELENA_3.jpg",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331334/SELENA_4.jpg",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331333/SELENA-2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788333850/SELENA_6.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788331330/SELENA_5.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407867/SELENA.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407870/SELENA_2.jpg",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407868/SELENA_3.jpg",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407866/SELENA-4.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407864/SELENA_5.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407940/SELENA_6.png"
     ],
     "variants": [
       {
