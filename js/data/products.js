@@ -18,8 +18,12 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 15 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788327502/Scarlet_Allure.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788327501/Scarlet_Ros%C3%A9.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Allure.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Allure-2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Allure-3.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Ros%C3%A9.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405335/Scarlet_Ros%C3%A9-2.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405335/Scarlet_Ros%C3%A9-3.png"
     ],
     "variants": [
       {
