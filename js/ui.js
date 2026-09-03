@@ -282,7 +282,7 @@ class UIManager {
     } else if (product.handle === "butterfly-vera" && product.images.length > 2) {
       rawPrimary = product.images[0];
       rawSecondary = product.images[2];
-    } else if (product.handle === "celestial" && product.images.length === 3) {
+    } else if ((product.handle === "celestial" || product.handle === "celestial-mini") && product.images.length === 3) {
       rawPrimary = product.images[0];
       rawSecondary = product.images[2];
     } else if (product.images.length > 3) {
