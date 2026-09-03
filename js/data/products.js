@@ -232,29 +232,27 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 18 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337244/Butterfly_Vera.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337241/Butterfly_Vera-3.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337237/Butterfly_Vera-2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337248/Butterfly_Rosa-4.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337235/Butterfly_Rosa-6.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788337232/Butterfly_Rosa-5.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409959/Butterfly_Rosa.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409955/Butterfly_Rosa-2.PNG.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409957/Butterfly_Vera.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409957/Butterfly_Vera-2.png"
     ],
     "variants": [
       {
         "id": 6001,
-        "title": "Butterfly Vera — Garden",
+        "title": "Butterfly — Rosa",
         "price": 1390.0,
         "compare_at_price": null,
         "available": true,
-        "sku": "BV-006-GD"
+        "sku": "BV-006-RO"
       },
       {
         "id": 6002,
-        "title": "Butterfly Vera — Muse",
+        "title": "Butterfly — Vera",
         "price": 1390.0,
         "compare_at_price": null,
         "available": true,
-        "sku": "BV-006-MS"
+        "sku": "BV-006-VE"
       }
     ]
   },
