@@ -333,6 +333,8 @@ function renderProductDetailView(handle) {
         let vIdx = currentIdx;
         if (product.handle === "selena" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 0 : 1;
+        } else if (product.handle === "bella" && vBtns.length === 2 && total === 6) {
+          vIdx = currentIdx < 3 ? 1 : 0; // 0-2 Teal Blue, 3-5 Pearl White
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -416,8 +418,8 @@ function renderProductDetailView(handle) {
         if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
         if (typeof updateIdx === "function" && total>0) {
           let targetIdx = vi % total;
-          // SELENA: Noir must show image #4 (index 3), Classic -> #1 (index 0)
           if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
+          else if (product.handle === "bella" && total === 6) targetIdx = vi === 0 ? 3 : 0; // Pearl White -> #4, Teal Blue -> #1
           updateIdx(targetIdx);
         }
         setTimeout(()=> document.documentElement.style.scrollBehavior = "", 300);
