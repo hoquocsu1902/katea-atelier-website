@@ -327,11 +327,18 @@ function renderProductDetailView(handle) {
       }
       pdpThumbs.forEach((t,i) => t.style.borderColor = i===currentIdx ? "var(--color-primary)" : "transparent");
       document.querySelectorAll(".pdp-dot").forEach((d,i) => d.classList.toggle("active", i===currentIdx));
+      // sync variant: SELENA has 6 images but 2 variants (0-2 Classic, 3-5 Noir) -> must map
       const vBtns = document.querySelectorAll(".pdp-variant-btn");
-      if (vBtns.length === total) {
-        vBtns.forEach((b,i) => { b.classList.toggle("btn-primary", i===currentIdx); b.classList.toggle("btn-secondary", i!==currentIdx); });
+      if (vBtns.length > 0) {
+        let vIdx = currentIdx;
+        if (product.handle === "selena" && vBtns.length === 2 && total === 6) {
+          vIdx = currentIdx < 3 ? 0 : 1;
+        } else if (vBtns.length !== total) {
+          vIdx = Math.floor((currentIdx / total) * vBtns.length);
+        }
+        vBtns.forEach((b,i) => { b.classList.toggle("btn-primary", i===vIdx); b.classList.toggle("btn-secondary", i!==vIdx); });
         const vInput = document.getElementById("pdpSelectedVariant");
-        if (vInput && vBtns[currentIdx]) vInput.value = vBtns[currentIdx].dataset.variant || "Standard";
+        if (vInput && vBtns[vIdx]) vInput.value = vBtns[vIdx].dataset.variant || "Standard";
       }
       // restore scroll to keep toàn cảnh như ảnh 1, không trượt xuống
       requestAnimationFrame(() => window.scrollTo({top: lockY, behavior: "auto"}));
@@ -407,7 +414,12 @@ function renderProductDetailView(handle) {
         variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
         btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
         if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
-        if (typeof updateIdx === "function" && total>0) updateIdx(vi % total);
+        if (typeof updateIdx === "function" && total>0) {
+          let targetIdx = vi % total;
+          // SELENA: Noir must show image #4 (index 3), Classic -> #1 (index 0)
+          if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
+          updateIdx(targetIdx);
+        }
         setTimeout(()=> document.documentElement.style.scrollBehavior = "", 300);
       };
       btn.style.touchAction = "manipulation";
