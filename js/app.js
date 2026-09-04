@@ -331,16 +331,22 @@ function renderProductDetailView(handle) {
       const vBtns = document.querySelectorAll(".pdp-variant-btn");
       if (vBtns.length > 0) {
         let vIdx = currentIdx;
-        if (product.handle === "selena" && vBtns.length === 2 && total === 6) {
+        if (product.handle === "selena" && vBtns.length === 2 && total === 2) {
+          vIdx = currentIdx === 0 ? 0 : 1;
+        } else if (product.handle === "selena" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 0 : 1;
         } else if (product.handle === "bella" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 1 : 0; // 0-2 Teal Blue, 3-5 Pearl White
         } else if (product.handle === "glace" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Ice Clear, 3-5 Frost Blue
+        } else if (product.handle === "glace" && vBtns.length === 2 && total === 5) {
+          vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Ice Clear (3 imgs), 3-4 Frost Blue (2 imgs) — first 3 vs last 2
         } else if (product.handle === "scarlet" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Allure, 3-5 Rosé
         } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 4) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Rosa, 2-3 Vera
+        } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 3) {
+          vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Rosa, 2 Vera
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -424,11 +430,14 @@ function renderProductDetailView(handle) {
         if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
         if (typeof updateIdx === "function" && total>0) {
           let targetIdx = vi % total;
-          if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
+          if (product.handle === "selena" && total === 2) targetIdx = vi === 0 ? 0 : 1;
+          else if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
           else if (product.handle === "bella" && total === 6) targetIdx = vi === 0 ? 3 : 0; // Pearl White -> #4, Teal Blue -> #1
           else if (product.handle === "glace" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Ice Clear -> #1, Frost Blue -> #4
+          else if (product.handle === "glace" && total === 5) targetIdx = vi === 0 ? 0 : 2; // Ice Clear -> #1, Frost Blue -> #4 (now index2)
           else if (product.handle === "scarlet" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Allure -> #1, Rosé -> #4
           else if (product.handle === "butterfly-vera" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
+          else if (product.handle === "butterfly-vera" && total === 3) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           updateIdx(targetIdx);
         }
         setTimeout(()=> document.documentElement.style.scrollBehavior = "", 300);

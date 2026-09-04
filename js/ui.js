@@ -275,14 +275,20 @@ class UIManager {
   renderProductCard(product) {
     let rawPrimary = product.images && product.images.length > 0 ? product.images[0] : "";
     let rawSecondary = product.images && product.images.length > 1 ? product.images[1] : rawPrimary;
-    // Per-product All Handbags rule
+    // Per-product All Handbags rule — after deletions
     if (product.handle === "bella" && product.images.length > 3) {
       rawPrimary = product.images[3];
       rawSecondary = product.images[0];
-    } else if (product.handle === "butterfly-vera" && product.images.length > 2) {
+    } else if (product.handle === "butterfly-vera" && product.images.length === 3) {
       rawPrimary = product.images[0];
       rawSecondary = product.images[2];
     } else if ((product.handle === "celestial" || product.handle === "celestial-mini") && product.images.length === 3) {
+      rawPrimary = product.images[0];
+      rawSecondary = product.images[2];
+    } else if (product.handle === "glace" && product.images.length === 5) {
+      rawPrimary = product.images[0];
+      rawSecondary = product.images[2];
+    } else if (product.handle === "butterfly-vera" && product.images.length > 2) {
       rawPrimary = product.images[0];
       rawSecondary = product.images[2];
     } else if (product.images.length > 3) {

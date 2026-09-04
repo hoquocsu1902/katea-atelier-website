@@ -64,7 +64,6 @@ const PRODUCTS_DATA = [
     },
     "images": [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409601/Glac%C3%A9.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409596/Glac%C3%A9-2.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409597/Glac%C3%A9-3.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409603/Glac%C3%A9-4.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409598/Glac%C3%A9-5.png",
@@ -153,9 +152,7 @@ const PRODUCTS_DATA = [
       "craftsmanship": "Handcrafted by master artisans over 20 hours"
     },
     "images": [
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409161/Celeste.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409162/CELESTE_2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409161/CELESTE_3.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409161/Celeste.png"
     ],
     "variants": [
       {
@@ -188,11 +185,7 @@ const PRODUCTS_DATA = [
     },
     "images": [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407867/SELENA.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407870/SELENA_2.jpg",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407868/SELENA_3.jpg",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407866/SELENA-4.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407864/SELENA_5.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407940/SELENA_6.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407866/SELENA-4.png"
     ],
     "variants": [
       {
@@ -234,8 +227,7 @@ const PRODUCTS_DATA = [
     "images": [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409959/Butterfly_Rosa.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409955/Butterfly_Rosa-2.PNG.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409957/Butterfly_Vera.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409957/Butterfly_Vera-2.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788409957/Butterfly_Vera.png"
     ],
     "variants": [
       {
@@ -276,8 +268,7 @@ const PRODUCTS_DATA = [
     },
     "images": [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788338481/Celestial.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788338480/Celestial-2.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788338479/Celestial-3.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788338480/Celestial-2.png"
     ],
     "variants": [
       {
