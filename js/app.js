@@ -333,6 +333,8 @@ function renderProductDetailView(handle) {
         let vIdx = currentIdx;
         if (product.handle === "selena" && vBtns.length === 2 && total === 2) {
           vIdx = currentIdx === 0 ? 0 : 1;
+        } else if (product.handle === "selena" && vBtns.length === 2 && total === 3) {
+          vIdx = currentIdx === 0 ? 0 : 1; // 0 Classic, 1-2 Noir
         } else if (product.handle === "selena" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 0 : 1;
         } else if (product.handle === "bella" && vBtns.length === 2 && total === 6) {
