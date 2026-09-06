@@ -180,6 +180,7 @@ const PRODUCTS_DATA = [
     },
     "images": [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407867/SELENA.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788674153/SELENA_2.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788407866/SELENA-4.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788505015/SELENA-5.jpg"
     ],
