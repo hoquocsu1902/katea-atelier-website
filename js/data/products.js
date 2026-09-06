@@ -21,7 +21,8 @@ const PRODUCTS_DATA = [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Allure.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Allure-2.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Allure-3.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Ros%C3%A9.png"
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788405336/Scarlet_Ros%C3%A9.png",
+      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788690180/Scarlet_ros%C3%A9-2.jpg"
     ],
     "variants": [
       {
