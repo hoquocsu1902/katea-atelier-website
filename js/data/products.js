@@ -108,7 +108,6 @@ const PRODUCTS_DATA = [
     "images": [
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788408634/BELLA.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788408629/BELLA-3.png",
-      "https://res.cloudinary.com/uv5z26ah/image/upload/v1788620524/BELLA-4.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788621919/BELLA-4.png",
       "https://res.cloudinary.com/uv5z26ah/image/upload/v1788620524/BELLA-4.png"
     ],
