@@ -357,6 +357,8 @@ function renderProductDetailView(handle) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Rosa, 2 Vera
         } else if (product.handle === "celia-mini-bag" && vBtns.length === 3 && total === 3) {
           vIdx = currentIdx; // 1:1 mapping - Pearl White->#1, Blush Pink->#2, Sage Green->#3
+        } else if (product.handle === "camille" && vBtns.length === 2 && total === 2) {
+          vIdx = currentIdx; // 1:1 mapping - Classic->#1, Blush->#2
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -453,11 +455,9 @@ function renderProductDetailView(handle) {
           else if (product.handle === "butterfly-vera" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "butterfly-vera" && total === 3) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping - Pearl White->#1, Blush Pink->#2, Sage Green->#3
-          updateIdx(targetIdx);
+} else if (product.handle === "camille" && total === 2) targetIdx = vi; // 1:1 mapping - Classic->#1, Blush->#2
         }
-        setTimeout(()=> document.documentElement.style.scrollBehavior = "", 300);
-      };
-      btn.style.touchAction = "manipulation";
+        updateIdx(targetIdx);
       btn.addEventListener("pointerdown", vHandler, {passive:false});
       btn.addEventListener("click", vHandler, {passive:false});
     });
