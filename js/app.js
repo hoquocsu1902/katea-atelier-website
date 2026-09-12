@@ -306,7 +306,7 @@ function renderProductDetailView(handle) {
     const pdpThumbs = document.querySelectorAll(".pdp-thumb");
     let currentIdx = 0;
     const total = pdpThumbs.length;
-    const updateIdx = (idx) => {
+const updateIdx = (idx) => {
       // lock scroll to prevent auto-zoom/scroll down after variant tap (keep full view like ảnh 1)
       const lockY = window.scrollY;
       currentIdx = (idx + total) % total;
@@ -365,6 +365,15 @@ function renderProductDetailView(handle) {
         vBtns.forEach((b,i) => { b.classList.toggle("btn-primary", i===vIdx); b.classList.toggle("btn-secondary", i!==vIdx); });
         const vInput = document.getElementById("pdpSelectedVariant");
         if (vInput && vBtns[vIdx]) vInput.value = vBtns[vIdx].dataset.variant || "Standard";
+        // Update price based on selected variant
+        if (product.variants && product.variants[vIdx]) {
+          const variantPrice = product.variants[vIdx].price;
+          const priceEl = document.querySelector(".product-price.pdp-price");
+          if (priceEl && window.Currency) {
+            priceEl.textContent = window.Currency.format(variantPrice);
+            priceEl.setAttribute("data-price-base", variantPrice);
+          }
+        }
       }
       // restore scroll to keep toàn cảnh như ảnh 1, không trượt xuống
       requestAnimationFrame(() => window.scrollTo({top: lockY, behavior: "auto"}));
