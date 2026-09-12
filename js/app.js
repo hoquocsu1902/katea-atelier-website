@@ -442,7 +442,7 @@ const updateIdx = (idx) => {
         const now = Date.now();
         if (now - lastVariantTap < 350) return;
         lastVariantTap = now;
-        if(e && e.cancelable) { e.preventDefault(); e.stopPropagation(); }
+        if (e && e.type === "pointerdown" && e.cancelable) { e.preventDefault(); e.stopPropagation(); }
         // prevent focus scroll that causes viewport jump on mobile
         if (document.activeElement === btn) btn.blur();
         document.documentElement.style.scrollBehavior = "auto";
@@ -467,8 +467,13 @@ const updateIdx = (idx) => {
 } else if (product.handle === "camille" && total === 2) targetIdx = vi; // 1:1 mapping - Classic->#1, Blush->#2
         }
         updateIdx(targetIdx);
+          if (product.variants && product.variants[vi]) {
+            const vp = product.variants[vi].price;
+            const pe = document.querySelector(".product-price.pdp-price");
+            if (pe && window.Currency) { pe.textContent = window.Currency.format(vp); pe.setAttribute("data-price-base", vp); }
+          }
       btn.addEventListener("pointerdown", vHandler, {passive:false});
-      btn.addEventListener("click", vHandler, {passive:false});
+      btn.addEventListener("click", vHandler, {passive:true});
     });
 
     const waBtn = document.querySelector(".pdp-whatsapp-btn");
