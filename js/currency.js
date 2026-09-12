@@ -37,9 +37,9 @@ class CurrencyManager {
     const curr = CURRENCIES[this.current] || CURRENCIES.SGD;
     const converted = this.convert(amountInBaseSGD);
     if (curr.code === "VND") {
-      return `${converted.toLocaleString("vi-VN", { maximumFractionDigits: 0 })}${curr.symbol}`;
+      return `${converted.toLocaleString("vi-VN", { maximumFractionDigits: 0 })} ${curr.code}`;
     }
-    return `${curr.symbol}${converted.toLocaleString("en-US", { minimumFractionDigits: curr.decimals, maximumFractionDigits: curr.decimals })}`;
+    return `${converted.toLocaleString("en-US", { minimumFractionDigits: curr.decimals, maximumFractionDigits: curr.decimals })} ${curr.code}`;
   }
 
   updateDOM() {
