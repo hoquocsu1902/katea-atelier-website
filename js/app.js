@@ -463,15 +463,16 @@ const updateIdx = (idx) => {
           else if (product.handle === "scarlet" && total === 5) targetIdx = vi === 0 ? 0 : 3; // Allure -> #1, Rosé -> #4
           else if (product.handle === "butterfly-vera" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "butterfly-vera" && total === 3) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
-          else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping - Pearl White->#1, Blush Pink->#2, Sage Green->#3
-} else if (product.handle === "camille" && total === 2) targetIdx = vi; // 1:1 mapping - Classic->#1, Blush->#2
+          else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping
+          else if (product.handle === "camille" && total === 2) targetIdx = vi; // 1:1 mapping
+          updateIdx(targetIdx);
         }
-        updateIdx(targetIdx);
-          if (product.variants && product.variants[vi]) {
-            const vp = product.variants[vi].price;
-            const pe = document.querySelector(".product-price.pdp-price");
-            if (pe && window.Currency) { pe.textContent = window.Currency.format(vp); pe.setAttribute("data-price-base", vp); }
-          }
+        if (product.variants && product.variants[vi]) {
+          const vp = product.variants[vi].price;
+          const pe = document.querySelector(".product-price.pdp-price");
+          if (pe && window.Currency) { pe.textContent = window.Currency.format(vp); pe.setAttribute("data-price-base", vp); }
+        }
+      };
       btn.addEventListener("pointerdown", vHandler, {passive:false});
       btn.addEventListener("click", vHandler, {passive:true});
     });
