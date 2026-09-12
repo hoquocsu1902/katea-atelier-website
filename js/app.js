@@ -456,7 +456,7 @@ const updateIdx = (idx) => {
           else if (product.handle === "selena" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic->#1, Noir->#3
           else if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
           else if (product.handle === "bella" && total === 6) targetIdx = vi === 0 ? 3 : 0; // Pearl White -> #4, Teal Blue -> #1
-          else if (product.handle === "bella" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Teal Blue->#1, Pearl White->#3
+          else if (product.handle === "bella" && total === 4) targetIdx = vi === 0 ? 2 : 0; // Pearl White->#3, Teal Blue->#1
           else if (product.handle === "glace" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Ice Clear -> #1, Frost Blue -> #4
           else if (product.handle === "glace" && total === 5) targetIdx = vi === 0 ? 0 : 3; // Ice Clear -> #1, Frost Blue -> #4
           else if (product.handle === "scarlet" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Allure -> #1, Rosé -> #4
