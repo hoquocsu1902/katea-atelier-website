@@ -350,8 +350,9 @@ const updateIdx = (idx) => {
       pdpThumbs.forEach((t,i) => t.style.borderColor = i===currentIdx ? "var(--color-primary)" : "transparent");
       document.querySelectorAll(".pdp-dot").forEach((d,i) => d.classList.toggle("active", i===currentIdx));
       // sync variant: SELENA has 6 images but 2 variants (0-2 Classic, 3-5 Noir) -> must map
+      // single-image gallery (e.g. Selena from fits-a-phone): keep tapped variant, don't reset
       const vBtns = document.querySelectorAll(".pdp-variant-btn");
-      if (vBtns.length > 0) {
+      if (vBtns.length > 0 && total > 1) {
         let vIdx = currentIdx;
         if (product.handle === "selena" && vBtns.length === 2 && total === 2) {
           vIdx = currentIdx === 0 ? 0 : 1;
