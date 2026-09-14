@@ -128,7 +128,7 @@ function renderCollectionView(handle) {
            <p style="font-size:0.9rem;margin-bottom:20px;">All 4 handcrafted pieces are currently curated in All Handbags. Discover the full collection.</p>
            <a href="#collections/all-handbags" class="btn btn-primary">View All Handbags</a>
          </div>`
-      : filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("");
+      : filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p, (handle === "fits-a-phone" && p.fits_phone_image) ? { primary: p.fits_phone_image } : {}) : "").join("");
 
     // Preserve All Handbags invariant: COLLECTIONS_DATA[0] filter is () => true so it always shows 4
     mainContent.innerHTML = `
@@ -192,7 +192,7 @@ function sortCollection(criteria, handle) {
     if (items.length === 0) {
       grid.innerHTML = `<div class="collection-empty" style="text-align:center;padding:32px 0;color:var(--color-text-muted);">No creations to sort in this collection.</div>`;
     } else {
-      grid.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("");
+      grid.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p, (handle === "fits-a-phone" && p.fits_phone_image) ? { primary: p.fits_phone_image } : {}) : "").join("");
     }
       if (window.Currency) window.Currency.updateDOM();
   }

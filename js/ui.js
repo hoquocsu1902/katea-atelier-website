@@ -272,11 +272,13 @@ class UIManager {
   // ==========================================
   // Product Card Template
   // ==========================================
-  renderProductCard(product) {
+  renderProductCard(product, opts = {}) {
     let rawPrimary = product.images && product.images.length > 0 ? product.images[0] : "";
     let rawSecondary = product.images && product.images.length > 1 ? product.images[1] : rawPrimary;
-    // Per-product All Handbags rule — after deletions
-    if (product.handle === "bella" && product.images.length > 3) {
+    // Explicit primary override (e.g. fits-a-phone collection display image)
+    if (opts.primary) {
+      rawPrimary = opts.primary;
+    } else if (product.handle === "bella" && product.images.length > 3) {
       rawPrimary = product.images[3];
       rawSecondary = product.images[0];
     } else if (product.handle === "butterfly-vera" && product.images.length === 3) {
