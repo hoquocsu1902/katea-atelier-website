@@ -278,8 +278,7 @@ class UIManager {
     // Explicit primary override (e.g. fits-a-phone collection display image)
     if (opts.primary) {
       rawPrimary = opts.primary;
-    } else if (product.handle === "bella" && product.images.length > 3) {
-      rawPrimary = product.images[3];
+    } else if (product.handle === "bella" && product.images.length > 3) {      rawPrimary = product.images[3];
       rawSecondary = product.images[0];
     } else if (product.handle === "butterfly-vera" && product.images.length === 3) {
       rawPrimary = product.images[0];
@@ -301,6 +300,8 @@ class UIManager {
     const primarySrcSet = rawPrimary ? `${optimizeCloudinary(rawPrimary, 400)} 400w, ${primaryImg} 600w, ${optimizeCloudinary(rawPrimary, 800)} 800w` : "";
     const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
     const comparePrice = product.compare_price ? (window.Currency ? window.Currency.format(product.compare_price) : `$${product.compare_price}`) : "";
+    // Mark navigation source so PDP can keep context gallery (e.g. single image from fits-a-phone)
+    const fromAttr = opts.from ? ` onclick="try{sessionStorage.setItem('katea_pdp_from','${opts.from}')}catch(e){}"` : "";
 
     // Badges — unified to NEW ARRIVAL per request (preserve gold/dark styling for visual variety)
     let badgeHtml = "";
@@ -316,7 +317,7 @@ class UIManager {
       <div class="product-card" data-product-id="${product.id}">
         <div class="product-image-wrap">
           <div class="product-badges">${badgeHtml}</div>
-          <a href="#product/${product.handle}" style="display: block; width: 100%; height: 100%;">
+          <a href="#product/${product.handle}"${fromAttr} style="display: block; width: 100%; height: 100%;">
             <img src="${primaryImg}" srcset="${primarySrcSet}" sizes="(max-width: 767px) 50vw, (max-width: 1100px) 33vw, 25vw" alt="${product.title}" class="product-img" loading="lazy" decoding="async" fetchpriority="low" />
             <img src="${secondaryImg}" alt="${product.title}" class="product-img product-img-secondary" loading="lazy" decoding="async" />
           </a>
@@ -332,7 +333,7 @@ class UIManager {
         </div>
         <div class="product-info">
           <span class="product-category">${product.category.replace("-", " ")}</span>
-          <a href="#product/${product.handle}" class="product-title">${product.title}</a>
+          <a href="#product/${product.handle}"${fromAttr} class="product-title">${product.title}</a>
           <div class="product-price-wrap">
             <span class="product-price" data-price-base="${product.price}">${formattedPrice}</span>
             ${comparePrice ? `<span class="product-compare-price">${comparePrice}</span>` : ""}

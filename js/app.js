@@ -93,6 +93,19 @@ function renderHomeView() {
 }
 
 /**
+ * Card options per collection context.
+ * Fits A Phone: show the curated display image and mark PDP to keep single-image gallery.
+ */
+function collectionCardOpts(product, collectionHandle) {
+  if (collectionHandle === "fits-a-phone") {
+    const o = { from: "fits-a-phone" };
+    if (product && product.fits_phone_image) o.primary = product.fits_phone_image;
+    return o;
+  }
+  return {};
+}
+
+/**
  * 2. Collection Page View
  */
 function renderCollectionView(handle) {
@@ -128,7 +141,7 @@ function renderCollectionView(handle) {
            <p style="font-size:0.9rem;margin-bottom:20px;">All 4 handcrafted pieces are currently curated in All Handbags. Discover the full collection.</p>
            <a href="#collections/all-handbags" class="btn btn-primary">View All Handbags</a>
          </div>`
-      : filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p, (handle === "fits-a-phone" && p.fits_phone_image) ? { primary: p.fits_phone_image } : {}) : "").join("");
+      : filteredProducts.map(p => window.UI ? window.UI.renderProductCard(p, collectionCardOpts(p, handle)) : "").join("");
 
     // Preserve All Handbags invariant: COLLECTIONS_DATA[0] filter is () => true so it always shows 4
     mainContent.innerHTML = `
@@ -192,7 +205,7 @@ function sortCollection(criteria, handle) {
     if (items.length === 0) {
       grid.innerHTML = `<div class="collection-empty" style="text-align:center;padding:32px 0;color:var(--color-text-muted);">No creations to sort in this collection.</div>`;
     } else {
-      grid.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p, (handle === "fits-a-phone" && p.fits_phone_image) ? { primary: p.fits_phone_image } : {}) : "").join("");
+      grid.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p, collectionCardOpts(p, handle)) : "").join("");
     }
       if (window.Currency) window.Currency.updateDOM();
   }
@@ -220,6 +233,15 @@ function renderProductDetailView(handle) {
 
   const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
 
+  // Context gallery: coming from Fits A Phone shows only the curated image (e.g. Selena purple #3)
+  let galleryImages = product.images;
+  try {
+    if (sessionStorage.getItem("katea_pdp_from") === "fits-a-phone" && product.fits_phone_image) {
+      galleryImages = [product.fits_phone_image];
+    }
+    sessionStorage.removeItem("katea_pdp_from");
+  } catch (_) {}
+
   mainContent.innerHTML = `
     <div class="section pdp-section">
       <div class="container">
@@ -234,10 +256,10 @@ function renderProductDetailView(handle) {
           <!-- Gallery -->
           <div class="pdp-gallery">
             <div class="pdp-main-media">
-              <img src="${optimizeCloudinary(product.images[0], 900)}" srcset="${optimizeCloudinary(product.images[0], 600)} 600w, ${optimizeCloudinary(product.images[0], 900)} 900w, ${optimizeCloudinary(product.images[0], 1200)} 1200w" sizes="(max-width: 900px) 100vw, 50vw" id="pdpMainImg" alt="${product.title}" class="pdp-main-image" loading="eager" decoding="async" fetchpriority="high" />
+              <img src="${optimizeCloudinary(galleryImages[0], 900)}" srcset="${optimizeCloudinary(galleryImages[0], 600)} 600w, ${optimizeCloudinary(galleryImages[0], 900)} 900w, ${optimizeCloudinary(galleryImages[0], 1200)} 1200w" sizes="(max-width: 900px) 100vw, 50vw" id="pdpMainImg" alt="${product.title}" class="pdp-main-image" loading="eager" decoding="async" fetchpriority="high" />
             </div>
             <div class="pdp-thumbnails">
-              ${product.images.map((img, i) => `
+              ${galleryImages.map((img, i) => `
                 <img src="${optimizeCloudinary(img, 200)}" data-src="${optimizeCloudinary(img, 900)}" data-raw="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" loading="lazy" decoding="async" />
               `).join("")}
             </div>
