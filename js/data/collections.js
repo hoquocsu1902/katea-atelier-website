@@ -36,6 +36,15 @@ const COLLECTIONS_DATA = [
     filter: (p) => p.fits_phone
   },
   {
+    id: "diamond-eclat",
+    handle: "diamond-eclat",
+    title: "Diamond Éclat",
+    subtitle: "Crystal Meets Diamond Radiance",
+    description: "Crystal meets diamond to create pieces that help every woman shine with confidence, elegance, and a classy touch.",
+    image: "https://res.cloudinary.com/uv5z26ah/image/upload/v1789971751/Rose_%C3%A9clat.jpg",
+    filter: (p) => p.handle.includes("eclat")
+  },
+  {
     id: "best-sellers",
     handle: "best-sellers",
     title: "Best Sellers",
