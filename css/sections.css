@@ -2,11 +2,13 @@
    KATÉA — Homepage Sections & Feature Components
    ========================================================================== */
 
-/* 1. Three-Column Category Feature */
+/* 1. Two-Column Category Feature (balanced, centered) */
 .category-columns-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  max-width: 1020px;
+  margin: 0 auto;
 }
 
 .category-card {
