@@ -36,15 +36,6 @@ const COLLECTIONS_DATA = [
     filter: (p) => p.fits_phone
   },
   {
-    id: "card-holders",
-    handle: "card-holders",
-    title: "Card Holders",
-    subtitle: "Sculptural Evening Card Holders",
-    description: "Hand-sculpted card holders and soft-structured pouches that catch the light from every perspective.",
-    image: "https://paleramilano.com/cdn/shop/files/Clutch-Mini-Brass-Silver-Blue-Silver.jpg?v=1771258106&width=1600",
-    filter: (p) => p.category === "card-holders" || p.handle.includes("card-holder") || p.handle.includes("pouch")
-  },
-  {
     id: "best-sellers",
     handle: "best-sellers",
     title: "Best Sellers",
