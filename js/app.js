@@ -8,6 +8,25 @@ function optimizeCloudinary(url, width = 800) {
   return url.replace("/image/upload/", `/image/upload/f_auto,q_auto,w_${width}/`);
 }
 
+/**
+ * PDP image URL with optional per-image crop (e.g. equalize Scarlet Silver/Red framing).
+ * product.image_crops maps image basename -> Cloudinary transformation prefix.
+ */
+function pdpSrc(raw, width, product) {
+  if (!raw) return raw;
+  let extra = "";
+  try {
+    const crops = product && product.image_crops;
+    if (crops) {
+      const base = String(raw.split("/").pop()).split("?")[0];
+      const key = Object.keys(crops).find(k => base === k || decodeURIComponent(base) === k);
+      if (key) extra = crops[key] + ",";
+    }
+  } catch (_) {}
+  if (raw.includes("res.cloudinary.com")) return raw.replace("/image/upload/", `/image/upload/${extra}f_auto,q_auto,w_${width}/`);
+  return raw;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize Core Systems
   if (window.UI) window.UI.init();
@@ -256,11 +275,11 @@ function renderProductDetailView(handle) {
           <!-- Gallery -->
           <div class="pdp-gallery">
             <div class="pdp-main-media">
-              <img src="${optimizeCloudinary(galleryImages[0], 900)}" srcset="${optimizeCloudinary(galleryImages[0], 600)} 600w, ${optimizeCloudinary(galleryImages[0], 900)} 900w, ${optimizeCloudinary(galleryImages[0], 1200)} 1200w" sizes="(max-width: 900px) 100vw, 50vw" id="pdpMainImg" alt="${product.title}" class="pdp-main-image" loading="eager" decoding="async" fetchpriority="high" />
+              <img src="${pdpSrc(galleryImages[0], 900, product)}" srcset="${pdpSrc(galleryImages[0], 600, product)} 600w, ${pdpSrc(galleryImages[0], 900, product)} 900w, ${pdpSrc(galleryImages[0], 1200, product)} 1200w" sizes="(max-width: 900px) 100vw, 50vw" id="pdpMainImg" alt="${product.title}" class="pdp-main-image" loading="eager" decoding="async" fetchpriority="high" />
             </div>
             <div class="pdp-thumbnails">
               ${galleryImages.map((img, i) => `
-                <img src="${optimizeCloudinary(img, 200)}" data-src="${optimizeCloudinary(img, 900)}" data-raw="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" loading="lazy" decoding="async" />
+                <img src="${pdpSrc(img, 200, product)}" data-src="${pdpSrc(img, 900, product)}" data-raw="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" loading="lazy" decoding="async" />
               `).join("")}
             </div>
           </div>
@@ -338,9 +357,9 @@ const updateIdx = (idx) => {
       if (pdpMainImg && src) {
         pdpMainImg.src = src;
         if (raw) {
-          const s600 = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_600/") : raw;
+          const s600 = pdpSrc(raw, 600, product);
           const s900 = src;
-          const s1200 = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_1200/") : raw;
+          const s1200 = pdpSrc(raw, 1200, product);
           pdpMainImg.srcset = `${s600} 600w, ${s900} 900w, ${s1200} 1200w`;
         }
         // instant without zoom — contain keeps full bag visible
@@ -415,7 +434,7 @@ const updateIdx = (idx) => {
         dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.12s;touch-action:manipulation;";
         dot.setAttribute("aria-label", `View image ${i+1}`);
         let lastDotTap=0;
-        const dotHandler = (e)=>{ const now=Date.now(); if(now-lastDotTap<350) return; lastDotTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(i); };
+        const dotHandler = (e)=>{ const now=Date.now(); if(e && e.type === "click" && now-lastDotTap<350) return; lastDotTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(i); };
         dot.addEventListener("pointerdown", dotHandler, {passive:false});
         dot.addEventListener("click", dotHandler, {passive:true});
         dots.appendChild(dot);
@@ -436,7 +455,7 @@ const updateIdx = (idx) => {
     }
     let lastThumbTap = 0;
     pdpThumbs.forEach((thumb, idx) => {
-      const h = (e)=>{ const now=Date.now(); if(now-lastThumbTap<350) return; lastThumbTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(idx); };
+      const h = (e)=>{ const now=Date.now(); if(e && e.type === "click" && now-lastThumbTap<350) return; lastThumbTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(idx); };
       thumb.style.touchAction = "manipulation";
       thumb.style.cursor = "pointer";
       thumb.addEventListener("pointerdown", h, {passive:false});
@@ -465,7 +484,9 @@ const updateIdx = (idx) => {
       btn.setAttribute("tabindex", "-1");
       const vHandler = (e)=> {
         const now = Date.now();
-        if (now - lastVariantTap < 350) return;
+        // Instant response: every physical tap (pointerdown) processes immediately.
+        // Only the synthetic click trailing a pointerdown is skipped (anti double-fire).
+        if (e && e.type === "click" && now - lastVariantTap < 350) return;
         lastVariantTap = now;
         if (e && e.type === "pointerdown" && e.cancelable) { e.preventDefault(); e.stopPropagation(); }
         // prevent focus scroll that causes viewport jump on mobile

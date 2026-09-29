@@ -1,4 +1,4 @@
-const CACHE = "katea-v2";
+const CACHE = "katea-v3";
 const ASSETS = ["/", "/index.html", "/css/main.css", "/js/app.js", "/js/ui.js"];
 self.addEventListener("install", e => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(k=> k!==CACHE ? caches.delete(k) : null))).then(()=> self.clients.claim())); });
