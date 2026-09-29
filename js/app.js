@@ -375,7 +375,7 @@ const updateIdx = (idx) => {
         } else if (product.handle === "scarlet" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Allure, 3-5 Rosé
         } else if (product.handle === "scarlet" && vBtns.length === 2 && total === 5) {
-          vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Allure, 3-4 Rosé
+          vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Allure, 2-4 Rosé
         } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 4) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Rosa, 2-3 Vera
         } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 3) {
@@ -477,7 +477,7 @@ const updateIdx = (idx) => {
         if (typeof updateIdx === "function" && total>0) {
           let targetIdx = vi % total;
           if (product.handle === "selena" && total === 2) targetIdx = vi === 0 ? 0 : 1;
-          else if (product.handle === "selena" && total === 3) targetIdx = vi === 0 ? 0 : 2;
+          else if (product.handle === "selena" && total === 3) targetIdx = vi === 0 ? 0 : 1; // Classic -> #1, Noir -> #2 (purple)
           else if (product.handle === "selena" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic->#1, Noir->#3
           else if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
           else if (product.handle === "bella" && total === 6) targetIdx = vi === 0 ? 3 : 0; // Pearl White -> #4, Teal Blue -> #1
@@ -486,7 +486,7 @@ const updateIdx = (idx) => {
           else if (product.handle === "glace" && total === 5) targetIdx = vi === 0 ? 0 : 3; // Ice Clear -> #1, Frost Blue -> #4
           else if (product.handle === "glace" && total === 3) targetIdx = vi === 0 ? 0 : 1; // Ice Clear -> #1, Frost Blue -> #2
           else if (product.handle === "scarlet" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Allure -> #1, Rosé -> #4
-          else if (product.handle === "scarlet" && total === 5) targetIdx = vi === 0 ? 0 : 3; // Allure -> #1, Rosé -> #4
+          else if (product.handle === "scarlet" && total === 5) targetIdx = vi === 0 ? 0 : 2; // Allure -> #1, Rosé -> #3
           else if (product.handle === "butterfly-vera" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "butterfly-vera" && total === 3) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping
