@@ -279,7 +279,7 @@ function renderProductDetailView(handle) {
             </div>
             <div class="pdp-thumbnails">
               ${galleryImages.map((img, i) => `
-                <img src="${pdpSrc(img, 200, product)}" data-src="${pdpSrc(img, 900, product)}" data-raw="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" loading="lazy" decoding="async" />
+                <img src="${optimizeCloudinary(img, 200)}" data-src="${pdpSrc(img, 900, product)}" data-raw="${img}" class="pdp-thumb" style="border-color: ${i === 0 ? "var(--color-primary)" : "transparent"};" alt="${product.title} thumbnail ${i+1}" loading="lazy" decoding="async" />
               `).join("")}
             </div>
           </div>
