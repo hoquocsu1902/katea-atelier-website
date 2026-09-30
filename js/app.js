@@ -397,6 +397,8 @@ const updateIdx = (idx) => {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Allure, 2-4 Rosé
         } else if (product.handle === "scarlet-rose" && vBtns.length === 3 && total === 4) {
           vIdx = currentIdx === 0 ? 0 : currentIdx - 1; // 0-1 Rosé, 2 Blue Grey, 3 Blue
+        } else if (product.handle === "scarlet-rose" && vBtns.length === 5 && total === 6) {
+          vIdx = currentIdx === 0 ? 0 : currentIdx - 1; // 0-1 Rosé, 2 Blue Grey, 3 Blue, 4 Grey, 5 Aurora Pink
         } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 4) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Rosa, 2-3 Vera
         } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 3) {
@@ -511,6 +513,7 @@ const updateIdx = (idx) => {
           else if (product.handle === "scarlet" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Allure -> #1, Rosé -> #4
           else if (product.handle === "scarlet" && total === 5) targetIdx = vi === 0 ? 0 : 2; // Allure -> #1, Rosé -> #3
           else if (product.handle === "scarlet-rose" && total === 4) targetIdx = vi === 0 ? 0 : vi + 1; // Rosé -> #1, Blue Grey -> #3, Blue -> #4
+          else if (product.handle === "scarlet-rose" && total === 6) targetIdx = vi === 0 ? 0 : vi + 1; // Rosé -> #1, Blue Grey -> #3, Blue -> #4, Grey -> #5, Aurora Pink -> #6
           else if (product.handle === "butterfly-vera" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "butterfly-vera" && total === 3) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping
