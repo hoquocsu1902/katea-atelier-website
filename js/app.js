@@ -391,6 +391,8 @@ const updateIdx = (idx) => {
           vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Ice Clear (3 imgs), 3-4 Frost Blue (2 imgs)
         } else if (product.handle === "glace" && vBtns.length === 2 && total === 3) {
           vIdx = currentIdx === 0 ? 0 : 1; // 0 Ice Clear, 1-2 Frost Blue
+        } else if (product.handle === "glace" && vBtns.length === 6 && total === 7) {
+          vIdx = currentIdx <= 1 ? currentIdx : currentIdx - 1; // 0 Ice, 1-2 Frost, 3 BlueGrey, 4 Grey, 5 SilverWhite, 6 Green
         } else if (product.handle === "scarlet" && vBtns.length === 2 && total === 6) {
           vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Allure, 3-5 Rosé
         } else if (product.handle === "scarlet" && vBtns.length === 2 && total === 5) {
@@ -510,6 +512,7 @@ const updateIdx = (idx) => {
           else if (product.handle === "glace" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Ice Clear -> #1, Frost Blue -> #4
           else if (product.handle === "glace" && total === 5) targetIdx = vi === 0 ? 0 : 3; // Ice Clear -> #1, Frost Blue -> #4
           else if (product.handle === "glace" && total === 3) targetIdx = vi === 0 ? 0 : 1; // Ice Clear -> #1, Frost Blue -> #2
+          else if (product.handle === "glace" && total === 7) targetIdx = vi <= 1 ? vi : vi + 1; // Ice->#1, Frost->#2, BlueGrey->#4, Grey->#5, SilverWhite->#6, Green->#7
           else if (product.handle === "scarlet" && total === 6) targetIdx = vi === 0 ? 0 : 3; // Allure -> #1, Rosé -> #4
           else if (product.handle === "scarlet" && total === 5) targetIdx = vi === 0 ? 0 : 2; // Allure -> #1, Rosé -> #3
           else if (product.handle === "scarlet-rose" && total === 4) targetIdx = vi === 0 ? 0 : vi + 1; // Rosé -> #1, Blue Grey -> #3, Blue -> #4
