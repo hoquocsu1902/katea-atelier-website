@@ -339,8 +339,9 @@ function renderProductDetailView(handle) {
     </div>
   `;
 
-  // Bind PDP gallery and variant interactions — single-tap instant (pointerdown, no 300ms delay)
-  requestAnimationFrame(() => {
+  // Bind PDP gallery and variant interactions SYNCHRONOUSLY so controls work
+  // even when requestAnimationFrame is throttled. Single-tap instant (pointerdown, no 300ms delay).
+  {
     const pdpMainImg = document.getElementById("pdpMainImg");
     if (pdpMainImg) { pdpMainImg.style.willChange = "opacity"; pdpMainImg.style.transition = "opacity 0.12s ease"; }
     const pdpMainMedia = document.querySelector(".pdp-main-media");
@@ -429,7 +430,8 @@ const updateIdx = (idx) => {
       requestAnimationFrame(() => window.scrollTo({top: lockY, behavior: "auto"}));
       setTimeout(() => window.scrollTo({top: lockY, behavior: "auto"}), 80);
     };
-    // Dots for mobile swipe indication
+    // Dots for mobile swipe indication (progressive enhancement — must never break core bindings)
+    try {
     if (total > 1 && pdpMainMedia && !document.querySelector(".pdp-dots")) {
       const dots = document.createElement("div");
       dots.className = "pdp-dots";
@@ -459,6 +461,7 @@ const updateIdx = (idx) => {
         if (Math.abs(dx)>48 && Math.abs(dx) > Math.abs(dy)*1.2) { dx<0 ? updateIdx(currentIdx+1) : updateIdx(currentIdx-1); }
       }, {passive:true});
     }
+    } catch (e) { console.error("pdp dots error:", e); }
     let lastThumbTap = 0;
     pdpThumbs.forEach((thumb, idx) => {
       const h = (e)=>{ const now=Date.now(); if(e && e.type === "click" && now-lastThumbTap<350) return; lastThumbTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(idx); };
@@ -475,6 +478,7 @@ const updateIdx = (idx) => {
     }
 
     // Preload variant images for instant swap on mobile (remove perceived delay)
+    try {
     product.images.forEach(src => {
       const raw = src;
       const opt = raw.includes("res.cloudinary.com") ? raw.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_900/") : raw;
@@ -482,6 +486,7 @@ const updateIdx = (idx) => {
       img.decoding = "async";
       img.src = opt;
     });
+    } catch (e) { console.error("pdp preload error:", e); }
 
     const variantBtns = document.querySelectorAll(".pdp-variant-btn");
     const variantInput = document.getElementById("pdpSelectedVariant");
@@ -538,7 +543,7 @@ const updateIdx = (idx) => {
       const variant = document.getElementById("pdpSelectedVariant")?.value || "Standard";
       window.WhatsApp?.orderProduct(product.id, variant, 1);
     });
-  });
+  }
 }
 
 /**
