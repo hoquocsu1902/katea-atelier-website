@@ -413,7 +413,9 @@ class UIManager {
     modal.classList.add("active");
     if (overlay) overlay.classList.add("active");
 
-    requestAnimationFrame(() => {
+    // Bind synchronously (modal is static DOM) so buttons work instantly,
+    // even when requestAnimationFrame is throttled.
+    {
       const qvVariantBtns = modal.querySelectorAll(".qv-variant-btn");
       const qvVariantInput = modal.querySelector("#qvSelectedVariant");
       qvVariantBtns.forEach(btn => {
@@ -429,7 +431,7 @@ class UIManager {
         const pid = qvWaBtn.dataset.productId;
         window.WhatsApp?.orderProduct(pid, variant, 1);
       });
-    });
+    }
   }
 
   closeQuickView() {

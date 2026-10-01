@@ -435,7 +435,7 @@ const updateIdx = (idx) => {
         } else if (product.handle === "celestial" && vBtns.length === 2 && total === 4) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Classic, 2-3 Large
         } else if (product.handle === "celestial" && vBtns.length === 2 && total === 5) {
-          vIdx = currentIdx < 2 ? 0 : (currentIdx === 4 ? 0 : 1); // 0-1 Classic, 2-3 Large, 4 Classic styled
+          vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Classic, 2-4 Large (styled final belongs to Large)
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -462,7 +462,7 @@ const updateIdx = (idx) => {
       const dots = document.createElement("div");
       dots.className = "pdp-dots";
       dots.style.cssText = "display:flex;gap:6px;justify-content:center;margin-top:10px;";
-      product.images.forEach((_,i) => {
+      galleryImages.forEach((_,i) => {
         const dot = document.createElement("button");
         dot.className = "pdp-dot" + (i===0 ? " active" : "");
         dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.12s;touch-action:manipulation;";
