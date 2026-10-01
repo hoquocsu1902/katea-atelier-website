@@ -261,8 +261,9 @@ function renderProductDetailView(handle) {
     sessionStorage.removeItem("katea_pdp_from");
   } catch (_) {}
 
-  // All products: keep thumbs un-cropped so the full bag is visible (no cover zoom).
-  const pdpFitContain = true;
+  // Only Scarlet Rosé (all-landscape photos) keeps thumbs un-cropped;
+  // portrait products fill the frame snugly with cover.
+  const pdpFitContain = product.handle === "scarlet-rose";
 
   mainContent.innerHTML = `
     <div class="section pdp-section">
@@ -351,7 +352,7 @@ function renderProductDetailView(handle) {
     const pdpThumbs = document.querySelectorAll(".pdp-thumb");
     let currentIdx = 0;
     const total = pdpThumbs.length;
-    // Fit-contain galleries (site-wide mixed-aspect photos):
+    // Fit-contain galleries (Scarlet Rosé all-landscape photos):
     // size the frame to each photo's natural ratio — no letterbox bars, no crop.
     const fitMediaToImage = () => {
       try {

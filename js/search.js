@@ -112,7 +112,7 @@ class SearchManager {
           return `
             <div class="product-card" style="border: 1px solid var(--color-border-light); padding: 12px; border-radius: 4px;">
               <a href="#product/${p.handle}" onclick="window.Search.close();" style="display: block;">
-                <img src="${img}" alt="${p.title}" style="width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; border-radius: 2px; margin-bottom: 10px;" />
+                <img src="${img}" alt="${p.title}" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 2px; margin-bottom: 10px;" />
                 <h4 style="font-size: 0.88rem; margin-bottom: 4px;">${p.title}</h4>
                 <div style="color: var(--color-accent); font-weight: 500; font-size: 0.88rem;">${price}</div>
               </a>
