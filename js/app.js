@@ -434,6 +434,8 @@ const updateIdx = (idx) => {
           vIdx = currentIdx; // 1:1 mapping - Classic->#1, Blush->#2
         } else if (product.handle === "celestial" && vBtns.length === 2 && total === 4) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Classic, 2-3 Large
+        } else if (product.handle === "celestial" && vBtns.length === 2 && total === 5) {
+          vIdx = currentIdx < 2 ? 0 : (currentIdx === 4 ? 0 : 1); // 0-1 Classic, 2-3 Large, 4 Classic styled
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -550,6 +552,7 @@ const updateIdx = (idx) => {
           else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping
           else if (product.handle === "camille" && total === 2) targetIdx = vi; // 1:1 mapping
           else if (product.handle === "celestial" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic -> #1, Large -> #3
+          else if (product.handle === "celestial" && total === 5) targetIdx = vi === 0 ? 0 : 2; // Classic -> #1, Large -> #3
           updateIdx(targetIdx);
         }
         if (product.variants && product.variants[vi]) {
