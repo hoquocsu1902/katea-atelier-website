@@ -318,10 +318,10 @@ class UIManager {
     } else if (product.is_rose) {
       badgeHtml = `<span class="badge badge-rose">Rose Edition</span>`;
     }
-    // Sale badge — auto-computed from compare_at price (e.g. Célia Mini −30%)
+    // Sale badge — auto-computed from compare_at price (e.g. Célia Mini SAVE 30%)
     if (product.compare_price && product.compare_price > product.price) {
       const pct = Math.round((1 - product.price / product.compare_price) * 100);
-      badgeHtml += `<span class="badge badge-sale">−${pct}%</span>`;
+      badgeHtml += `<span class="badge badge-sale">Save ${pct}%</span>`;
     }
 
     return `
