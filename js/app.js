@@ -497,8 +497,7 @@ const updateIdx = (idx) => {
     // also make main image swipable via pointer
     if (pdpMainImg) {
       pdpMainImg.style.touchAction = "pan-y";
-      pdpMainImg.style.cursor = "zoom-in";
-      pdpMainImg.addEventListener("click", () => window.UI?.showToast("High Resolution Atelier Zoom"));
+      pdpMainImg.style.cursor = "default";
     }
 
     // Preload variant images for instant swap on mobile (remove perceived delay)
