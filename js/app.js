@@ -352,6 +352,21 @@ function renderProductDetailView(handle) {
     const pdpThumbs = document.querySelectorAll(".pdp-thumb");
     let currentIdx = 0;
     const total = pdpThumbs.length;
+    // Fit-contain galleries (e.g. Scarlet Rosé mixed-aspect photos):
+    // size the frame to each photo's natural ratio — no letterbox bars, no crop.
+    const fitMediaToImage = () => {
+      try {
+        if (!pdpFitContain || !pdpMainImg || !pdpMainMedia) return;
+        const w = pdpMainImg.naturalWidth, h = pdpMainImg.naturalHeight;
+        if (!w || !h) return;
+        const ratio = Math.min(1.7, Math.max(0.7, w / h));
+        pdpMainMedia.style.aspectRatio = `${ratio.toFixed(3)} / 1`;
+      } catch (_) {}
+    };
+    if (pdpMainImg) {
+      pdpMainImg.addEventListener("load", fitMediaToImage);
+      if (pdpMainImg.complete && pdpMainImg.naturalWidth) fitMediaToImage();
+    }
 const updateIdx = (idx) => {
       // lock scroll to prevent auto-zoom/scroll down after variant tap (keep full view like ảnh 1)
       const lockY = window.scrollY;
@@ -370,6 +385,8 @@ const updateIdx = (idx) => {
         // instant without zoom — contain keeps full bag visible
         pdpMainImg.style.opacity = "0.98";
         requestAnimationFrame(() => pdpMainImg.style.opacity = "1");
+        // refit frame to the new photo (cached → instant via complete, else on load)
+        if (pdpFitContain && pdpMainImg.complete && pdpMainImg.naturalWidth) fitMediaToImage();
       }
       pdpThumbs.forEach((t,i) => t.style.borderColor = i===currentIdx ? "var(--color-primary)" : "transparent");
       document.querySelectorAll(".pdp-dot").forEach((d,i) => d.classList.toggle("active", i===currentIdx));

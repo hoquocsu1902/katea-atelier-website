@@ -121,6 +121,10 @@
   transform: none;
 }
 
+.pdp-gallery--fit-contain .pdp-main-media {
+  background: #FFFFFF;
+}
+
 .pdp-gallery--fit-contain .pdp-thumb {
   object-fit: contain;
   background: #FFFFFF;
