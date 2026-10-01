@@ -315,6 +315,12 @@ ul, ol {
   color: var(--color-white);
 }
 
+.badge-sale {
+  background: var(--color-danger);
+  color: var(--color-white);
+  border: 1px solid var(--color-danger);
+}
+
 .badge-stock {
   background: #E8F5E9;
   color: #2E7D32;
