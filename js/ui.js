@@ -318,16 +318,18 @@ class UIManager {
     } else if (product.is_rose) {
       badgeHtml = `<span class="badge badge-rose">Rose Edition</span>`;
     }
-    // Sale badge — auto-computed from compare_at price (e.g. Célia Mini SAVE 30%)
+    // Sale ribbon — diagonal top-right corner, auto-computed (e.g. Célia Mini Sale 30%)
+    let saleRibbon = "";
     if (product.compare_price && product.compare_price > product.price) {
       const pct = Math.round((1 - product.price / product.compare_price) * 100);
-      badgeHtml += `<span class="badge badge-sale">Save ${pct}%</span>`;
+      saleRibbon = `<div class="product-sale-ribbon">Sale ${pct}%</div>`;
     }
 
     return `
       <div class="product-card${fitContain ? " product-card--fit-contain" : ""}" data-product-id="${product.id}"${fitContain ? ` data-fit="contain"` : ""}>
         <div class="product-image-wrap">
           <div class="product-badges">${badgeHtml}</div>
+          ${saleRibbon}
           <a href="#product/${product.handle}"${fromAttr} style="display: block; width: 100%; height: 100%;">
             <img src="${primaryImg}" srcset="${primarySrcSet}" sizes="(max-width: 767px) 50vw, (max-width: 1100px) 33vw, 25vw" alt="${product.title}" class="product-img" loading="lazy" decoding="async" fetchpriority="low" />
             <img src="${secondaryImg}" alt="${product.title}" class="product-img product-img-secondary" loading="lazy" decoding="async" />

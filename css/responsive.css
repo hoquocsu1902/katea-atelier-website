@@ -721,6 +721,13 @@ textarea {
     letter-spacing: 0.06em;
   }
 
+  .product-sale-ribbon {
+    top: 12px;
+    right: -30px;
+    font-size: 0.6rem;
+    padding: 4px 30px;
+  }
+
   .product-wishlist-btn {
     top: 8px;
     right: 8px;
