@@ -239,7 +239,7 @@
   max-height: 90vh;
   background-color: var(--color-white);
   z-index: var(--z-modal);
-  border-radius: var(--radius-sm);
+  border-radius: 18px;
   box-shadow: var(--shadow-lg);
   display: grid;
   grid-template-columns: 1fr 1.15fr;
@@ -297,6 +297,7 @@
   background-color: var(--color-white);
   z-index: var(--z-modal);
   box-shadow: var(--shadow-md);
+  border-radius: 0 0 22px 22px;
   padding: 32px 0 48px;
   transform: translateY(-100%);
   opacity: 0;

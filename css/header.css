@@ -76,7 +76,7 @@
 }
 
 .site-header.scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 28px rgba(26, 18, 11, .08);
   background-color: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
 }
@@ -321,7 +321,8 @@
   height: 100vh;
   background-color: var(--color-white);
   z-index: var(--z-drawer);
-  box-shadow: var(--shadow-lg);
+  border-radius: 0 22px 22px 0;
+  box-shadow: 12px 0 44px rgba(26, 18, 11, .16);
   transform: translateX(-100%);
   transition: transform var(--transition-smooth);
   display: flex;

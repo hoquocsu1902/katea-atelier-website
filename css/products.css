@@ -133,6 +133,11 @@
   background: #FFFFFF;
 }
 
+.pdp-thumb:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 18, 11, .14);
+}
+
 .quickview-modal--fit-contain .quickview-main-img {
   object-fit: contain;
   background: #FFFFFF;
