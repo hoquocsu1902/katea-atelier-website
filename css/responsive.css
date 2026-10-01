@@ -919,6 +919,14 @@ textarea {
     object-fit: contain;
     background: #F9F6F2;
   }
+  /* Fit galleries size the frame to each photo, so no height cap is needed */
+  .pdp-gallery--fit-contain .pdp-main-media {
+    max-height: none;
+    background: #FFFFFF;
+  }
+  .pdp-gallery--fit-contain .pdp-main-image {
+    background: #FFFFFF;
+  }
   .pdp-thumbnails {
     gap: 10px;
   }

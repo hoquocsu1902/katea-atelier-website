@@ -369,7 +369,7 @@ class UIManager {
 
     const mainImg = product.images && product.images.length > 0 ? product.images[0] : "";
     const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
-    const fitContain = product.handle === "scarlet-rose"; // landscape-only product
+    const fitContain = true; // quickview always shows the full image
     modal.classList.toggle("quickview-modal--fit-contain", fitContain);
 
     modal.innerHTML = `

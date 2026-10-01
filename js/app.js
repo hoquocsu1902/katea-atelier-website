@@ -261,9 +261,10 @@ function renderProductDetailView(handle) {
     sessionStorage.removeItem("katea_pdp_from");
   } catch (_) {}
 
-  // Only Scarlet Rosé (all-landscape photos) keeps thumbs un-cropped;
-  // portrait products fill the frame snugly with cover.
-  const pdpFitContain = product.handle === "scarlet-rose";
+  // All PDP galleries: frame auto-fits each photo's ratio —
+  // snug with no letterbox bars, no crop, no distortion.
+  // (Grid cards keep cover for uniform rows; detail views show the full image.)
+  const pdpFitContain = true;
 
   mainContent.innerHTML = `
     <div class="section pdp-section">
