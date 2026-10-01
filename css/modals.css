@@ -352,6 +352,14 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+  /* Let taps pass through the wrap's empty (hidden-popup) area so it never
+     covers buttons beneath it; only the visible button/popup take taps. */
+  pointer-events: none;
+}
+
+.whatsapp-floating-wrap .whatsapp-floating-btn,
+.whatsapp-floating-wrap .whatsapp-chat-popup {
+  pointer-events: auto;
 }
 
 .whatsapp-chat-popup {
