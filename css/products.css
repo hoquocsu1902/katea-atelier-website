@@ -110,7 +110,11 @@
    show the full bag in card / thumbs / quickview — no cover crop or hover zoom. */
 .product-card--fit-contain .product-img {
   object-fit: contain;
-  background-color: #FAF8F5;
+  background-color: #FFFFFF;
+}
+
+.product-card--fit-contain .product-image-wrap {
+  background-color: #FFFFFF;
 }
 
 .product-card--fit-contain:hover .product-img {
@@ -119,11 +123,16 @@
 
 .pdp-gallery--fit-contain .pdp-thumb {
   object-fit: contain;
-  background: #F9F6F2;
+  background: #FFFFFF;
 }
 
 .quickview-modal--fit-contain .quickview-main-img {
   object-fit: contain;
+  background: #FFFFFF;
+}
+
+.quickview-modal--fit-contain .quickview-gallery {
+  background: #FFFFFF;
 }
 
 /* Product Badges */
