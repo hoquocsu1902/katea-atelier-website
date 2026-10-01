@@ -467,10 +467,10 @@ const updateIdx = (idx) => {
         dot.className = "pdp-dot" + (i===0 ? " active" : "");
         dot.style.cssText = "width:14px;height:14px;padding:4px;background-clip:content-box;border-radius:50%;background-color:var(--color-border);border:4px solid transparent;transition:all 0.12s;touch-action:manipulation;";
         dot.setAttribute("aria-label", `View image ${i+1}`);
-        let lastDotTap=0;
-        const dotHandler = (e)=>{ const now=Date.now(); if(e && e.type === "click" && now-lastDotTap<350) return; lastDotTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(i); };
-        dot.addEventListener("pointerdown", dotHandler, {passive:false});
-        dot.addEventListener("click", dotHandler, {passive:true});
+        // Idempotent update: safe to fire from every tap event (WebView-proof).
+        const dotHandler = ()=> updateIdx(i);
+        dot.addEventListener("pointerdown", dotHandler);
+        dot.addEventListener("click", dotHandler);
         dots.appendChild(dot);
       });
       pdpMainMedia.insertAdjacentElement("afterend", dots);
@@ -488,13 +488,13 @@ const updateIdx = (idx) => {
       }, {passive:true});
     }
     } catch (e) { console.error("pdp dots error:", e); }
-    let lastThumbTap = 0;
     pdpThumbs.forEach((thumb, idx) => {
-      const h = (e)=>{ const now=Date.now(); if(e && e.type === "click" && now-lastThumbTap<350) return; lastThumbTap=now; if(e && e.cancelable) e.preventDefault(); updateIdx(idx); };
+      // Idempotent update: safe to fire from every tap event (WebView-proof).
+      const h = ()=> updateIdx(idx);
       thumb.style.touchAction = "manipulation";
       thumb.style.cursor = "pointer";
-      thumb.addEventListener("pointerdown", h, {passive:false});
-      thumb.addEventListener("click", h, {passive:true});
+      thumb.addEventListener("pointerdown", h);
+      thumb.addEventListener("click", h);
     });
     // also make main image swipable via pointer
     if (pdpMainImg) {
@@ -515,16 +515,11 @@ const updateIdx = (idx) => {
 
     const variantBtns = document.querySelectorAll(".pdp-variant-btn");
     const variantInput = document.getElementById("pdpSelectedVariant");
-    let lastVariantTap = 0;
     variantBtns.forEach((btn, vi) => {
       btn.setAttribute("tabindex", "-1");
-      const vHandler = (e)=> {
-        const now = Date.now();
-        // Instant response: every physical tap (pointerdown) processes immediately.
-        // Only the synthetic click trailing a pointerdown is skipped (anti double-fire).
-        if (e && e.type === "click" && now - lastVariantTap < 350) return;
-        lastVariantTap = now;
-        if (e && e.type === "pointerdown" && e.cancelable) { e.preventDefault(); e.stopPropagation(); }
+      // updateIdx + variant sync are idempotent, so pointer/touch/click may
+      // all fire safely with no preventDefault and no suppression (WebView-proof).
+      const vHandler = ()=> {
         // prevent focus scroll that causes viewport jump on mobile
         if (document.activeElement === btn) btn.blur();
         document.documentElement.style.scrollBehavior = "auto";
@@ -561,8 +556,9 @@ const updateIdx = (idx) => {
           if (pe && window.Currency) { pe.textContent = window.Currency.format(vp); pe.setAttribute("data-price-base", vp); }
         }
       };
-      btn.addEventListener("pointerdown", vHandler, {passive:false});
-      btn.addEventListener("click", vHandler, {passive:true});
+      btn.addEventListener("pointerdown", vHandler);
+      btn.addEventListener("touchend", vHandler, {passive:true});
+      btn.addEventListener("click", vHandler);
     });
 
     const waBtn = document.querySelector(".pdp-whatsapp-btn");
