@@ -369,10 +369,17 @@ function renderProductDetailView(handle) {
       if (pdpMainImg.complete && pdpMainImg.naturalWidth) fitMediaToImage();
     }
 const updateIdx = (idx) => {
-      // lock scroll to prevent auto-zoom/scroll down after variant tap (keep full view like ảnh 1)
-      const lockY = window.scrollY;
       currentIdx = (idx + total) % total;
       const thumb = pdpThumbs[currentIdx];
+      // Settle the frame synchronously from the tapped thumbnail's ratio so the
+      // tap target can't drift mid-gesture when the full photo arrives later.
+      // (The main-image load listener refines it afterwards if needed.)
+      try {
+        if (pdpFitContain && pdpMainMedia && thumb && thumb.naturalWidth && thumb.naturalHeight) {
+          const rr = Math.min(1.7, Math.max(0.7, thumb.naturalWidth / thumb.naturalHeight));
+          pdpMainMedia.style.aspectRatio = `${rr.toFixed(3)} / 1`;
+        }
+      } catch (_) {}
       const raw = thumb?.dataset.raw;
       const src = thumb?.dataset.src;
       if (pdpMainImg && src) {
@@ -452,9 +459,9 @@ const updateIdx = (idx) => {
           }
         }
       }
-      // restore scroll to keep toàn cảnh như ảnh 1, không trượt xuống
-      requestAnimationFrame(() => window.scrollTo({top: lockY, behavior: "auto"}));
-      setTimeout(() => window.scrollTo({top: lockY, behavior: "auto"}), 80);
+      // No forced scroll-restore here: programmatic scrollTo after every tap
+      // fights the browser's scroll anchoring and makes the page jump,
+      // causing subsequent taps to miss their targets on mobile.
     };
     // Dots for mobile swipe indication (progressive enhancement — must never break core bindings)
     try {
@@ -513,23 +520,26 @@ const updateIdx = (idx) => {
     });
     } catch (e) { console.error("pdp preload error:", e); }
 
-    const variantBtns = document.querySelectorAll(".pdp-variant-btn");
-    const variantInput = document.getElementById("pdpSelectedVariant");
-    variantBtns.forEach((btn, vi) => {
-      btn.setAttribute("tabindex", "-1");
-      // updateIdx + variant sync are idempotent, so pointer/touch/click may
-      // all fire safely with no preventDefault and no suppression (WebView-proof).
-      const vHandler = ()=> {
-        // prevent focus scroll that causes viewport jump on mobile
-        if (document.activeElement === btn) btn.blur();
-        document.documentElement.style.scrollBehavior = "auto";
-        variantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
-        btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
-        if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
-        if (typeof updateIdx === "function" && total>0) {
-          let targetIdx = vi % total;
+    // Delegated variant selection: the tapped button's index is computed live
+    // at event time, so interaction never depends on per-node closures.
+    const variantsWrap = document.querySelector(".pdp-variants");
+    const applyVariant = (vi) => {
+      const liveBtns = variantsWrap
+        ? [...variantsWrap.querySelectorAll(".pdp-variant-btn")]
+        : [...document.querySelectorAll(".pdp-variant-btn")];
+      const btn = liveBtns[vi];
+      if (!btn) return;
+      // prevent focus scroll that causes viewport jump on mobile
+      if (document.activeElement === btn) btn.blur();
+      document.documentElement.style.scrollBehavior = "auto";
+      liveBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
+      btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
+      const variantInput = document.getElementById("pdpSelectedVariant");
+      if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
+      if (typeof updateIdx === "function" && total>0) {
+        let targetIdx = vi % total;
           if (product.handle === "selena" && total === 2) targetIdx = vi === 0 ? 0 : 1;
-          else if (product.handle === "selena" && total === 3) targetIdx = vi === 0 ? 0 : 1; // Classic -> #1, Noir -> #2 (purple)
+          else if (product.handle === "selena" && total === 3) targetIdx = vi; // 1:1 Pink -> #1, Grey -> #2, Smoky -> #3
           else if (product.handle === "selena" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic->#1, Noir->#3
           else if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;
           else if (product.handle === "bella" && total === 6) targetIdx = vi === 0 ? 3 : 0; // Pearl White -> #4, Teal Blue -> #1
@@ -556,10 +566,19 @@ const updateIdx = (idx) => {
           if (pe && window.Currency) { pe.textContent = window.Currency.format(vp); pe.setAttribute("data-price-base", vp); }
         }
       };
-      btn.addEventListener("pointerdown", vHandler);
-      btn.addEventListener("touchend", vHandler, {passive:true});
-      btn.addEventListener("click", vHandler);
-    });
+      document.querySelectorAll(".pdp-variant-btn").forEach(b => b.setAttribute("tabindex", "-1"));
+      if (variantsWrap && !variantsWrap.dataset.vbound) {
+        variantsWrap.dataset.vbound = "1";
+        const onVariantTap = (e) => {
+          const btn = e.target && e.target.closest ? e.target.closest(".pdp-variant-btn") : null;
+          if (!btn || !variantsWrap.contains(btn)) return;
+          const vi = [...variantsWrap.querySelectorAll(".pdp-variant-btn")].indexOf(btn);
+          if (vi >= 0) applyVariant(vi);
+        };
+        variantsWrap.addEventListener("pointerdown", onVariantTap);
+        variantsWrap.addEventListener("touchend", onVariantTap, { passive: true });
+        variantsWrap.addEventListener("click", onVariantTap);
+      }
 
     const waBtn = document.querySelector(".pdp-whatsapp-btn");
     if (waBtn) waBtn.addEventListener("click", () => {
