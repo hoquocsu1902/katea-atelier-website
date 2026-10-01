@@ -261,6 +261,10 @@ function renderProductDetailView(handle) {
     sessionStorage.removeItem("katea_pdp_from");
   } catch (_) {}
 
+  // Scarlet Rosé source images are landscape: keep thumbs un-cropped
+  // so the full bag is visible (no cover zoom).
+  const pdpFitContain = product.handle === "scarlet-rose";
+
   mainContent.innerHTML = `
     <div class="section pdp-section">
       <div class="container">
@@ -273,7 +277,7 @@ function renderProductDetailView(handle) {
 
         <div class="pdp-layout">
           <!-- Gallery -->
-          <div class="pdp-gallery">
+          <div class="pdp-gallery${pdpFitContain ? " pdp-gallery--fit-contain" : ""}">
             <div class="pdp-main-media">
               <img src="${pdpSrc(galleryImages[0], 900, product)}" srcset="${pdpSrc(galleryImages[0], 600, product)} 600w, ${pdpSrc(galleryImages[0], 900, product)} 900w, ${pdpSrc(galleryImages[0], 1200, product)} 1200w" sizes="(max-width: 900px) 100vw, 50vw" id="pdpMainImg" alt="${product.title}" class="pdp-main-image" loading="eager" decoding="async" fetchpriority="high" />
             </div>
@@ -410,6 +414,8 @@ const updateIdx = (idx) => {
           vIdx = currentIdx; // 1:1 mapping - Pearl White->#1, Blush Pink->#2, Sage Green->#3
         } else if (product.handle === "camille" && vBtns.length === 2 && total === 2) {
           vIdx = currentIdx; // 1:1 mapping - Classic->#1, Blush->#2
+        } else if (product.handle === "celestial" && vBtns.length === 2 && total === 4) {
+          vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Classic, 2-3 Large
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -526,6 +532,7 @@ const updateIdx = (idx) => {
           else if (product.handle === "butterfly-vera" && total === 3) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
           else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping
           else if (product.handle === "camille" && total === 2) targetIdx = vi; // 1:1 mapping
+          else if (product.handle === "celestial" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic -> #1, Large -> #3
           updateIdx(targetIdx);
         }
         if (product.variants && product.variants[vi]) {

@@ -106,6 +106,26 @@
   transform: scale(1.05);
 }
 
+/* Fit-contain variant (e.g. Scarlet Rosé landscape studio shots):
+   show the full bag in card / thumbs / quickview — no cover crop or hover zoom. */
+.product-card--fit-contain .product-img {
+  object-fit: contain;
+  background-color: #FAF8F5;
+}
+
+.product-card--fit-contain:hover .product-img {
+  transform: none;
+}
+
+.pdp-gallery--fit-contain .pdp-thumb {
+  object-fit: contain;
+  background: #F9F6F2;
+}
+
+.quickview-modal--fit-contain .quickview-main-img {
+  object-fit: contain;
+}
+
 /* Product Badges */
 .product-badges {
   position: absolute;

@@ -273,6 +273,9 @@ class UIManager {
   // Product Card Template
   // ==========================================
   renderProductCard(product, opts = {}) {
+    // Scarlet Rosé source images are landscape studio shots: use contain
+    // so the full bag is visible in the portrait card (no cover crop/zoom).
+    const fitContain = product.handle === "scarlet-rose";
     let rawPrimary = product.images && product.images.length > 0 ? product.images[0] : "";
     let rawSecondary = product.images && product.images.length > 1 ? product.images[1] : rawPrimary;
     // Explicit primary override (e.g. fits-a-phone collection display image)
@@ -317,7 +320,7 @@ class UIManager {
     }
 
     return `
-      <div class="product-card" data-product-id="${product.id}">
+      <div class="product-card${fitContain ? " product-card--fit-contain" : ""}" data-product-id="${product.id}"${fitContain ? ` data-fit="contain"` : ""}>
         <div class="product-image-wrap">
           <div class="product-badges">${badgeHtml}</div>
           <a href="#product/${product.handle}"${fromAttr} style="display: block; width: 100%; height: 100%;">
@@ -359,6 +362,8 @@ class UIManager {
 
     const mainImg = product.images && product.images.length > 0 ? product.images[0] : "";
     const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
+    const fitContain = product.handle === "scarlet-rose";
+    modal.classList.toggle("quickview-modal--fit-contain", fitContain);
 
     modal.innerHTML = `
       <button class="close-btn quickview-close" onclick="window.UI.closeQuickView()">✕</button>
