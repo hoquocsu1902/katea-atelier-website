@@ -273,9 +273,8 @@ class UIManager {
   // Product Card Template
   // ==========================================
   renderProductCard(product, opts = {}) {
-    // Scarlet Rosé source images are landscape studio shots: use contain
-    // so the full bag is visible in the portrait card (no cover crop/zoom).
-    const fitContain = product.handle === "scarlet-rose";
+    // All products: show the full bag (no cover crop/zoom).
+    const fitContain = true;
     let rawPrimary = product.images && product.images.length > 0 ? product.images[0] : "";
     let rawSecondary = product.images && product.images.length > 1 ? product.images[1] : rawPrimary;
     // Explicit primary override (e.g. fits-a-phone collection display image)
@@ -362,7 +361,7 @@ class UIManager {
 
     const mainImg = product.images && product.images.length > 0 ? product.images[0] : "";
     const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
-    const fitContain = product.handle === "scarlet-rose";
+    const fitContain = true; // all products: full-bag view, no crop
     modal.classList.toggle("quickview-modal--fit-contain", fitContain);
 
     modal.innerHTML = `

@@ -106,8 +106,8 @@
   transform: scale(1.05);
 }
 
-/* Fit-contain variant (e.g. Scarlet Rosé landscape studio shots):
-   show the full bag in card / thumbs / quickview — no cover crop or hover zoom. */
+/* Fit-contain product media (site-wide):
+   show the full bag in card / PDP / thumbs / quickview — no cover crop or hover zoom. */
 .product-card--fit-contain .product-img {
   object-fit: contain;
   background-color: #FFFFFF;
