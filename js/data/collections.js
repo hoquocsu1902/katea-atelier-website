@@ -51,7 +51,7 @@ const COLLECTIONS_DATA = [
     subtitle: "Iconic Signature Pieces",
     description: "Discover our most sought-after crystal handbags, cherished by collectors worldwide.",
     image: "https://paleramilano.com/cdn/shop/files/Crystal-Pouch-Champagne_5e14a3e4-e732-4eca-9b3a-1cdf64ff77a2.jpg?v=1784816492&width=1600",
-    filter: (p) => p.is_best_seller || p.price > 500
+    filter: (p) => p.is_best_seller || p.compare_price || p.price > 500
   }
 ];
 
