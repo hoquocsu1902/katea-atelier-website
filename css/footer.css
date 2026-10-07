@@ -197,3 +197,31 @@
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
 }
+
+/* Visitor counter */
+.footer-visits {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-visits[hidden] {
+  display: none;
+}
+
+.footer-visits-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px rgba(197, 168, 128, 0.8);
+}
+
+.footer-visits strong {
+  color: var(--color-white);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}

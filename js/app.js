@@ -42,7 +42,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Setup Newsletter Submission
   setupNewsletter();
+
+  // Visitor counter (footer)
+  initVisitCounter();
 });
+
+/**
+ * Footer visitor counter — counts one full page load via the Abacus API
+ * (namespace katea.studio / key visits). Hides itself when unavailable.
+ */
+function initVisitCounter() {
+  try {
+    const wrap = document.getElementById("footerVisits");
+    const el = document.getElementById("visitCount");
+    if (!wrap || !el) return;
+    if (!/^https?:$/.test(window.location.protocol)) return;
+    fetch("https://abacus.jasoncameron.dev/hit/katea.studio/visits", { cache: "no-store" })
+      .then(r => r.json())
+      .then(d => {
+        if (d && typeof d.value === "number") {
+          el.textContent = d.value.toLocaleString("vi-VN");
+          wrap.hidden = false;
+        }
+      })
+      .catch(() => {});
+  } catch (_) {}
+}
 
 /**
  * SPA Hash Router
