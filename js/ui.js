@@ -418,11 +418,18 @@ class UIManager {
     {
       const qvVariantBtns = modal.querySelectorAll(".qv-variant-btn");
       const qvVariantInput = modal.querySelector("#qvSelectedVariant");
-      qvVariantBtns.forEach(btn => {
+      qvVariantBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
           qvVariantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
           btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
           if (qvVariantInput) qvVariantInput.value = btn.dataset.variant || "Standard";
+          if (product.handle === "aurelle" && product.images[index]) {
+            const image = modal.querySelector("#qvMainImg");
+            if (image) {
+              image.src = product.images[index];
+              image.alt = product.variants[index].title;
+            }
+          }
         });
       });
       const qvWaBtn = modal.querySelector(".qv-whatsapp-btn");

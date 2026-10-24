@@ -1,6 +1,6 @@
-const CACHE = "katea-v4";
+const CACHE = "katea-v5";
 // NOTE: keep V in sync with the ?v= cache-bust in index.html
-const V = "e1a35c7";
+const V = "aurelle-20261024";
 const ASSETS = [
   "/",
   "/index.html",
