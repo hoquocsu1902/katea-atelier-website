@@ -469,7 +469,7 @@ const updateIdx = (idx) => {
         } else if (product.handle === "celestial" && vBtns.length === 2 && total === 5) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Classic, 2-4 Large (styled final belongs to Large)
         } else if (product.handle === "aurelle" && vBtns.length === 8 && total === 9) {
-          vIdx = Math.min(currentIdx, 7); // 0-6 colour variants, 7-8 Crystal Diamond
+          vIdx = currentIdx < 2 ? 0 : currentIdx - 1; // 0-1 Crystal Diamond, 2-8 colour variants
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
@@ -565,7 +565,8 @@ const updateIdx = (idx) => {
       if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
       if (typeof updateIdx === "function" && total>0) {
         let targetIdx = vi % total;
-          if (product.handle === "selena" && total === 2) targetIdx = vi === 0 ? 0 : 1;
+          if (product.handle === "aurelle" && total === 9 && product.variants.length === 8) targetIdx = vi === 0 ? 0 : vi + 1;
+          else if (product.handle === "selena" && total === 2) targetIdx = vi === 0 ? 0 : 1;
           else if (product.handle === "selena" && total === 3) targetIdx = vi; // 1:1 Pink -> #1, Grey -> #2, Smoky -> #3
           else if (product.handle === "selena" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic->#1, Noir->#3
           else if (product.handle === "selena" && total === 6) targetIdx = vi === 0 ? 0 : 3;

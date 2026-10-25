@@ -423,10 +423,11 @@ class UIManager {
           qvVariantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
           btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
           if (qvVariantInput) qvVariantInput.value = btn.dataset.variant || "Standard";
-          if (product.handle === "aurelle" && product.images[index]) {
+          const aurelleImage = product.handle === "aurelle" ? product.images[index === 0 ? 0 : index + 1] : null;
+          if (aurelleImage) {
             const image = modal.querySelector("#qvMainImg");
             if (image) {
-              image.src = product.images[index];
+              image.src = aurelleImage;
               image.alt = product.variants[index].title;
             }
           }
