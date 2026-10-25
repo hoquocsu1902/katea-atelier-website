@@ -317,7 +317,7 @@ function renderProductDetailView(handle) {
           <!-- Product Details & Private Enquiry -->
           <div class="pdp-buybox">
             <div>
-              <span class="section-subtitle" style="margin-bottom: 4px;">Handmade with Love</span>
+              <span class="section-subtitle" style="margin-bottom: 4px;">THE ART OF HANDCRAFTING</span>
               <h1 class="pdp-title">${product.title}</h1>
               <div class="product-price pdp-price">${formattedPrice}</div>
               <div class="badge badge-stock mt-20" style="display: inline-flex;">Availability confirmed by the atelier</div>
