@@ -426,7 +426,9 @@ class UIManager {
           if (qvVariantInput) qvVariantInput.value = btn.dataset.variant || "Standard";
           const variantImage = ["selena", "kelly", "scarlet", "bella", "bella-amour"].includes(product.handle) && product.images.length === product.variants.length
             ? product.images[index]
-            : product.handle === "aurelle" ? product.images[index === 0 ? 0 : index + 1] : null;
+            : product.handle === "aurelle" ? product.images[index === 0 ? 0 : index + 1]
+            : product.handle === "butterfly-vera" && product.images.length === 4 && product.variants.length === 2
+              ? product.images[index * 2] : null;
           if (variantImage) {
             const image = modal.querySelector("#qvMainImg");
             if (image) {
