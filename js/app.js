@@ -566,6 +566,7 @@ const updateIdx = (idx) => {
       if (typeof updateIdx === "function" && total>0) {
         let targetIdx = vi % total;
           if (product.handle === "aurelle" && total === 9 && product.variants.length === 8) targetIdx = vi === 0 ? 0 : vi + 1;
+          else if (product.handle === "selena" && total === product.variants.length) targetIdx = vi;
           else if (product.handle === "selena" && total === 2) targetIdx = vi === 0 ? 0 : 1;
           else if (product.handle === "selena" && total === 3) targetIdx = vi; // 1:1 Pink -> #1, Grey -> #2, Smoky -> #3
           else if (product.handle === "selena" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic->#1, Noir->#3
