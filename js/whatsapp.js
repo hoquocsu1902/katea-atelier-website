@@ -34,7 +34,9 @@ function orderProductViaWhatsApp(productId, variantTitle = "Standard", qty = 1) 
   const product = PRODUCTS_DATA.find(p => p.id == productId || p.handle === productId);
   if (!product) return;
 
-  const formattedPrice = window.Currency ? window.Currency.format(product.price) : `S$${product.price}`;
+  const selectedVariant = product.variants?.find(v => v.title === variantTitle);
+  const price = selectedVariant?.price ?? product.price;
+  const formattedPrice = window.Currency ? window.Currency.format(price) : `S$${price}`;
   const pageBase = window.location.href.split("#")[0];
 
   const message = `*PRIVATE PRODUCT ENQUIRY — ${WHATSAPP_CONFIG.brandName}*\n\n` +
