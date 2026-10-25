@@ -424,7 +424,7 @@ class UIManager {
           qvVariantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
           btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
           if (qvVariantInput) qvVariantInput.value = btn.dataset.variant || "Standard";
-          const variantImage = ["selena", "kelly", "scarlet", "bella"].includes(product.handle) && product.images.length === product.variants.length
+          const variantImage = ["selena", "kelly", "scarlet", "bella", "bella-amour"].includes(product.handle) && product.images.length === product.variants.length
             ? product.images[index]
             : product.handle === "aurelle" ? product.images[index === 0 ? 0 : index + 1] : null;
           if (variantImage) {
