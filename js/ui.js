@@ -281,7 +281,8 @@ class UIManager {
     // Explicit primary override (e.g. fits-a-phone collection display image)
     if (opts.primary) {
       rawPrimary = opts.primary;
-    } else if (product.handle === "bella" && product.images.length > 3) {      rawPrimary = product.images[3];
+    } else if (product.handle === "bella" && product.variants.length === 2 && product.images.length > 3) {
+      rawPrimary = product.images[3];
       rawSecondary = product.images[0];
     } else if (product.handle === "butterfly-vera" && product.images.length === 3) {
       rawPrimary = product.images[0];
@@ -423,7 +424,7 @@ class UIManager {
           qvVariantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
           btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
           if (qvVariantInput) qvVariantInput.value = btn.dataset.variant || "Standard";
-          const variantImage = ["selena", "kelly", "scarlet"].includes(product.handle) && product.images.length === product.variants.length
+          const variantImage = ["selena", "kelly", "scarlet", "bella"].includes(product.handle) && product.images.length === product.variants.length
             ? product.images[index]
             : product.handle === "aurelle" ? product.images[index === 0 ? 0 : index + 1] : null;
           if (variantImage) {
