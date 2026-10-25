@@ -310,15 +310,8 @@ class UIManager {
     // Mark navigation source so PDP can keep context gallery (e.g. single image from fits-a-phone)
     const fromAttr = opts.from ? ` onclick="try{sessionStorage.setItem('katea_pdp_from','${opts.from}')}catch(e){}"` : "";
 
-    // Badges — unified to NEW ARRIVAL per request (preserve gold/dark styling for visual variety)
-    let badgeHtml = "";
-    if (product.is_new) {
-      badgeHtml = `<span class="badge badge-gold">NEW ARRIVAL</span>`;
-    } else if (product.is_best_seller) {
-      badgeHtml = `<span class="badge badge-dark">NEW ARRIVAL</span>`;
-    } else if (product.is_rose) {
-      badgeHtml = `<span class="badge badge-rose">Rose Edition</span>`;
-    }
+    // Every product card carries the NEW ARRIVAL badge.
+    const badgeHtml = `<span class="badge badge-gold">NEW ARRIVAL</span>`;
     // Sale ribbon — diagonal top-right corner, auto-computed (e.g. Célia Mini Sale 30%)
     let saleRibbon = "";
     if (product.compare_price && product.compare_price > product.price) {
