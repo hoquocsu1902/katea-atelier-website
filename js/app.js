@@ -468,6 +468,8 @@ const updateIdx = (idx) => {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Classic, 2-3 Large
         } else if (product.handle === "celestial" && vBtns.length === 2 && total === 5) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Classic, 2-4 Large (styled final belongs to Large)
+        } else if (product.handle === "aurelle" && vBtns.length === 8 && total === 9) {
+          vIdx = Math.min(currentIdx, 7); // 0-6 colour variants, 7-8 Crystal Diamond
         } else if (vBtns.length !== total) {
           vIdx = Math.floor((currentIdx / total) * vBtns.length);
         }
