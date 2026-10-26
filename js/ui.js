@@ -299,7 +299,7 @@ class UIManager {
     } else if (product.handle === "scarlet" && product.images.length === 5) {
       rawPrimary = product.images[0];
       rawSecondary = product.images[2];
-    } else if (product.images.length > 3) {
+    } else if (product.images.length > 3 && product.handle !== "luna-mini") {
       rawSecondary = product.images[3];
     }
     const primaryImg = optimizeCloudinary(rawPrimary, 600);
@@ -423,7 +423,7 @@ class UIManager {
             : product.handle === "butterfly-vera" && product.images.length === 4 && product.variants.length === 2
               ? product.images[index * 2]
             : product.handle === "luna-mini" && product.images.length === 4 && product.variants.length === 2
-              ? product.images[index === 0 ? 0 : 3] : null;
+              ? product.images[index] : null;
           if (variantImage) {
             const image = modal.querySelector("#qvMainImg");
             if (image) {
