@@ -460,6 +460,8 @@ const updateIdx = (idx) => {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Silver Green, 2-3 Silver Pink
         } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 3) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Rosa, 2 Vera
+        } else if (product.handle === "luna-mini" && vBtns.length === 2 && total === 4) {
+          vIdx = currentIdx < 3 ? 0 : 1; // 0-2 Moonlight, 3 Grey
         } else if (product.handle === "celia-mini-bag" && vBtns.length === 3 && total === 3) {
           vIdx = currentIdx; // 1:1 mapping - Pearl White->#1, Blush Pink->#2, Sage Green->#3
         } else if (product.handle === "camille" && vBtns.length === 2 && total === 2) {
@@ -584,6 +586,7 @@ const updateIdx = (idx) => {
           else if (product.handle === "scarlet-rose" && total === 6) targetIdx = vi === 0 ? 0 : vi + 1; // Rosé -> #1, Blue Grey -> #3, Blue -> #4, Grey -> #5, Aurora Pink -> #6
           else if (product.handle === "butterfly-vera" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Silver Green -> #1, Silver Pink -> #3
           else if (product.handle === "butterfly-vera" && total === 3) targetIdx = vi === 0 ? 0 : 2; // Rosa -> #1, Vera -> #3
+          else if (product.handle === "luna-mini" && total === 4 && product.variants.length === 2) targetIdx = vi === 0 ? 0 : 3;
           else if (product.handle === "celia-mini-bag" && total === 3) targetIdx = vi; // 1:1 mapping
           else if (product.handle === "camille" && total === 2) targetIdx = vi; // 1:1 mapping
           else if (product.handle === "celestial" && total === 4) targetIdx = vi === 0 ? 0 : 2; // Classic -> #1, Large -> #3

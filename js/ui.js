@@ -421,7 +421,9 @@ class UIManager {
             ? product.images[index]
             : product.handle === "aurelle" ? product.images[index === 0 ? 0 : index + 1]
             : product.handle === "butterfly-vera" && product.images.length === 4 && product.variants.length === 2
-              ? product.images[index * 2] : null;
+              ? product.images[index * 2]
+            : product.handle === "luna-mini" && product.images.length === 4 && product.variants.length === 2
+              ? product.images[index === 0 ? 0 : 3] : null;
           if (variantImage) {
             const image = modal.querySelector("#qvMainImg");
             if (image) {
