@@ -2,6 +2,7 @@ const COLLECTIONS_DATA = [
   {
     id: "all-handbags",
     handle: "all-handbags",
+    featured_handles: ["bella-amour", "scarlet", "bella", "selena", "scarlet-rose", "glace", "aurelle"],
     title: "All Handbags",
     subtitle: "Artisanal Handcrafted Crystal Creations",
     description: "Explore the complete KATÉA repertoire — each handbag is meticulously woven by hand with premium crystal beads to create radiant, timeless elegance.",

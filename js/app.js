@@ -149,6 +149,12 @@ function collectionCardOpts(product, collectionHandle) {
   return {};
 }
 
+// Keep the curated group first while preserving catalog order within each group.
+function prioritizeFeaturedProducts(products, collection) {
+  const featured = new Set(collection.featured_handles || []);
+  return products.sort((a, b) => Number(featured.has(b.handle)) - Number(featured.has(a.handle)));
+}
+
 /**
  * 2. Collection Page View
  */
@@ -175,7 +181,7 @@ function renderCollectionView(handle) {
       return;
     }
 
-    const filteredProducts = PRODUCTS_DATA.filter(p => collection.filter(p));
+    const filteredProducts = prioritizeFeaturedProducts(PRODUCTS_DATA.filter(p => collection.filter(p)), collection);
     console.log("Rendering collection:", handle, "with", filteredProducts.length, "products");
 
     const isEmpty = filteredProducts.length === 0;
@@ -242,6 +248,8 @@ function sortCollection(criteria, handle) {
     items.sort((a, b) => b.price - a.price);
   } else if (criteria === "title") {
     items.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (criteria === "featured") {
+    items = prioritizeFeaturedProducts(items, collection);
   }
 
   const grid = document.getElementById("collectionProductsGrid");
