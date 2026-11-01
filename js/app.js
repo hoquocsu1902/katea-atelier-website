@@ -461,7 +461,7 @@ const updateIdx = (idx) => {
         } else if (product.handle === "butterfly-vera" && vBtns.length === 2 && total === 3) {
           vIdx = currentIdx < 2 ? 0 : 1; // 0-1 Rosa, 2 Vera
         } else if (product.handle === "luna-mini" && vBtns.length === 2 && total === 4) {
-          vIdx = currentIdx === 1 ? 1 : 0; // 1 Grey; 0, 2-3 Moonlight
+          vIdx = currentIdx === 1 ? 1 : 0; // 1 Grey; 0, 2-3 Silver
         } else if (product.handle === "celia-mini-bag" && vBtns.length === 3 && total === 3) {
           vIdx = currentIdx; // 1:1 mapping - Pearl White->#1, Blush Pink->#2, Sage Green->#3
         } else if (product.handle === "camille" && vBtns.length === 2 && total === 2) {
