@@ -1,8 +1,10 @@
+const FEATURED_PRODUCT_HANDLES = ["bella-amour", "scarlet", "bella", "selena", "scarlet-rose", "glace", "aurelle"];
+
 const COLLECTIONS_DATA = [
   {
     id: "all-handbags",
     handle: "all-handbags",
-    featured_handles: ["bella-amour", "scarlet", "bella", "selena", "scarlet-rose", "glace", "aurelle"],
+    featured_handles: FEATURED_PRODUCT_HANDLES,
     title: "All Handbags",
     subtitle: "Artisanal Handcrafted Crystal Creations",
     description: "Explore the complete KATÉA repertoire — each handbag is meticulously woven by hand with premium crystal beads to create radiant, timeless elegance.",
@@ -48,6 +50,7 @@ const COLLECTIONS_DATA = [
   {
     id: "best-sellers",
     handle: "best-sellers",
+    featured_handles: FEATURED_PRODUCT_HANDLES,
     title: "Best Sellers",
     subtitle: "Iconic Signature Pieces",
     description: "Discover our most sought-after crystal handbags, cherished by collectors worldwide.",

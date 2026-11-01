@@ -828,10 +828,13 @@ function initProductTabs() {
   const renderTab = (tabName) => {
     let items = [];
     if (tabName === "bestsellers") {
-      items = PRODUCTS_DATA.filter(p => p.is_best_seller || p.compare_price).slice(0, 8);
+      items = PRODUCTS_DATA.filter(p => p.is_best_seller || p.compare_price);
     } else {
-      items = PRODUCTS_DATA.filter(p => p.is_new).slice(0, 8);
+      items = PRODUCTS_DATA.filter(p => p.is_new);
     }
+
+    const featuredCollection = COLLECTIONS_DATA.find(c => c.handle === "all-handbags") || {};
+    items = prioritizeFeaturedProducts(items, featuredCollection).slice(0, 8);
 
     container.innerHTML = items.map(p => window.UI ? window.UI.renderProductCard(p) : "").join("");
       if (window.Currency) window.Currency.updateDOM();
