@@ -362,7 +362,7 @@ class UIManager {
     if (!modal) return;
 
     const mainImg = product.images && product.images.length > 0 ? product.images[0] : "";
-    const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
+    const formattedPrice = window.Currency ? window.Currency.format(product.variants[0]?.price ?? product.price) : `$${product.variants[0]?.price ?? product.price}`;
     const fitContain = true; // quickview always shows the full image
     modal.classList.toggle("quickview-modal--fit-contain", fitContain);
 
@@ -417,7 +417,9 @@ class UIManager {
           qvVariantBtns.forEach(b => { b.classList.remove("btn-primary"); b.classList.add("btn-secondary"); });
           btn.classList.remove("btn-secondary"); btn.classList.add("btn-primary");
           if (qvVariantInput) qvVariantInput.value = btn.dataset.variant || "Standard";
-          const variantImage = ["selena", "kelly", "scarlet", "bella", "bella-amour", "glace"].includes(product.handle) && product.images.length === product.variants.length
+          const variantImage = product.image_variant_indices
+            ? product.images[product.image_variant_indices.indexOf(index)]
+            : ["selena", "kelly", "scarlet", "bella", "bella-amour", "glace"].includes(product.handle) && product.images.length === product.variants.length
             ? product.images[index]
             : product.handle === "aurelle" ? product.images[index === 0 ? 0 : index + 1]
             : product.handle === "butterfly-vera" && product.images.length === 4 && product.variants.length === 2

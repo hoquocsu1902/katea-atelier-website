@@ -275,7 +275,7 @@ function renderProductDetailView(handle) {
     return;
   }
 
-  const formattedPrice = window.Currency ? window.Currency.format(product.price) : `$${product.price}`;
+  const formattedPrice = window.Currency ? window.Currency.format(product.variants[0]?.price ?? product.price) : `$${product.variants[0]?.price ?? product.price}`;
 
   // Context gallery: coming from Fits A Phone shows only the curated image (e.g. Selena purple #3)
   let galleryImages = product.images;
@@ -428,7 +428,9 @@ const updateIdx = (idx) => {
       const vBtns = document.querySelectorAll(".pdp-variant-btn");
       if (vBtns.length > 0 && total > 1) {
         let vIdx = currentIdx;
-        if (product.handle === "selena" && vBtns.length === 2 && total === 2) {
+        if (product.image_variant_indices?.length === total) {
+          vIdx = product.image_variant_indices[currentIdx];
+        } else if (product.handle === "selena" && vBtns.length === 2 && total === 2) {
           vIdx = currentIdx === 0 ? 0 : 1;
         } else if (product.handle === "selena" && vBtns.length === 2 && total === 3) {
           vIdx = currentIdx === 0 ? 0 : 1; // 0 Classic, 1-2 Noir
@@ -567,7 +569,8 @@ const updateIdx = (idx) => {
       if (variantInput) variantInput.value = btn.dataset.variant || "Standard";
       if (typeof updateIdx === "function" && total>0) {
         let targetIdx = vi % total;
-          if (product.handle === "aurelle" && total === 9 && product.variants.length === 8) targetIdx = vi === 0 ? 0 : vi + 1;
+          if (product.image_variant_indices?.length === total) targetIdx = product.image_variant_indices.indexOf(vi);
+          else if (product.handle === "aurelle" && total === 9 && product.variants.length === 8) targetIdx = vi === 0 ? 0 : vi + 1;
           else if (product.handle === "selena" && total === product.variants.length) targetIdx = vi;
           else if (product.handle === "selena" && total === 2) targetIdx = vi === 0 ? 0 : 1;
           else if (product.handle === "selena" && total === 3) targetIdx = vi; // 1:1 Pink -> #1, Grey -> #2, Smoky -> #3
